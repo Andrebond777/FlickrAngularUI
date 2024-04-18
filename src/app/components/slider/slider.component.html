@@ -1,0 +1,18 @@
+  <mat-card class="example-result-card">
+    <mat-card-content (isShowEvent)="slider($event)">
+      <div class="example-label-container">
+        <label id="example-name-label" class="example-name-label">Value</label>
+        <label class="example-value-label">{{slider.value}}</label>
+      </div>
+      <mat-slider
+          class="example-margin"
+          [max]="max"
+          [min]="min"
+          [step]="step"
+          [disabled]="disabled">
+        <input matSliderThumb [(ngModel)]="sliderVal" #slider>
+      </mat-slider>
+      <button [hidden]="disabled" type="button" (click)="onSubmit()">Submit</button>
+    </mat-card-content>
+  </mat-card>
+  
