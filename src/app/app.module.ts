@@ -8,10 +8,12 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 
 import {MatSliderModule} from '@angular/material/slider';
 import { SliderComponent } from './components/slider/slider.component';
+import { CommonFunctionalityComponent } from './components/common-functionality/common-functionality.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CommonFunctionalityComponent
   ],
   imports: [
     BrowserModule,

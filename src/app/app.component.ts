@@ -5,6 +5,7 @@ import { FlickrUiService } from './services/flickr-ui.service';
 import { Input } from '@angular/core';
 import { createFlickr } from "flickr-sdk"
 import { Router } from '@angular/router';
+import { CommonFunctionalityComponent } from './components/common-functionality/common-functionality.component';
 
 @Component({
   selector: 'app-root',
@@ -14,9 +15,11 @@ import { Router } from '@angular/router';
 
 
 
-export class AppComponent implements OnInit {
+export class AppComponent  extends CommonFunctionalityComponent {
   title = 'Flickr';
-  photos: Photo[] = [];
+  @Input()
+  photo = new Photo();
+  photos : Photo[] = [];
 
   
 
@@ -31,32 +34,44 @@ export class AppComponent implements OnInit {
   slider(sliderVal : number)
   {
     console.log("SFKDKJSJKDFDJGIHSFJA");
-    this.score = Math.abs(this.score - this.photos[0].year);
+    this.score = Math.round(2000 / (Math.abs(sliderVal - this.photo.year)+1));
     this.isShow = true;
-    if(sliderVal != this.photos[0].year)
+    if(sliderVal != this.photo.year)
       this.isCorrect = false;
   }
 
-  async reload(url: string): Promise<boolean> {
-    await this.router.navigateByUrl('.', { skipLocationChange: true });
-    return this.router.navigateByUrl(url);
+  fetchPhoto()
+  {
+      this.flickrUiService
+      .getPhoto()
+      .subscribe((result: Photo) => {
+        this.photo = result;
+        this.photos.push(this.photo);
+      });
   }
+
 
   next()
   {
-    this.flickrUiService
-    .getPhotos()
-    .subscribe((result: Photo[]) => (this.photos = result));
-
-    this.reload("")
+    this.isShow = false;
+    this.fetchPhoto()
   }
 
 
-  constructor(private flickrUiService: FlickrUiService, public router:Router) {}
+  constructor(private flickrUiService: FlickrUiService, public override router:Router) {
+    super(router);
+    console.log("Inside AppComponent Constructor");
+  }
 
-  ngOnInit(): void {
-    this.flickrUiService
-      .getPhotos()
-      .subscribe((result: Photo[]) => (this.photos = result));
+  reloadCurrent(){
+    this.reloadComponent(true);
+  }
+
+  reloadChild(){
+    this.reloadComponent(false,"slider")
+  }
+
+  override ngOnInit(): void {
+    this.fetchPhoto()
   }
 }

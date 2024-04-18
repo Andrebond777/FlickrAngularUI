@@ -13,8 +13,8 @@ export class FlickrUiService {
 
   constructor(private http: HttpClient) {}
 
-  public getPhotos(): Observable<Photo[]> {
-    return this.http.get<Photo[]>(`${environment.apiUrl}/${this.url}`);
+  public getPhoto(): Observable<Photo> {
+    return this.http.get<Photo>(`${environment.apiUrl}/${this.url}`);
   }
   
 }

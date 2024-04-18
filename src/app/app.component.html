@@ -1,14 +1,14 @@
 
 <div class="mainContainer">
 
-  <div *ngFor="let photo of photos">
-    <img src="{{ photo.image }}"/>
-  </div>
-  <div [hidden]="!isShow">
-    <h1 >Score {{ score }}<b></b></h1>
-    <h2>Actual year is <b>{{photos[0].year}}</b></h2>
+  <div *ngFor="let ph of photos; index as i">
+    <img src="{{ ph.image }}"/>
+    <div [hidden]="(i==photos.length-1) && !isShow">
+      <h1 >Score {{ score }}<b></b></h1>
+      <h2>Actual year is <b>{{ph.year}}</b></h2>
+    </div>
+    <app-slider [disabled]="!(i==photos.length-1) && isShow" (sliderEvent)="slider($event)"></app-slider>
+    <button [hidden]="!isShow" type="button" (click)="next()">Next image</button>
   </div>
 
-  <app-slider [disabled]="isShow" (sliderEvent)="slider($event)"></app-slider>
-  <button [hidden]="!isShow" type="button" (click)="next()">Next image</button>
 </div>

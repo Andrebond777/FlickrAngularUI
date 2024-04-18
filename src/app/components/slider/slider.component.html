@@ -1,5 +1,5 @@
   <mat-card class="example-result-card">
-    <mat-card-content (isShowEvent)="slider($event)">
+    <mat-card-content>
       <div class="example-label-container">
         <label id="example-name-label" class="example-name-label">Value</label>
         <label class="example-value-label">{{slider.value}}</label>
@@ -13,6 +13,8 @@
         <input matSliderThumb [(ngModel)]="sliderVal" #slider>
       </mat-slider>
       <button [hidden]="disabled" type="button" (click)="onSubmit()">Submit</button>
+      <button (click)="reloadCurrent()">Reload Current Route</button>
     </mat-card-content>
   </mat-card>
+  
   

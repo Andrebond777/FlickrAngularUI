@@ -8,6 +8,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import { AppComponent } from '../../app.component';
 import { Router } from '@angular/router';
+import { CommonFunctionalityComponent } from '../common-functionality/common-functionality.component';
 
 /**
  * @title Configurable slider
@@ -26,21 +27,30 @@ import { Router } from '@angular/router';
     MatSliderModule
   ],
 })
-export class SliderComponent implements OnInit {
+export class SliderComponent  extends CommonFunctionalityComponent implements OnInit  {
 
-  constructor(public router:Router) {}
+  constructor(public override router:Router) {
+    super(router);
+    console.log("Inside TestComponent constructor")
+  }
 
-  ngOnInit(): void {
+  override ngOnInit(): void {
+    console.log("Loading TestComponent")
   }
 
   max = 2024;
-  min = 1900;
+  min = 1850;
   step = 1;
   @Input() disabled = false;
-  @Input() sliderVal = 1960;
+  @Input() sliderVal = 1940;
 
   @Output() sliderEvent = new EventEmitter<number>();
   
+
+  reloadCurrent(){
+    this.reloadComponent(true);
+  }
+
 
   onSubmit() {
     this.disabled = true;
