@@ -1,13 +1,44 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+@font-face {
+    font-family: 'Seasrn';
+    src: url('/Users/andrebond777/Desktop/Projects/Flickr/Flickr/src/assets/fonts/SeasideResortNF/SEASRN__.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+header {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+    h1{
+        font-family: 'Luminari';
+        font-size: 40px;
+        color: rgb(82, 82, 82);
+    }
+
+}
+
+
+
 .mainContainer{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-
+    height: 88vh;
+    background-color: rgb(82, 82, 82);
     flex-direction: column;
+    padding-bottom: 100px;
+    padding-top: 50px;
 
+    .mainImage{
+        border-style: double;
+        border-width: 10px;
+        border-color: whitesmoke;
+        height: 60vh;
+    }
     
-
-
- 
 }
+
+

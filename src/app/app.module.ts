@@ -9,6 +9,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import {MatSliderModule} from '@angular/material/slider';
 import { SliderComponent } from './components/slider/slider.component';
 import { CommonFunctionalityComponent } from './components/common-functionality/common-functionality.component';
+import { PinchZoomModule } from '@meddv/ngx-pinch-zoom';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { CommonFunctionalityComponent } from './components/common-functionality/
     AppRoutingModule,
     HttpClientModule,
     MatSliderModule,
-    SliderComponent
+    SliderComponent,
+    PinchZoomModule
+
   ],
   providers: [
     provideAnimationsAsync()

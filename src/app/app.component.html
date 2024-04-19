@@ -1,14 +1,22 @@
 
-<div class="mainContainer">
+<h1 [hidden]="!displayAllRounds">Overall score {{totalScore}}</h1>
+<div *ngFor="let ph of photos; index as i" [hidden]=" !displayAllRounds && i<photos.length-1">
 
-  <div *ngFor="let ph of photos; index as i">
-    <img src="{{ ph.image }}"/>
-    <div [hidden]="(i==photos.length-1) && !isShow">
+  <header>
+    <h1>Round {{i+1}} out of 5</h1>
+  </header>
+<div class="mainContainer">
+    <pinch-zoom class="mainImage">
+      <img src="{{ ph.image }}" />
+  </pinch-zoom>
+    <div [hidden]="(i==photos.length-1) && !isShow && i >= 4">
       <h1 >Score {{ score }}<b></b></h1>
       <h2>Actual year is <b>{{ph.year}}</b></h2>
     </div>
     <app-slider [disabled]="!(i==photos.length-1) && isShow" (sliderEvent)="slider($event)"></app-slider>
-    <button [hidden]="!isShow" type="button" (click)="next()">Next image</button>
+    <button class="button-54" [hidden]="!isShow || i >= maxRoundNumber-1" type="button" (click)="next()">Next</button>
+    <button class="button-54" [hidden]="!isShow || i < maxRoundNumber-1" type="button" (click)="endGame()">End game</button>
+
   </div>
 
 </div>

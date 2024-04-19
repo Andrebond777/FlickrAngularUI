@@ -1,6 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
+@import '/Users/andrebond777/Desktop/Projects/Flickr/Flickr/node_modules/ngx-red-zoom/styles/_base.scss';
+@import '/Users/andrebond777/Desktop/Projects/Flickr/Flickr/node_modules/ngx-red-zoom/styles/_style-magnifier.scss';
+
+                            @import 'https://fonts.cdnfonts.com/css/luminari';
+                            @import 'https://fonts.cdnfonts.com/css/fantasy';
+
+                            @font-face {
+                                font-family: 'Seasrn';
+                                src: url('/Users/andrebond777/Desktop/Projects/Flickr/Flickr/src/assets/fonts/SeasideResortNF/SEASRN__.ttf') format('truetype');
+                                font-weight: normal;
+                                font-style: normal;
+                            }
+                
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: 'Seasrn';
+}
+
+
+@font-face {
+    font-family: 'Luminari';
+    font-style: normal;
+    font-weight: 500;
+    src: url(https://fonts.cdnfonts.com/css/luminari);
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
 
 .mat-mdc-slider.mat-warn { --mdc-slider-handle-color: black; --mdc-slider-focus-handle-color: black; }
+
+
+/* CSS */
+.button-54 {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #000;
+    cursor: pointer;
+    border: 3px solid;
+    padding: 0.25em 0.5em;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button-54:active {
+    box-shadow: 0px 0px 0px 0px;
+    top: 5px;
+    left: 5px;
+  }
+  
+  @media (min-width: 768px) {
+    .button-54 {
+      padding: 0.25em 0.75em;
+    }
+  }

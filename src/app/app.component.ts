@@ -20,8 +20,11 @@ export class AppComponent  extends CommonFunctionalityComponent {
   @Input()
   photo = new Photo();
   photos : Photo[] = [];
-
   
+  maxRoundNumber = 5;
+  displayAllRounds = false;
+
+  totalScore = 0;
 
   @Input()
    isShow = false;
@@ -35,6 +38,7 @@ export class AppComponent  extends CommonFunctionalityComponent {
   {
     console.log("SFKDKJSJKDFDJGIHSFJA");
     this.score = Math.round(2000 / (Math.abs(sliderVal - this.photo.year)+1));
+    this.totalScore += this.score;
     this.isShow = true;
     if(sliderVal != this.photo.year)
       this.isCorrect = false;
@@ -54,7 +58,19 @@ export class AppComponent  extends CommonFunctionalityComponent {
   next()
   {
     this.isShow = false;
-    this.fetchPhoto()
+    
+      this.fetchPhoto()
+      
+  }
+
+  endGame()
+  {
+    this.displayAllRounds = true;
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+});
   }
 
 
