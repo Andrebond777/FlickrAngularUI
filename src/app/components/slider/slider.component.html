@@ -1,19 +1,27 @@
-  <mat-card class="example-result-card">
-    <mat-card-content>
-      <div class="example-label-container">
-        <label id="example-name-label" class="example-name-label">Value</label>
-        <label class="example-value-label">{{slider.value}}</label>
-      </div>
-      <mat-slider
+
+
+
+
+
+      <!-- <mat-slider
           class="example-margin"
           [max]="max"
           [min]="min"
           [step]="step"
           [disabled]="disabled">
+
         <input matSliderThumb [(ngModel)]="sliderVal" #slider>
-      </mat-slider>
-      <button class="button-54" role="button" [hidden]="disabled" type="button" (click)="onSubmit()">Submit</button>
-    </mat-card-content>
-  </mat-card>
+      </mat-slider> -->
+
+
+
+      <div class="yearComponent">
+        <p>{{slider.value}}</p>
+      </div>
+    <div [hidden]="disabled">
+      <input [disabled]="disabled"  type="range" min="{{min}}" max="{{max}}"  class="slider" [(ngModel)]="sliderVal" #slider>
+      <button class="button-54"  type="button" (click)="onSubmit()">Submit</button>
+      
+    </div>
   
   

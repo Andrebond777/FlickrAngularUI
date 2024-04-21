@@ -11,7 +11,7 @@
   }
   
   .example-margin {
-    margin: 8px;
+    margin: 5px;
   }
   
   .example-width {
@@ -43,4 +43,86 @@
   .example-result-card .example-value-label {
     font-weight: 600;
   }
+
+  button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: -40px;
+  }
+
+  .yearComponent{
+    visibility: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    z-index: 1;
+    height: 100px;
+  }
   
+  .container {
+    width: 50%;
+    margin: 20px auto;
+  }
+  
+  .mat-slider-background {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .mat-slider-thumb-label {
+    background-color: #1976d2;
+  }
+  
+  .mat-slider-track-fill {
+    background-color: rgba(25, 118, 210, 0.3);
+  }
+  
+
+  .mat-mdc-slider.mat-primary { --mdc-slider-handle-color: green; --mdc-slider-focus-handle-color: green;}
+  .mat-slider{
+    text-decoration-thickness: 50px;
+  }
+
+    
+  .slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-appearance: none;
+    width: 1200px;
+    height: 30px;
+    background: rgb(82, 82, 82);
+    outline: none;
+    border: 5px solid whitesmoke;
+    border-radius: 8px;
+  }
+  
+  
+  /* for chrome/safari */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 50px;
+    background: rgb(82, 82, 82);
+    cursor: pointer;
+    border: 5px solid whitesmoke;
+    border-radius: 4px;
+  }
+  
+  /* for firefox */
+  .slider::-moz-range-thumb {
+    width: 20px;
+    height: 60px;
+    background: rgb(82, 82, 82);
+    cursor: pointer;
+    border: 5px solid whitesmoke;
+    border-radius: 4px;
+  }
+
+
+  
+

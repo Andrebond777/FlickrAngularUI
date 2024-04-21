@@ -1,22 +1,62 @@
+<h1 class="totalScoreClass" *ngIf="displayAllRounds">
+  <button class="button-54" type="button" (click)="reloadPage()">Start Over</button>
+</h1>
+  
+  <h1 class="totalScoreClass" *ngIf="displayAllRounds">
+    Overall score <label [ngStyle]="getColor(totalScore / maxRoundNumber)">{{totalScore}}</label>
+  </h1>
 
-<h1 [hidden]="!displayAllRounds">Overall score {{totalScore}}</h1>
-<div *ngFor="let ph of photos; index as i" [hidden]=" !displayAllRounds && i<photos.length-1">
+<div *ngFor="let ph of displayedPhotos; index as i" [hidden]=" !displayAllRounds && i<displayedPhotos.length-1">
 
   <header>
-    <h1>Round {{i+1}} out of 5</h1>
+    <h1 >Round {{i+1}} of {{maxRoundNumber}}</h1>
   </header>
 <div class="mainContainer">
-    <pinch-zoom class="mainImage">
-      <img src="{{ ph.image }}" />
+    <pinch-zoom class="mainImage" backgroundColor="rgba(0,0,0,0.85)">
+      <img src="{{ ph.image }}" medPinchZoom=" autoZoomOut: true "/>
+
   </pinch-zoom>
-    <div [hidden]="(i==photos.length-1) && !isShow && i >= 4">
-      <h1 >Score {{ score }}<b></b></h1>
+
+    <!-- <div [hidden]="(i==photos.length-1) && !isShow && i >= 4">
+
       <h2>Actual year is <b>{{ph.year}}</b></h2>
+    </div> -->
+
+
+    <div [hidden]="!isShow" >    
+      <div class="resultsClass">
+        <div class="yearTakenClass">
+          <h1  >Photo was taken in {{ph.year}}</h1>
+        </div> 
+        <div class="scoreClass">
+          <h1 >Score &nbsp;<h1 [ngStyle]="getColor(scores[i])">  <span> {{ scores[i] }}</span></h1>
+          <div>
+            <progress max="1000" [value]="scores[i]" [ngStyle]="getAccentColor(scores[i])"></progress>
+          </div>
+
+
+        </h1>
+
+        </div> 
+    </div> 
+    <div [hidden]="!displayAllRounds">
+      <h1  class="guess">Your guess was {{answers[i]}}</h1>
     </div>
-    <app-slider [disabled]="!(i==photos.length-1) && isShow" (sliderEvent)="slider($event)"></app-slider>
-    <button class="button-54" [hidden]="!isShow || i >= maxRoundNumber-1" type="button" (click)="next()">Next</button>
-    <button class="button-54" [hidden]="!isShow || i < maxRoundNumber-1" type="button" (click)="endGame()">End game</button>
+  </div>
+
+
+
+    <app-slider [hidden]="displayAllRounds" (sliderEvent)="slider($event)"></app-slider>
+    <div *ngIf="!displayAllRounds">
+      <button class="button-54" *ngIf="isShow && i < maxRoundNumber-1" type="button" (click)="next()">Next</button>
+      <button class="button-54" *ngIf="isShow && i >= maxRoundNumber-1" type="button" (click)="endGame()">End game</button>
+    </div>
 
   </div>
 
 </div>
+
+
+<h1 class="totalScoreClass" *ngIf="displayAllRounds">
+  <button class="button-54" type="button" (click)="reloadPage()">Start Over</button>
+</h1>

@@ -38,21 +38,22 @@ export class SliderComponent  extends CommonFunctionalityComponent implements On
     console.log("Loading TestComponent")
   }
 
+  min = 1875;
   max = 2024;
-  min = 1850;
+
   step = 1;
   @Input() disabled = false;
-  @Input() sliderVal = 1940;
+  @Input() sliderVal = 1950;
+  
 
   @Output() sliderEvent = new EventEmitter<number>();
-  
 
   reloadCurrent(){
     this.reloadComponent(true);
   }
 
-
   onSubmit() {
+    
     this.disabled = true;
     console.log(this.sliderVal);
       this.sliderEvent.emit(this.sliderVal);

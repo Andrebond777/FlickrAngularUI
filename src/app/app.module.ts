@@ -30,4 +30,6 @@ import { PinchZoomModule } from '@meddv/ngx-pinch-zoom';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  
+}

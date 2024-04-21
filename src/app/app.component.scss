@@ -6,8 +6,76 @@
     font-weight: normal;
     font-style: normal;
 }
+
+
+.resultsClass{
+    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+    margin-bottom: -65px;
+}
+span{  
+    font-weight: 1000;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgb(138, 138, 138);
+}
+.scoreClass{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: -10px;
+    padding-bottom: 30px;
+    font-family: 'Luminari';
+    font-size: 40px;
+    h1{
+
+        display: inline-block;
+        font-size: 40px;
+        font-family: 'Luminari';
+        color: rgb(82, 82, 82);
+        text-align: justify;  /* For Edge */
+        text-align-last: center;
+        margin: auto;
+    }
+    height: 50px;
+    border-width: 20px;
+    border-radius: 10px;
+    border-style: double;
+    width: 500px;
+    background-color: whitesmoke;
+    text-align: justify;  /* For Edge */
+    text-align-last: center;
+    // margin-top: 30px;
+
+
+}
+
+.yearTakenClass{
+    display: inline-block;
+    h1{    
+        font-family: 'Luminari';
+        font-size: 40px;
+        color: rgb(82, 82, 82);
+        
+    }
+    height: 50px;
+    border-width: 20px;
+    border-radius: 10px;
+    border-style: double;
+    width: 500px;
+    padding-bottom: 30px;
+    background-color: whitesmoke;
+    margin-top: 40px;
+    margin-bottom: -10px;
+    text-align: justify;  /* For Edge */
+    text-align-last: center;
+}
+
 header {
-    height: 100px;
+    padding-top: 15px;
+    height: 75px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,25 +88,70 @@ header {
 
 }
 
-
-
-.mainContainer{
+.guess{
+    font-family: 'Luminari';
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 88vh;
+    margin-top: 130px;
+    margin-bottom: -80px;
+    font-size: 40px;
+}
+
+.totalScoreClass{
+    font-family: 'Luminari';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    font-size: 40px;
+    color: whitesmoke;
+    background-color: rgb(82, 82, 82);
+    margin-bottom: -10px;
+    label{  
+
+        margin-left: 10px;
+    }
+}
+
+
+.mainContainer{
+    font-family: 'Luminari';
+    font-size: 40px;
+    color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
     background-color: rgb(82, 82, 82);
     flex-direction: column;
-    padding-bottom: 100px;
-    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-top: 20px;
 
     .mainImage{
         border-style: double;
         border-width: 10px;
         border-color: whitesmoke;
-        height: 60vh;
+        height: 70vh;
     }
-    
+
+    button{
+        background-color: rgb(82, 82, 82);
+        margin-top: 50px;
+      }
+    .button-54{
+        color: whitesmoke;
+    }
+
+
 }
 
+progress{
+    margin-top: 10px;
+    width: 488px;
+}
 
+pinch-zoom{
+    width: 1024px;
+    background-color: rgb(82, 82, 82);
+}
