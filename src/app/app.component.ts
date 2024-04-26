@@ -58,6 +58,7 @@ export class AppComponent  extends CommonFunctionalityComponent {
   roundNumber = -1;
   maxRoundNumber = 5;
   displayAllRounds = false;
+  isPaused = false;
 
 
   getLimitedItems(startIndex: number, endIndex: number): Photo[] { 
@@ -76,7 +77,7 @@ export class AppComponent  extends CommonFunctionalityComponent {
   slider(sliderVal : number)
   {
     console.log("SFKDKJSJKDFDJGIHSFJA");
-    this.score = Math.round(1000 - (Math.abs(sliderVal - this.displayedPhotos[this.roundNumber].year))*50);
+    this.score = Math.round(1000 - (Math.abs(sliderVal - this.displayedPhotos[this.roundNumber].year))*30);
     if(this.score < 0)
       this.score = 0;
     this.scores.push(this.score);
@@ -90,6 +91,7 @@ export class AppComponent  extends CommonFunctionalityComponent {
       this.flickrUiService
       .getPhoto()
       .subscribe((result: Photo) => {
+        this.isPaused = true;
         if(result.image.length > 1)
         {        
           this.photo = result;
@@ -103,6 +105,7 @@ export class AppComponent  extends CommonFunctionalityComponent {
         }
         else
           this.fetchPhoto();
+        this.isPaused = false;
       });
   }
 
@@ -110,8 +113,8 @@ export class AppComponent  extends CommonFunctionalityComponent {
   async next()
   {
     this.isShow = false;
-
-      this.displayedPhotos.push(this.photos[0]);
+    
+    await this.displayedPhotos.push(this.photos[0]);
 
     this.roundNumber++;
     this.photos.shift();
@@ -145,6 +148,7 @@ export class AppComponent  extends CommonFunctionalityComponent {
 
   override ngOnInit(): void {
 
+    
     for(let i = 0; i < this.maxRoundNumber; i++)
       this.fetchPhoto()
   }
