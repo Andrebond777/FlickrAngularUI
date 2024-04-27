@@ -30,8 +30,10 @@ jobs:
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "/" # App source code path
           app_build_command: 'npm install --force'
-          output_location: "dist" # Built app content directory - optional
+          output_location: "" # Built app content directory - optional
         env:
+          azure_static_web_apps_api_token: $(deployment_token) 
+          NPM_CONFIG_FORCE: true 
           NPM_CONFIG_LEGACY_PEER_DEPS: true
           ###### End of Repository/Build Configurations ######
 
