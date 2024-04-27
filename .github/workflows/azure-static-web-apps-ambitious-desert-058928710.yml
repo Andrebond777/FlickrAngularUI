@@ -31,7 +31,6 @@ jobs:
           app_location: "/src" # App source code path
           app_build_command: 'npm install --force'
           output_location: "" # Built app content directory - optional
-          skip_app_build: true
         env:
           NPM_CONFIG_LEGACY_PEER_DEPS: true
           ###### End of Repository/Build Configurations ######
