@@ -1,0 +1,2 @@
+. <(azure --completion)
+. <(azure --completion)
