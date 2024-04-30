@@ -28,9 +28,9 @@ jobs:
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: ${{ env.APP_LOCATION }}
+          app_location: "/"
           app_build_command: 'npm install --force && npm run build'
-          output_location: ${{ env.OUTPUT_LOCATION }}
+          output_location: "dist/flickr/browser"
         env:
           NPM_CONFIG_LEGACY_PEER_DEPS: true
           ###### End of Repository/Build Configurations ######
