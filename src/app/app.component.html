@@ -7,7 +7,7 @@
 </h1>
   
   <h1 class="totalScoreClass" *ngIf="displayAllRounds">
-    Current round score <label [ngStyle]="getColor(totalScore / maxRoundNumber)">{{totalScore}}</label>
+    Current score <label [ngStyle]="getColor(totalScore / maxRoundNumber)">{{totalScore}}</label>
   </h1>
 
 <div *ngFor="let ph of displayedPhotos; index as i" [hidden]=" !displayAllRounds && i<displayedPhotos.length-1">
