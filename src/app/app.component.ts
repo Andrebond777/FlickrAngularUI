@@ -6,6 +6,8 @@ import { Input } from '@angular/core';
 import { createFlickr } from "flickr-sdk"
 import { Router } from '@angular/router';
 import { CommonFunctionalityComponent } from './components/common-functionality/common-functionality.component';
+import confetti from 'canvas-confetti';
+
 
 @Component({
   selector: 'app-root',
@@ -34,7 +36,6 @@ export class AppComponent  extends CommonFunctionalityComponent {
       g = (score)/5;
     }
     let colorVal = `rgb(${r}, ${g}, 0)`;
-    console.log(score, colorVal);
     return colorVal;
   }
 
@@ -59,6 +60,7 @@ export class AppComponent  extends CommonFunctionalityComponent {
   maxRoundNumber = 5;
   displayAllRounds = false;
   isPaused = false;
+  storageKey = "bestResult";
 
 
   getLimitedItems(startIndex: number, endIndex: number): Photo[] { 
@@ -76,10 +78,11 @@ export class AppComponent  extends CommonFunctionalityComponent {
 
   slider(sliderVal : number)
   {
-    console.log("SFKDKJSJKDFDJGIHSFJA");
     this.score = Math.round(1000 - (Math.abs(sliderVal - this.displayedPhotos[this.roundNumber].year))*40);
     if(this.score < 0)
-      this.score = 0;
+      this.score = 1;
+    if(this.score > 900)
+      this.celebrateCenter();
     this.scores.push(this.score);
     this.answers.push(sliderVal);
     this.totalScore += this.score;
@@ -123,17 +126,43 @@ export class AppComponent  extends CommonFunctionalityComponent {
   endGame()
   {
     this.displayAllRounds = true;
+    let currentBestResult = localStorage.getItem(this.storageKey);
+    console.log("currentBestResult: "+currentBestResult);
+    if(currentBestResult != null)
+    {      
+      if(Number(currentBestResult) < Number(this.totalScore))
+      {
+        this.celebrateLeft();
+        this.celebrateRight();
+        this.celebrateCenter();
+        localStorage.setItem(this.storageKey, this.totalScore.toString());
+        console.log("set notNull");
+      }
+    }
+    else
+    {
+      console.log("set null");
+      localStorage.setItem(this.storageKey, this.totalScore.toString());
+    }
+
     window.scroll({ 
       top: 0, 
       left: 0, 
       behavior: 'smooth' 
-});
+    });
   }
 
+  getBestScore() : number
+  {
+    let bestScore = localStorage.getItem(this.storageKey);
+    if(bestScore != null)
+      return Number(bestScore)
+    else
+      return 1
+  }
 
   constructor(private flickrUiService: FlickrUiService, public override router:Router) {
     super(router);
-    console.log("Inside AppComponent Constructor");
   }
 
   reloadCurrent(){
@@ -151,5 +180,44 @@ export class AppComponent  extends CommonFunctionalityComponent {
     
     for(let i = 0; i < this.maxRoundNumber; i++)
       this.fetchPhoto()
+  }
+
+  celebrateRight() {
+    const duration = 5000; // in milliseconds
+  
+    confetti({
+      particleCount: 200,
+      spread: 400,
+      origin: { y: 0.4, x: 0.8 },
+    });
+    
+    // Clear confetti after a certain duration
+    setTimeout(() => confetti.reset(), duration);
+  }
+
+  celebrateLeft() {
+    const duration = 5000; // in milliseconds
+  
+    confetti({
+      particleCount: 200,
+      spread: 400,
+      origin: { y: 0.4, x: 0.1 },
+    });
+    
+    // Clear confetti after a certain duration
+    setTimeout(() => confetti.reset(), duration);
+  }
+
+  celebrateCenter() {
+    const duration = 3000; // in milliseconds
+  
+    confetti({
+      particleCount: 100,
+      spread: 400,
+      origin: { y: 0.1 },
+    });
+    
+    // Clear confetti after a certain duration
+    setTimeout(() => confetti.reset(), duration);
   }
 }

@@ -1,9 +1,13 @@
 <h1 class="totalScoreClass" *ngIf="displayAllRounds">
+  Best score <label [ngStyle]="getColor(getBestScore() / maxRoundNumber)">{{getBestScore()}}</label>
+</h1>
+
+<h1 class="totalScoreClass" *ngIf="displayAllRounds">
   <button class="button-54" type="button" (click)="reloadPage()">Start Over</button>
 </h1>
   
   <h1 class="totalScoreClass" *ngIf="displayAllRounds">
-    Overall score <label [ngStyle]="getColor(totalScore / maxRoundNumber)">{{totalScore}}</label>
+    Current round score <label [ngStyle]="getColor(totalScore / maxRoundNumber)">{{totalScore}}</label>
   </h1>
 
 <div *ngFor="let ph of displayedPhotos; index as i" [hidden]=" !displayAllRounds && i<displayedPhotos.length-1">

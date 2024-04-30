@@ -10,6 +10,7 @@ import { AppComponent } from '../../app.component';
 import { Router } from '@angular/router';
 import { CommonFunctionalityComponent } from '../common-functionality/common-functionality.component';
 
+
 /**
  * @title Configurable slider
  */
@@ -31,11 +32,9 @@ export class SliderComponent  extends CommonFunctionalityComponent implements On
 
   constructor(public override router:Router) {
     super(router);
-    console.log("Inside TestComponent constructor")
   }
 
   override ngOnInit(): void {
-    console.log("Loading TestComponent")
   }
 
   min = 1875;
@@ -55,7 +54,8 @@ export class SliderComponent  extends CommonFunctionalityComponent implements On
   onSubmit() {
     
     this.disabled = true;
-    console.log(this.sliderVal);
-      this.sliderEvent.emit(this.sliderVal);
+    this.sliderEvent.emit(this.sliderVal);
+
   }
+
 }
