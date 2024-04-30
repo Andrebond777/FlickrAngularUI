@@ -77,7 +77,7 @@ export class AppComponent  extends CommonFunctionalityComponent {
   slider(sliderVal : number)
   {
     console.log("SFKDKJSJKDFDJGIHSFJA");
-    this.score = Math.round(1000 - (Math.abs(sliderVal - this.displayedPhotos[this.roundNumber].year))*30);
+    this.score = Math.round(1000 - (Math.abs(sliderVal - this.displayedPhotos[this.roundNumber].year))*40);
     if(this.score < 0)
       this.score = 0;
     this.scores.push(this.score);
