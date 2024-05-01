@@ -75,8 +75,11 @@ export class AppComponent  extends CommonFunctionalityComponent {
    score = 1;
 
 
-  slider(sliderVal : number)
+  async slider(sliderVal : number)
   {
+    if(this.photos.length < 1)
+      await this.fetchPhoto()
+    
     this.score = Math.round(1000 - (Math.abs(sliderVal - this.displayedPhotos[this.roundNumber].year))*40);
     if(this.score < 0)
       this.score = 1;
@@ -88,13 +91,12 @@ export class AppComponent  extends CommonFunctionalityComponent {
     this.isShow = true;
   }
 
-  fetchPhoto()
+  async fetchPhoto()
   {
       this.flickrUiService
       .getPhoto()
       .subscribe((result: Photo) => {   
-          this.photo = result;
-          this.photos.push(this.photo);
+          this.photos.push(result);
           if(this.roundNumber == -1)
           {          
             this.displayedPhotos.push(this.photos[0]);
@@ -108,8 +110,6 @@ export class AppComponent  extends CommonFunctionalityComponent {
   async next()
   {
     this.isShow = false;
-    if(this.photos.length < 1)
-      await this.fetchPhoto()
     await this.displayedPhotos.push(this.photos[0]);
     this.roundNumber++;
     this.photos.shift();
