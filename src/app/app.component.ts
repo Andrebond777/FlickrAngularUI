@@ -53,10 +53,9 @@ export class AppComponent  extends CommonFunctionalityComponent {
   @Input()
   photo = new Photo();
   photos : Photo[] = [];
-  displayedPhotos : Photo[] = [];
   scores: number[] = [];
   answers: number[] = [];
-  roundNumber = -1;
+  roundNumber = 0;
   maxRoundNumber = 5;
   displayAllRounds = false;
   storageKey = "bestResult";
@@ -94,12 +93,6 @@ export class AppComponent  extends CommonFunctionalityComponent {
       .getPhoto()
       .subscribe((result: Photo) => {   
           this.photos.push(result);
-          if(this.roundNumber == -1)
-          {          
-            this.displayedPhotos.push(this.photos[0]);
-            this.roundNumber = 0;
-            //this.photos.shift();
-          }
       });
   }
 
@@ -109,9 +102,7 @@ export class AppComponent  extends CommonFunctionalityComponent {
   async next()
   {
     this.isShow = false;
-    await this.displayedPhotos.push(this.photos[0]);
     this.roundNumber++;
-    //this.photos.shift();
   }
 
   endGame()
@@ -154,6 +145,8 @@ export class AppComponent  extends CommonFunctionalityComponent {
 
   constructor(private flickrUiService: FlickrUiService, public override router:Router) {
     super(router);
+    for(let i = 0; i < this.maxRoundNumber; i++)
+      this.fetchPhoto()
   }
 
   reloadCurrent(){
@@ -167,10 +160,6 @@ export class AppComponent  extends CommonFunctionalityComponent {
   
 
   override ngOnInit(): void {
-
-    
-    for(let i = 0; i < this.maxRoundNumber; i++)
-      this.fetchPhoto()
   }
 
   celebrateRight() {
