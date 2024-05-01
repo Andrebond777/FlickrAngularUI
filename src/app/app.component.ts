@@ -108,9 +108,9 @@ export class AppComponent  extends CommonFunctionalityComponent {
   async next()
   {
     this.isShow = false;
-    
+    if(this.photos.length < 1)
+      await this.fetchPhoto()
     await this.displayedPhotos.push(this.photos[0]);
-
     this.roundNumber++;
     this.photos.shift();
   }
