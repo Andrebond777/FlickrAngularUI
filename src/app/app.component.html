@@ -10,23 +10,15 @@
     Current score <label [ngStyle]="getColor(totalScore / maxRoundNumber)">{{totalScore}}</label>
   </h1>
 
-<div *ngFor="let ph of displayedPhotos; index as i" [hidden]=" !displayAllRounds && i<displayedPhotos.length-1">
+<div *ngFor="let ph of displayedPhotos; index as i" [hidden]="!displayAllRounds && i<displayedPhotos.length-1">
 
   <header>
-    <h1 >Round {{i+1}} of {{maxRoundNumber}}</h1>
+    <h1 >Round {{roundNumber+1}} of {{maxRoundNumber}}</h1>
   </header>
 <div class="mainContainer">
     <pinch-zoom class="mainImage" backgroundColor="rgba(0,0,0,0.85)">
       <img src="{{ ph.image }}" medPinchZoom=" autoZoomOut: true "/>
-
   </pinch-zoom>
-
-    <!-- <div [hidden]="(i==photos.length-1) && !isShow && i >= 4">
-
-      <h2>Actual year is <b>{{ph.year}}</b></h2>
-    </div> -->
-
-
     <div [hidden]="!isShow" >    
       <div class="resultsClass">
         <div class="yearTakenClass">
@@ -37,18 +29,13 @@
           <div>
             <progress max="1000" [value]="scores[i]" [ngStyle]="getAccentColor(scores[i])"></progress>
           </div>
-
-
         </h1>
-
         </div> 
     </div> 
     <div [hidden]="!displayAllRounds">
       <h1  class="guess">Your guess was {{answers[i]}}</h1>
     </div>
   </div>
-
-
 
     <app-slider [hidden]="displayAllRounds" (sliderEvent)="slider($event)"></app-slider>
     <div *ngIf="!displayAllRounds">
