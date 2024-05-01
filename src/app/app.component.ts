@@ -77,9 +77,12 @@ export class AppComponent  extends CommonFunctionalityComponent {
 
   async slider(sliderVal : number)
   {
-    if(this.photos.length < 1)
-      await this.fetchPhoto()
-    
+    if(this.photos.length < 1 && this.roundNumber < this.maxRoundNumber)
+    {      
+      await this.fetchPhoto();
+      await this.sleep(1000);
+    }
+
     this.score = Math.round(1000 - (Math.abs(sliderVal - this.displayedPhotos[this.roundNumber].year))*40);
     if(this.score < 0)
       this.score = 1;
@@ -106,6 +109,8 @@ export class AppComponent  extends CommonFunctionalityComponent {
       });
   }
 
+  
+  sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
   async next()
   {
