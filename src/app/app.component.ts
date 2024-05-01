@@ -59,7 +59,6 @@ export class AppComponent  extends CommonFunctionalityComponent {
   roundNumber = -1;
   maxRoundNumber = 5;
   displayAllRounds = false;
-  isPaused = false;
   storageKey = "bestResult";
 
 
@@ -93,22 +92,15 @@ export class AppComponent  extends CommonFunctionalityComponent {
   {
       this.flickrUiService
       .getPhoto()
-      .subscribe((result: Photo) => {
-        this.isPaused = true;
-        if(result.image.length > 1)
-        {        
+      .subscribe((result: Photo) => {   
           this.photo = result;
           this.photos.push(this.photo);
           if(this.roundNumber == -1)
           {          
             this.displayedPhotos.push(this.photos[0]);
-            this.roundNumber++;
+            this.roundNumber = 0;
             this.photos.shift();
           }
-        }
-        else
-          this.fetchPhoto();
-        this.isPaused = false;
       });
   }
 
