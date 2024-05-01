@@ -13,7 +13,7 @@
 <div *ngFor="let ph of displayedPhotos; index as i" [hidden]="!displayAllRounds && i<displayedPhotos.length-1">
 
   <header>
-    <h1 >Round {{roundNumber+1}} of {{maxRoundNumber}}</h1>
+    <h1 >Round {{i+1}} of {{maxRoundNumber}}</h1>
   </header>
 <div class="mainContainer">
     <pinch-zoom class="mainImage" backgroundColor="rgba(0,0,0,0.85)">
