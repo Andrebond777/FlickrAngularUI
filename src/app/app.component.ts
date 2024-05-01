@@ -106,10 +106,10 @@ export class AppComponent  extends CommonFunctionalityComponent {
   
   sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-  async next()
+  next()
   {
     this.isShow = false;
-    await this.displayedPhotos.push(this.photos[0]);
+    this.displayedPhotos.push(this.photos[0]);
     this.roundNumber++;
     this.photos.shift();
   }
