@@ -77,7 +77,7 @@ export class AppComponent  extends CommonFunctionalityComponent {
 
   async slider(sliderVal : number)
   {
-    this.score = Math.round(1000 - (Math.abs(sliderVal - this.displayedPhotos[this.roundNumber].year))*40);
+    this.score = Math.round(1000 - (Math.abs(sliderVal - this.photos[this.roundNumber].year))*40);
     if(this.score < 0)
       this.score = 1;
     if(this.score > 900)
@@ -98,7 +98,7 @@ export class AppComponent  extends CommonFunctionalityComponent {
           {          
             this.displayedPhotos.push(this.photos[0]);
             this.roundNumber = 0;
-            this.photos.shift();
+            //this.photos.shift();
           }
       });
   }
@@ -111,7 +111,7 @@ export class AppComponent  extends CommonFunctionalityComponent {
     this.isShow = false;
     await this.displayedPhotos.push(this.photos[0]);
     this.roundNumber++;
-    this.photos.shift();
+    //this.photos.shift();
   }
 
   endGame()

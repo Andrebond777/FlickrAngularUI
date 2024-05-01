@@ -10,7 +10,7 @@
     Current score <label [ngStyle]="getColor(totalScore / maxRoundNumber)">{{totalScore}}</label>
   </h1>
 
-<div *ngFor="let ph of displayedPhotos; index as i" [hidden]="!displayAllRounds && i!=roundNumber">
+<div *ngFor="let ph of photos; index as i" [hidden]="!displayAllRounds && i!=roundNumber">
 
   <header>
     <h1 >Round {{i+1}} of {{maxRoundNumber}}</h1>
