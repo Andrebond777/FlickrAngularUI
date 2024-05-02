@@ -1,5 +1,6 @@
 export class Photo {
     id?: number;
-    image = "";
+    webUrl = "";
+    imageUrl = "";
     year = 0;
 }

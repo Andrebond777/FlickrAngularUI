@@ -168,13 +168,9 @@ header {
     }
 
     button{
-        background-color: rgb(82, 82, 82);
         margin-top: 50px;
       }
 
-    .button-54{
-        color: whitesmoke;
-    }
 
     @media only screen and (max-width: 1200px) {
         button{
@@ -209,6 +205,14 @@ pinch-zoom{
     background-color: rgb(82, 82, 82);
 }
 
-.loading{
-    background-color: rgb(82, 82, 82);
+
+.imgSrc{
+    button{
+        background-color: rgb(82, 82, 82);
+        margin-top: 20px;
+      }
+
+    .button-54{
+        color: whitesmoke;
+    }
 }

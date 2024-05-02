@@ -10,48 +10,47 @@
     Current score <label [ngStyle]="getColor(totalScore / maxRoundNumber)">{{totalScore}}</label>
   </h1>
 
-<div [hidden]="roundNumber < photos.length">
+<div *ngIf="roundNumber >= photos.length">
   <h1 class="totalScoreClass"></h1>
   <div class="mainContainer">Loading...</div>
 </div>
 
 <div *ngFor="let ph of photos; index as i" [hidden]="!displayAllRounds && i!=roundNumber">
-
+<div *ngIf="displayAllRounds || i == roundNumber">
   <header>
     <h1 >Round {{i+1}} of {{maxRoundNumber}}</h1>
   </header>
-<div class="mainContainer">
-    <pinch-zoom class="mainImage" backgroundColor="rgba(0,0,0,0.85)">
-      <img src="{{ ph.image }}" medPinchZoom=" autoZoomOut: true "/>
-  </pinch-zoom>
-    <div [hidden]="!isShow" >    
-      <div class="resultsClass">
-        <div class="yearTakenClass">
-          <h1  >Taken in {{ph.year}}</h1>
-        </div> 
-        <div class="scoreClass">
-          <h1 >Score &nbsp;<h1 [ngStyle]="getColor(scores[i])">  <span> {{ scores[i] }}</span></h1>
-          <div *ngIf="scores.length > i">
-            <progress max="1000" [value]="scores[i]" [ngStyle]="getAccentColor(scores[i])"></progress>
-          </div>
-        </h1>
-        </div> 
-    </div> 
-    <div [hidden]="!displayAllRounds">
-      <h1  class="guess">Your guess {{answers[i]}}</h1>
+
+  <div class="mainContainer">
+    <a *ngIf="isShow" href="{{ ph.webUrl }}" target=”_blank” class="imgSrc"><button class="button-54" type="button">Image source</button></a>
+      <pinch-zoom class="mainImage" backgroundColor="rgba(0,0,0,0.85)">
+        <img src="{{ ph.imageUrl }}" medPinchZoom=" autoZoomOut: true "/>
+    </pinch-zoom>
+      <div *ngIf="isShow" >    
+        <div class="resultsClass">
+          <div class="yearTakenClass">
+            <h1  >Taken in {{ph.year}}</h1>
+          </div> 
+          <div class="scoreClass">
+            <h1 >Score &nbsp;<h1 [ngStyle]="getColor(scores[i])">  <span> {{ scores[i] }}</span></h1>
+            <div *ngIf="scores.length > i">
+              <progress max="1000" [value]="scores[i]" [ngStyle]="getAccentColor(scores[i])"></progress>
+            </div>
+          </h1>
+          </div> 
+      </div> 
+      <div *ngIf="displayAllRounds">
+        <h1  class="guess">Your guess {{answers[i]}}</h1>
+      </div>
+    </div>
+      <app-slider *ngIf="!displayAllRounds" (sliderEvent)="slider($event)"></app-slider>
+      <div *ngIf="!displayAllRounds">
+        <button class="button-54" *ngIf="isShow && i < maxRoundNumber-1" type="button" (click)="next()">Next</button>
+        <button class="button-54" *ngIf="isShow && i >= maxRoundNumber-1" type="button" (click)="endGame()">End game</button>
+      </div>
     </div>
   </div>
-
-    <app-slider [hidden]="displayAllRounds" (sliderEvent)="slider($event)"></app-slider>
-    <div *ngIf="!displayAllRounds">
-      <button class="button-54" *ngIf="isShow && i < maxRoundNumber-1" type="button" (click)="next()">Next</button>
-      <button class="button-54" *ngIf="isShow && i >= maxRoundNumber-1" type="button" (click)="endGame()">End game</button>
-    </div>
-
-  </div>
-
 </div>
-
 
 <h1 class="totalScoreClass" *ngIf="displayAllRounds">
   <button class="button-54" type="button" (click)="reloadCurrent()">Start Over</button>
