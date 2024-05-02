@@ -37,13 +37,14 @@ export class SliderComponent  extends CommonFunctionalityComponent implements On
   override ngOnInit(): void {
   }
 
+
   min = 1875;
   max = 2024;
 
   step = 1;
   @Input() disabled = false;
   sliderVal = 1950;
-  
+  @Input() disableButton: boolean = false;
 
   @Output() sliderEvent = new EventEmitter<number>();
 

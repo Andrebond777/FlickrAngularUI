@@ -153,6 +153,7 @@ header {
     font-size: 40px;
     color: whitesmoke;
     display: flex;
+    flex: 0 0 auto;
     justify-content: center;
     align-items: center;
     height: 95vh;
@@ -165,6 +166,7 @@ header {
         border-width: 10px;
         border-color: whitesmoke;
         height: 70vh;
+
     }
 
     button{

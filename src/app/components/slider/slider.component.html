@@ -1,27 +1,10 @@
 
+<div class="yearComponent">
+  <p>{{slider.value}}</p>
+</div>
 
+<div [hidden]="disabled">
+<input [disabled]="disabled"  type="range" min="{{min}}" max="{{max}}"  class="slider" [(ngModel)]="sliderVal" #slider>
+<button class="button-54"  type="button" [disabled]="disableButton" (click)="onSubmit()">Submit</button>
+</div>
 
-
-
-      <!-- <mat-slider
-          class="example-margin"
-          [max]="max"
-          [min]="min"
-          [step]="step"
-          [disabled]="disabled">
-
-        <input matSliderThumb [(ngModel)]="sliderVal" #slider>
-      </mat-slider> -->
-
-
-
-      <div class="yearComponent">
-        <p>{{slider.value}}</p>
-      </div>
-    <div [hidden]="disabled">
-      <input [disabled]="disabled"  type="range" min="{{min}}" max="{{max}}"  class="slider" [(ngModel)]="sliderVal" #slider>
-      <button class="button-54"  type="button" (click)="onSubmit()">Submit</button>
-      
-    </div>
-  
-  

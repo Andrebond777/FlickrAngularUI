@@ -74,12 +74,12 @@ export class AppComponent  extends CommonFunctionalityComponent {
    score = 1;
 
 
+
   async slider(sliderVal : number)
   {
     if(this.roundNumber < 2)
     {
-      for(let i = 0; i < 2; i++)
-        this.fetchPhoto()
+      await this.fetchPhotos(2);
     }
 
     this.score = Math.round(1000 - (Math.abs(sliderVal - this.photos[this.roundNumber].year))*40);
@@ -93,12 +93,23 @@ export class AppComponent  extends CommonFunctionalityComponent {
     this.isShow = true;
   }
 
-  async fetchPhoto()
+  async fetchPhotos(quantity : number)
   {
-      this.flickrUiService
-      .getPhoto()
-      .subscribe((result: Photo) => {   
-          this.photos.push(result);
+      await this.flickrUiService
+      .getPhotos(quantity)
+      .subscribe((result: Array<Photo>) => {   
+          this.photos = this.photos.concat(result);
+          for(let i = 1; i <= quantity; i++)
+            this.fetchYears(this.photos.length - i);
+      });
+  }
+
+  async fetchYears(index : number)
+  {
+      await this.flickrUiService
+      .getYear(this.photos[index].webUrl)
+      .subscribe((result: number) => {   
+        this.photos[index].year = result;
       });
   }
 
@@ -152,7 +163,7 @@ export class AppComponent  extends CommonFunctionalityComponent {
   constructor(private flickrUiService: FlickrUiService, public override router:Router) {
     super(router);
 
-      this.fetchPhoto()
+      this.fetchPhotos(1);
       this.roundNumber++;
   }
 
