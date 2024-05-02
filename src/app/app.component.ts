@@ -76,6 +76,12 @@ export class AppComponent  extends CommonFunctionalityComponent {
 
   async slider(sliderVal : number)
   {
+    if(this.roundNumber < 2)
+    {
+      for(let i = 0; i < 2; i++)
+        this.fetchPhoto()
+    }
+
     this.score = Math.round(1000 - (Math.abs(sliderVal - this.photos[this.roundNumber].year))*40);
     if(this.score < 0)
       this.score = 1;
@@ -145,7 +151,7 @@ export class AppComponent  extends CommonFunctionalityComponent {
 
   constructor(private flickrUiService: FlickrUiService, public override router:Router) {
     super(router);
-    for(let i = 0; i < this.maxRoundNumber; i++)
+
       this.fetchPhoto()
   }
 
