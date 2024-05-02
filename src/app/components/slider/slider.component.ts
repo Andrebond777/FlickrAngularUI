@@ -42,7 +42,7 @@ export class SliderComponent  extends CommonFunctionalityComponent implements On
 
   step = 1;
   @Input() disabled = false;
-  @Input() sliderVal = 1950;
+  sliderVal = 1950;
   
 
   @Output() sliderEvent = new EventEmitter<number>();

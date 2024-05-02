@@ -55,7 +55,7 @@ export class AppComponent  extends CommonFunctionalityComponent {
   photos : Photo[] = [];
   scores: number[] = [];
   answers: number[] = [];
-  roundNumber = 0;
+  roundNumber = -1;
   maxRoundNumber = 5;
   displayAllRounds = false;
   storageKey = "bestResult";
@@ -153,6 +153,7 @@ export class AppComponent  extends CommonFunctionalityComponent {
     super(router);
 
       this.fetchPhoto()
+      this.roundNumber++;
   }
 
   reloadCurrent(){

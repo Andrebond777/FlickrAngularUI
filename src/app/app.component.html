@@ -10,6 +10,11 @@
     Current score <label [ngStyle]="getColor(totalScore / maxRoundNumber)">{{totalScore}}</label>
   </h1>
 
+<div [hidden]="roundNumber < photos.length">
+  <h1 class="totalScoreClass"></h1>
+  <div class="mainContainer">Loading...</div>
+</div>
+
 <div *ngFor="let ph of photos; index as i" [hidden]="!displayAllRounds && i!=roundNumber">
 
   <header>
@@ -26,7 +31,7 @@
         </div> 
         <div class="scoreClass">
           <h1 >Score &nbsp;<h1 [ngStyle]="getColor(scores[i])">  <span> {{ scores[i] }}</span></h1>
-          <div>
+          <div *ngIf="scores.length > i">
             <progress max="1000" [value]="scores[i]" [ngStyle]="getAccentColor(scores[i])"></progress>
           </div>
         </h1>
@@ -49,5 +54,5 @@
 
 
 <h1 class="totalScoreClass" *ngIf="displayAllRounds">
-  <button class="button-54" type="button" (click)="reloadPage()">Start Over</button>
+  <button class="button-54" type="button" (click)="reloadCurrent()">Start Over</button>
 </h1>
