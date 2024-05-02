@@ -20,6 +20,8 @@
 
   @media only screen and (max-width: 1200px) {
     .resultsClass{
+        margin-left: 20px;
+        margin-right: 20px;
         margin-bottom: 20px;
       }
 }
@@ -121,6 +123,14 @@ header {
     font-size: 40px;
 }
 
+@media only screen and (max-width: 1200px) {
+    .guess{
+        margin-top: 50px;
+        margin-bottom: -20px;
+    }
+}
+
+
 .totalScoreClass{
     font-family: 'Luminari';
     display: flex;
@@ -171,6 +181,7 @@ header {
             margin-top: -10px;
         }
         .mainImage{
+            margin-top: 35px;
             height: 55vh;
         }
     }
