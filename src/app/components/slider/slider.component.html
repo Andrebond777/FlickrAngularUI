@@ -5,6 +5,9 @@
 
 <div [hidden]="disabled">
 <input [disabled]="disabled"  type="range" min="{{min}}" max="{{max}}"  class="slider" [(ngModel)]="sliderVal" #slider>
-<button class="button-54"  type="button" [disabled]="disableButton" (click)="onSubmit()">Submit</button>
+<button class="button-54"  type="button" [disabled]="disableButton" (click)="onSubmit()">
+  <span [hidden]="disableButton">Submit</span>
+  <span [hidden]="!disableButton">...</span>
+</button>
 </div>
 

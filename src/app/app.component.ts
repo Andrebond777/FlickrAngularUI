@@ -100,7 +100,9 @@ export class AppComponent  extends CommonFunctionalityComponent {
       .subscribe((result: Array<Photo>) => {   
           this.photos = this.photos.concat(result);
           for(let i = 1; i <= quantity; i++)
+          {
             this.fetchYears(this.photos.length - i);
+          }
       });
   }
 
@@ -108,7 +110,7 @@ export class AppComponent  extends CommonFunctionalityComponent {
   {
       await this.flickrUiService
       .getYear(this.photos[index].webUrl)
-      .subscribe((result: number) => {   
+      .subscribe((result: number) => {
         this.photos[index].year = result;
       });
   }
