@@ -53,6 +53,10 @@
     margin-bottom: -40px;
   }
 
+  @media only screen and (max-width: 1200px) {
+    
+  }
+
   .yearComponent{
     visibility: visible;
     display: flex;
@@ -62,6 +66,9 @@
     z-index: 1;
     height: 90px;
   }
+
+
+  
   
   .container {
     width: 50%;
@@ -86,20 +93,26 @@
     text-decoration-thickness: 50px;
   }
 
+
     
   .slider {
     display: flex;
     justify-content: center;
     align-items: center;
     -webkit-appearance: none;
-    width: 1200px;
+    width: 90vw;
     height: 30px;
     background: rgb(82, 82, 82);
     outline: none;
     border: 5px solid whitesmoke;
     border-radius: 8px;
   }
-  
+  @media only screen and (min-width: 1200px) {
+    .slider{
+      width: 1200px;
+    }
+  }
+
   
   /* for chrome/safari */
   .slider::-webkit-slider-thumb {
