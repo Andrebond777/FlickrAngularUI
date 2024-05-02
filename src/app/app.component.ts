@@ -101,7 +101,6 @@ export class AppComponent  extends CommonFunctionalityComponent {
 
   async next()
   {
-    await this.fetchPhoto()
     this.isShow = false;
     this.roundNumber++;
   }
@@ -146,7 +145,7 @@ export class AppComponent  extends CommonFunctionalityComponent {
 
   constructor(private flickrUiService: FlickrUiService, public override router:Router) {
     super(router);
-    //for(let i = 0; i < this.maxRoundNumber; i++)
+    for(let i = 0; i < this.maxRoundNumber; i++)
       this.fetchPhoto()
   }
 

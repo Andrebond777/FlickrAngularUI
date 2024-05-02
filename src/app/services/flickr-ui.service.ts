@@ -14,7 +14,7 @@ export class FlickrUiService {
   constructor(private http: HttpClient) {}
 
   public getPhoto(): Observable<Photo> {
-    return this.http.get<Photo>(`${environment.apiUrl}/${this.url}`);
+    return this.http.get<Photo>(`${environment.apiUrl}/${this.url}?randomValueToAvoidCachingInSafari=`+Math.random());
   }
   
 }
