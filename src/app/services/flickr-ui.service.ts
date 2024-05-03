@@ -13,8 +13,11 @@ export class FlickrUiService {
 
   constructor(private http: HttpClient) {}
 
-  public getPhotos(quantity : number): Observable<Photo[]> {
-    return this.http.get<Photo[]>(`${environment.apiUrl}/${this.url}/GetImages?quantity=${quantity}&randomValueToAvoidCachingInSafari=`+Math.random());
+  public getPhotos(quantity : number, searchStrings : string[]): Observable<Photo[]> {
+    let queryStr = "";
+    for(let i = 0; i < searchStrings.length; i++)
+      queryStr += "&searchStrings=" + searchStrings[i];
+    return this.http.get<Photo[]>(`${environment.apiUrl}/${this.url}/GetImages?quantity=${quantity}` + queryStr + `&randomValueToAvoidCachingInSafari=` + Math.random());
   }
 
   public getYear(webUrl : String): Observable<number> {

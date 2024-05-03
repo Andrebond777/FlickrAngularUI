@@ -10,11 +10,13 @@ import {MatSliderModule} from '@angular/material/slider';
 import { SliderComponent } from './components/slider/slider.component';
 import { CommonFunctionalityComponent } from './components/common-functionality/common-functionality.component';
 import { PinchZoomModule } from '@meddv/ngx-pinch-zoom';
+import { SettingsComponent } from './components/settings/settings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CommonFunctionalityComponent
+    CommonFunctionalityComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

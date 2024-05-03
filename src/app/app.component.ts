@@ -8,16 +8,17 @@ import { Router } from '@angular/router';
 import { CommonFunctionalityComponent } from './components/common-functionality/common-functionality.component';
 import confetti from 'canvas-confetti';
 
+const defaultSearchStrings = [
+  "street view", "grocery store", "historic moment", "city", 
+  "World War II", "HippieCulture", "DiscoEra", "parade", 
+  "CivilRightsMovement", "harbor"
+];
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-
-
-
-
 export class AppComponent  extends CommonFunctionalityComponent {
 
   calculateColor(score : number)
@@ -50,36 +51,36 @@ export class AppComponent  extends CommonFunctionalityComponent {
   }
 
   title = 'Flickr';
-  @Input()
-  photo = new Photo();
+  // @Input()
+  // photo = new Photo();
   photos : Photo[] = [];
   scores: number[] = [];
   answers: number[] = [];
+  searchStrings: string[] = [];
   roundNumber = -1;
   maxRoundNumber = 5;
+  score = 1;
+  totalScore = 0;
+  isShow = false;
   displayAllRounds = false;
-  storageKey = "bestResult";
+  displaySettings = false;
+  storageKeyBestResult = "bestResult";
+  storageKeySearchStrings = "searchStrings";
 
+  toggleSettings()
+  {
+    this.displaySettings = !this.displaySettings;
+  }
 
   getLimitedItems(startIndex: number, endIndex: number): Photo[] { 
     return this.photos.slice(startIndex, endIndex); 
   } 
 
-
-  totalScore = 0;
-
-  @Input()
-   isShow = false;
-   @Input()
-   score = 1;
-
-
-
   async slider(sliderVal : number)
   {
-    if(this.roundNumber < 2)
+    if(this.roundNumber < 1)
     {
-      await this.fetchPhotos(2);
+      await this.fetchPhotos(3);
     }
 
     this.score = Math.round(1000 - (Math.abs(sliderVal - this.photos[this.roundNumber].year))*40);
@@ -96,7 +97,7 @@ export class AppComponent  extends CommonFunctionalityComponent {
   async fetchPhotos(quantity : number)
   {
       await this.flickrUiService
-      .getPhotos(quantity)
+      .getPhotos(quantity, this.searchStrings)
       .subscribe((result: Array<Photo>) => {   
           this.photos = this.photos.concat(result);
           for(let i = 1; i <= quantity; i++)
@@ -127,7 +128,7 @@ export class AppComponent  extends CommonFunctionalityComponent {
   endGame()
   {
     this.displayAllRounds = true;
-    let currentBestResult = localStorage.getItem(this.storageKey);
+    let currentBestResult = localStorage.getItem(this.storageKeyBestResult);
     console.log("currentBestResult: "+currentBestResult);
     if(currentBestResult != null)
     {      
@@ -136,14 +137,14 @@ export class AppComponent  extends CommonFunctionalityComponent {
         this.celebrateLeft();
         this.celebrateRight();
         this.celebrateCenter();
-        localStorage.setItem(this.storageKey, this.totalScore.toString());
+        localStorage.setItem(this.storageKeyBestResult, this.totalScore.toString());
         console.log("set notNull");
       }
     }
     else
     {
       console.log("set null");
-      localStorage.setItem(this.storageKey, this.totalScore.toString());
+      localStorage.setItem(this.storageKeyBestResult, this.totalScore.toString());
     }
 
     window.scroll({ 
@@ -155,18 +156,36 @@ export class AppComponent  extends CommonFunctionalityComponent {
 
   getBestScore() : number
   {
-    let bestScore = localStorage.getItem(this.storageKey);
+    let bestScore = localStorage.getItem(this.storageKeyBestResult);
     if(bestScore != null)
       return Number(bestScore)
     else
       return 1
   }
 
+  modifySearchStrings(searchStrs : string[])
+  {
+    const stringifiedSearchStrs = JSON.stringify(searchStrs); 
+    localStorage.setItem(
+      this.storageKeySearchStrings,
+      stringifiedSearchStrs
+    );
+  }
+
   constructor(private flickrUiService: FlickrUiService, public override router:Router) {
     super(router);
+    const searchStringsFromStorage = localStorage.getItem(this.storageKeySearchStrings);
+    if(searchStringsFromStorage != null)
+    {
+      const searchStringsFromStorageParsed = JSON.parse(searchStringsFromStorage);
+      this.searchStrings = searchStringsFromStorageParsed;
+    }
+    else
+      this.searchStrings = defaultSearchStrings;
 
-      this.fetchPhotos(1);
-      this.roundNumber++;
+    this.fetchPhotos(1);
+    this.roundNumber++;
+    this.fetchPhotos(1);
   }
 
   reloadCurrent(){
