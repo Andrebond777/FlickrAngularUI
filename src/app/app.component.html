@@ -1,6 +1,6 @@
 
 
-<div  *ngIf="!displaySettings">
+<div  *ngIf="displaySettings">
   <header>
     <div>
       <h1>Settings</h1>
@@ -14,7 +14,7 @@
   </div>
 </div>
 
-<div *ngIf="displaySettings">
+<div *ngIf="!displaySettings">
   <h1 class="totalScoreClass" *ngIf="displayAllRounds">
     Best score <label [ngStyle]="getColor(getBestScore() / maxRoundNumber)">{{getBestScore()}}</label>
   </h1>
