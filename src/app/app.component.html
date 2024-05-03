@@ -28,7 +28,14 @@
     </h1>
   
   <div *ngIf="roundNumber >= photos.length">
-    <h1 class="totalScoreClass"></h1>
+    <header>
+      <div>
+        <h1>...</h1>
+      </div>
+      <span>
+      <i class="fa fa-gear"(click)="toggleSettings()"></i>
+      </span>
+    </header>
     <div class="mainContainer">Loading...</div>
   </div>
   
