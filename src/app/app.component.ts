@@ -78,10 +78,12 @@ export class AppComponent  extends CommonFunctionalityComponent {
 
   async slider(sliderVal : number)
   {
-    // if(this.roundNumber < 1)
-    // {
-    //   await this.fetchPhotos(3);
-    // }
+    if(this.roundNumber < 1)
+    {
+      await this.fetchPhotos(1);
+      await this.fetchPhotos(1);
+      await this.fetchPhotos(1);
+    }
 
     this.score = Math.round(1000 - (Math.abs(sliderVal - this.photos[this.roundNumber].year))*40);
     if(this.score < 0)
@@ -183,9 +185,9 @@ export class AppComponent  extends CommonFunctionalityComponent {
     else
       this.searchStrings = defaultSearchStrings;
 
-    for(let i = 0; i < this.maxRoundNumber; i++)
-      this.fetchPhotos(1);
+    this.fetchPhotos(1);
     this.roundNumber++;
+    this.fetchPhotos(1);
   }
 
   reloadCurrent(){

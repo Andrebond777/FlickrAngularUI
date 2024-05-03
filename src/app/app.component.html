@@ -1,7 +1,12 @@
+<!-- <header>
+  <h1><button class="button-54" type="button" (click)="toggleSettings()">Settings</button></h1>
+</header>
 
+<div  *ngIf="displaySettings" class="mainContainer">
 
+</div> -->
 
-<div >
+<div>
   <h1 class="totalScoreClass" *ngIf="displayAllRounds">
     Best score <label [ngStyle]="getColor(getBestScore() / maxRoundNumber)">{{getBestScore()}}</label>
   </h1>
