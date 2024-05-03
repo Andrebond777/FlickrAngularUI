@@ -28,7 +28,8 @@ export class SettingsComponent implements OnInit {
   }
 
   deleteStr(index : number){
-    this.searchStrings.splice(index, 1);
+    if(this.searchStrings.length > 1)
+      this.searchStrings.splice(index, 1);
   }
 
   @Output() saveEvent = new EventEmitter<string[]>();

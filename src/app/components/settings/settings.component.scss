@@ -10,7 +10,17 @@ body {
 	padding: 1rem;
 	display: grid;
 	place-items: center;
-	min-height: 100vh;
+}
+
+@media only screen and (max-width: 1000px) {
+.mainBody{
+    height: 83vh;
+    
+}
+}
+
+.mainBody{
+    top: initial;
 }
 
 .inputBlock{
@@ -18,8 +28,13 @@ body {
 display: flex;
 margin-bottom: 20px;
 height: 66px;
+margin-top: 130px;
 
 input{
+    border-radius: 2px;
+    border: 1px;
+    border-style: solid;
+    border-color: lightblue;
     width: 550px;
 }
 
@@ -33,23 +48,27 @@ input{
 }
 
 @media only screen and (max-width: 1000px) {
+    
     .inputBlock{
-        margin: 250px;
-        margin-top: 0px;
-        display: flex;
+        margin-top: 5px;
+
+
+        
         margin-bottom: 20px;
         height: 66px;
         width: 90vw;
+
         input{
-            width: 60vw;
+            width: 55vw;
         }
         
             .button-54{
                 height: 60px;
                 background-color: rgb(98, 98, 98);
                 color: whitesmoke;
-                margin-left: 40px;
-                width: 20vw;
+                margin-right: 10px;
+                margin-left: 20px;
+                width: 28vw;
             }
         }
 }
@@ -63,10 +82,29 @@ input{
         height: 70px;
         margin-top: 30px;
         width: 500px;
+
     }
 }
+@media only screen and (max-width: 1000px) {
+    .bottomButtons{
+        button{
+            width: 90vw;
+            white-space: nowrap;
+            overflow:auto;
+            text-overflow:clip;
+        }
+
+    }
+
+}
+
 
 ul {
+    
+    border-radius: 2px;
+    border: 1px;
+    border-style: solid;
+    border-color: lightblue;
 	list-style-position: inside;
 	width: 600px;
 	max-width: 100%;
@@ -77,31 +115,54 @@ ul {
 	border-radius: 0.1rem;
 }
 
-nav ul{height:50%; width:800px;}
+nav ul{min-height: 10vh;max-height:60vh; width:800px;}
 nav ul{overflow:hidden; overflow-y:scroll;}
 
 @media only screen and (max-width: 1000px) {
 
-    nav ul{height:50%; width:90vw;}
-    ul{width: 90vw;     margin-left: 250px;}
+    nav ul{max-height:50vh;width:90vw;}
+    ul{width: 90vw;     }
 }
 
 li {
-    height: 50px;
+    
+    height: 55px;
 	padding: 0 0 0 1rem;
-    padding-top: 22px;
+    padding-top: 15px;
     color: black;
 
+    p{
+        height: 50px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-left: 20px;
+        margin-top: -23px;
+        padding-top: 15px;
+        font-size: 35px;
+        width: 65vw;
+    }
+
     i{
+
         display: flex;
         justify-content: right;
         align-items: right;
-        margin-top: -32px;
+        margin-top: -65px;
         margin-right: 12px;
     }
 }
 
-li:not(:last-child) {
+@media only screen and (min-width: 1000px) {
+
+li{
+    p{
+        width: 710px;
+    }
+}
+}
+
+li {
 	border-bottom: 1px solid lightblue;
 }
 
