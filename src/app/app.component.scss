@@ -103,18 +103,29 @@ span{
 }
 
 header {
-    padding-top: 15px;
+
     height: 75px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+
     background-color: whitesmoke;
+    div{
+        padding-top: 25px;
+        display: flex;
+        justify-content: center;
+    }
     h1{
         font-family: 'Luminari';
         font-size: 40px;
         color: rgb(82, 82, 82);
     }
-
+    i{
+        display: flex;
+        justify-content: end;
+        margin-top: -55px;
+        margin-right: 20px;
+        font-size: 40px;
+        color: rgb(82, 82, 82);
+    }
 }
 
 .guess{

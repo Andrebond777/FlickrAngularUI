@@ -1,12 +1,20 @@
-<!-- <header>
-  <h1><button class="button-54" type="button" (click)="toggleSettings()">Settings</button></h1>
-</header>
 
-<div  *ngIf="displaySettings" class="mainContainer">
 
-</div> -->
+<div  *ngIf="displaySettings">
+  <header>
+    <div>
+      <h1>Settings</h1>
+    </div>
+    <span>
+    <i class="fa fa-gear"(click)="toggleSettings()"></i>
+    </span>
+  </header>
+  <div class="mainContainer">
+    <app-settings [searchStrings]="searchStrings" (saveEvent)="updateSearchStrings($event)"></app-settings>
+  </div>
+</div>
 
-<div>
+<div *ngIf="!displaySettings">
   <h1 class="totalScoreClass" *ngIf="displayAllRounds">
     Best score <label [ngStyle]="getColor(getBestScore() / maxRoundNumber)">{{getBestScore()}}</label>
   </h1>
@@ -24,10 +32,16 @@
     <div class="mainContainer">Loading...</div>
   </div>
   
+  
   <div *ngFor="let ph of photos; index as i" [hidden]="!displayAllRounds && i!=roundNumber">
   <div *ngIf="displayAllRounds || i == roundNumber">
     <header>
-      <h1>Round {{i+1}} of {{maxRoundNumber}}</h1>
+      <div>
+        <h1>Round {{i+1}} of {{maxRoundNumber}}</h1>
+      </div>
+      <span>
+      <i class="fa fa-gear"(click)="toggleSettings()"></i>
+      </span>
     </header>
   
     <div class="mainContainer">

@@ -11,6 +11,11 @@ import { SliderComponent } from './components/slider/slider.component';
 import { CommonFunctionalityComponent } from './components/common-functionality/common-functionality.component';
 import { PinchZoomModule } from '@meddv/ngx-pinch-zoom';
 import { SettingsComponent } from './components/settings/settings.component';
+import {MatListModule} from '@angular/material/list'; 
+
+import { FormsModule } from '@angular/forms';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +29,10 @@ import { SettingsComponent } from './components/settings/settings.component';
     HttpClientModule,
     MatSliderModule,
     SliderComponent,
-    PinchZoomModule
+    PinchZoomModule,
+    MatListModule,
+    FormsModule,
+    ScrollingModule
 
   ],
   providers: [

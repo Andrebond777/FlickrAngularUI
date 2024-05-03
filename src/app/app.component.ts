@@ -165,13 +165,19 @@ export class AppComponent  extends CommonFunctionalityComponent {
       return 1
   }
 
-  modifySearchStrings(searchStrs : string[])
+  restoreDefaultSearchStrings()
+  {
+    this.updateSearchStrings(defaultSearchStrings);
+  }
+
+  updateSearchStrings(searchStrs : string[])
   {
     const stringifiedSearchStrs = JSON.stringify(searchStrs); 
     localStorage.setItem(
       this.storageKeySearchStrings,
       stringifiedSearchStrs
     );
+    this.reloadPage();
   }
 
   constructor(private flickrUiService: FlickrUiService, public override router:Router) {

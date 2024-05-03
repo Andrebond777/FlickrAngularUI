@@ -1,1 +1,22 @@
-<p>settings works!</p>
+
+<div class="inputBlock">
+    <input type="text" [(ngModel)]="str" placeholder="Enter query" required>
+    <button [disabled]="str == ''" class="button-54"  type="button" (click)="addStr()">Add</button>
+</div>
+
+<nav>
+<ul>
+    @for (str of searchStrings; track str; let idx = $index) 
+    {
+        <li>{{str}}  <i class="fa fa-trash-o" (click)="deleteStr(idx)"></i></li>
+    }
+</ul>
+</nav>
+<div class="bottomButtons">
+    <div>
+        <button class="button-54"  type="button" (click)="onSubmit()">Save</button>
+    </div>
+    <div >
+        <button class="button-54"  type="button" (click)="resetToDefault()">Reset to default</button>
+    </div>
+</div>
