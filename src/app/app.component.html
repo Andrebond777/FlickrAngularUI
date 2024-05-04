@@ -5,8 +5,11 @@
     <div>
       <h1>Settings</h1>
     </div>
-    <span>
-    <i class="fa fa-gear"(click)="toggleSettings()"></i>
+    <span *ngIf="searchStrings.length == 0">
+    <i  style="color:red" class="fa fa-gear"(click)="toggleSettings()"></i>
+    </span>
+    <span *ngIf="searchStrings.length > 0">
+      <i  class="fa fa-gear"(click)="toggleSettings()"></i>
     </span>
   </header>
   <div class="mainContainer">
@@ -32,8 +35,11 @@
       <div>
         <h1>...</h1>
       </div>
-      <span>
-      <i class="fa fa-gear"(click)="toggleSettings()"></i>
+      <span *ngIf="searchStrings.length == 0">
+        <i  style="color:red" class="fa fa-gear"(click)="toggleSettings()"></i>
+      </span>
+      <span *ngIf="searchStrings.length > 0">
+        <i  class="fa fa-gear"(click)="toggleSettings()"></i>
       </span>
     </header>
     <div class="mainContainer">Loading...</div>
@@ -46,8 +52,11 @@
       <div>
         <h1>Round {{i+1}} of {{maxRoundNumber}}</h1>
       </div>
-      <span>
-      <i class="fa fa-gear"(click)="toggleSettings()"></i>
+      <span *ngIf="searchStrings.length == 0">
+        <i  style="color:red" class="fa fa-gear"(click)="toggleSettings()"></i>
+      </span>
+      <span *ngIf="searchStrings.length > 0">
+        <i  class="fa fa-gear"(click)="toggleSettings()"></i>
       </span>
     </header>
   

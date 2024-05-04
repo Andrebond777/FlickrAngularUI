@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 const defaultSearchStrings = [
-  "Street view", "New York street view", "London street view", "Ukraine Street View", "City",
+  "Street view", "New York street view", "Tokyo street view", "Ukraine Street View", "City",
   "Grocery store", 
   "Historic moment", "World War II", "Hippie", "Parade", "Civil Rights Movement"
 ];
@@ -31,8 +31,12 @@ export class SettingsComponent implements OnInit {
   }
 
   deleteStr(index : number){
-    if(this.searchStrings.length > 1)
       this.searchStrings.splice(index, 1);
+  }
+
+  deleteAllStrs()
+  {
+    this.searchStrings = [];
   }
 
   @Output() saveEvent = new EventEmitter<string[]>();

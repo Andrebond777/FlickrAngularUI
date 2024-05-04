@@ -115,7 +115,7 @@ ul {
 	border-radius: 0.1rem;
 }
 
-nav ul{min-height: 10vh;max-height:60vh; width:800px;}
+nav ul{min-height: 8vh;max-height:60vh; width:800px;}
 nav ul{overflow:hidden; overflow-y:scroll;}
 
 @media only screen and (max-width: 1000px) {
@@ -128,7 +128,7 @@ li {
     
     height: 55px;
 	padding: 0 0 0 1rem;
-    padding-top: 15px;
+    padding-top: 25px;
     color: black;
 
     p{
@@ -137,7 +137,7 @@ li {
         overflow: hidden;
         text-overflow: ellipsis;
         margin-left: 35px;
-        margin-top: -23px;
+        margin-top: -33px;
         padding-top: 15px;
         font-size: 35px;
         width: 65vw;
@@ -164,10 +164,6 @@ li{
 
 li {
 	border-bottom: 1px solid lightblue;
-}
-
-li:first-child {
-	margin-top: 1rem;
 }
 
 li:last-child {

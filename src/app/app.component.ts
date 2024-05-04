@@ -9,7 +9,7 @@ import { CommonFunctionalityComponent } from './components/common-functionality/
 import confetti from 'canvas-confetti';
 
 const defaultSearchStrings = [
-  "Street view", "New York street view", "London street view", "Ukraine Street View", "City",
+  "Street view", "New York street view", "Tokyo street view", "Ukraine Street View", "City",
   "Grocery store", 
   "Historic moment", "World War II", "Hippie", "Parade", "Civil Rights Movement"
 ];

@@ -10,12 +10,17 @@
         {
             <li><p>{{str}}</p>  <i class="fa fa-trash-o" (click)="deleteStr(idx)"></i></li>
         }
+        @if(searchStrings.length == 0)
+        {
+            <li><p style="color: red;">Queries list is empty</p></li>
+        }
     </ul>
     
     </nav>
     <div class="bottomButtons">
             <button class="button-54"  type="button" (click)="onSubmit()">Save</button>
             <button class="button-54"  type="button" (click)="resetToDefault()">Reset to <span>default</span></button>
+            <button class="button-54"  type="button" (click)="deleteAllStrs()">Delete all</button>
     </div>
 </div>
 
