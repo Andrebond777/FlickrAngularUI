@@ -143,7 +143,7 @@ nav ul{overflow:hidden; overflow-y:scroll;}
 li {
 
 
-	padding-left: 1rem;
+	padding-left: 30px;
     color: black;
     font-size: 35px;
 
@@ -166,7 +166,7 @@ li {
         overflow: hidden;
         text-overflow:clip;
         font-size: 35px;
-        width: 680px;
+        width: 660px;
         overflow-x:scroll;
     }
 
@@ -188,9 +188,10 @@ li {
 @media only screen and (max-width: 1000px) {
 
 li{
+    padding-left: 10px;
     div{
         p{
-            width: 60vw;
+            width: 65vw;
         }
         i{
             margin-left: 2vw;
