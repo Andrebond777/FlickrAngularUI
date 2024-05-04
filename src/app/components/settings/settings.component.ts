@@ -24,7 +24,10 @@ export class SettingsComponent implements OnInit {
 
   addStr(){
     if(this.searchStrings.indexOf(this.str) == -1)
+    {
       this.searchStrings.push(this.str);
+    }
+    this.str = "";
   }
 
   deleteStr(index : number){
