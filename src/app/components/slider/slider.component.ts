@@ -1,14 +1,6 @@
 
-import {Component, Output, EventEmitter, Input, ViewChild, OnInit} from '@angular/core';
-import {MatSliderModule} from '@angular/material/slider';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import {Component, Output, EventEmitter, Input, OnInit} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatCardModule} from '@angular/material/card';
-import { AppComponent } from '../../app.component';
-import { Router } from '@angular/router';
-import { CommonFunctionalityComponent } from '../common-functionality/common-functionality.component';
 
 
 /**
@@ -20,21 +12,15 @@ import { CommonFunctionalityComponent } from '../common-functionality/common-fun
   styleUrl: './slider.component.scss',
   standalone: true,
   imports: [
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    MatCheckboxModule,
-    MatSliderModule
+    FormsModule
   ],
 })
-export class SliderComponent  extends CommonFunctionalityComponent implements OnInit  {
+export class SliderComponent implements OnInit  {
 
-  constructor(public override router:Router) {
-    super(router);
+  constructor() {
   }
 
-  override ngOnInit(): void {
+   ngOnInit(): void {
   }
 
 
@@ -47,10 +33,6 @@ export class SliderComponent  extends CommonFunctionalityComponent implements On
   @Input() disableButton: boolean = false;
 
   @Output() sliderEvent = new EventEmitter<number>();
-
-  reloadCurrent(){
-    this.reloadComponent(true);
-  }
 
   onSubmit() {
     

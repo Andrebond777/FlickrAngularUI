@@ -1,11 +1,6 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Photo } from './models/Photo';
-import { SliderComponent } from './components/slider/slider.component';
 import { FlickrUiService } from './services/flickr-ui.service';
-import { Input } from '@angular/core';
-import { createFlickr } from "flickr-sdk"
-import { Router } from '@angular/router';
-import { CommonFunctionalityComponent } from './components/common-functionality/common-functionality.component';
 import confetti from 'canvas-confetti';
 
 const defaultSearchStrings = [
@@ -19,7 +14,7 @@ const defaultSearchStrings = [
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent  extends CommonFunctionalityComponent {
+export class AppComponent {
 
   calculateColor(score : number)
   {
@@ -183,8 +178,7 @@ export class AppComponent  extends CommonFunctionalityComponent {
     this.reloadPage();
   }
 
-  constructor(private flickrUiService: FlickrUiService, public override router:Router) {
-    super(router);
+  constructor(private flickrUiService: FlickrUiService) {
     const searchStringsFromStorage = localStorage.getItem(this.storageKeySearchStrings);
     if(searchStringsFromStorage != null)
     {
@@ -199,17 +193,8 @@ export class AppComponent  extends CommonFunctionalityComponent {
     this.fetchPhotos(1);
   }
 
-  reloadCurrent(){
-    this.reloadComponent(true);
-  }
-
-  reloadChild(){
-    this.reloadComponent(false,"slider")
-  }
-
   
-
-  override ngOnInit(): void {
+   ngOnInit(): void {
   }
 
   celebrateRight() {
@@ -249,5 +234,9 @@ export class AppComponent  extends CommonFunctionalityComponent {
     
     // Clear confetti after a certain duration
     setTimeout(() => confetti.reset(), duration);
+  }
+
+  reloadPage(){
+    window.location.reload();
   }
 }
