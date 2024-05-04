@@ -58,7 +58,7 @@ export class AppComponent {
   totalScore = 0;
   isShow = false;
   displayAllRounds = false;
-  displaySettings = false;
+  displaySettings = true;
   storageKeyBestResult = "bestResult";
   storageKeySearchStrings = "searchStrings";
 
