@@ -8,7 +8,11 @@
     <ul>
         @for (str of searchStrings; track str; let idx = $index) 
         {
-            <li><p>{{str}}</p>  <i class="fa fa-trash-o" (click)="deleteStr(idx)"></i></li>
+            <li>
+                <div>
+                    <p>{{str}}</p>  <i class="fa fa-trash-o" (click)="deleteStr(idx)"></i>
+                </div>
+            </li>
         }
         @if(searchStrings.length == 0)
         {

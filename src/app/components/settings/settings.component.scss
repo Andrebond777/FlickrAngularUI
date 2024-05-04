@@ -100,7 +100,8 @@ button{
     .bottomButtons{
         button{
             margin: 0px;
-            margin-top: 15px;
+            margin-top: 25px;
+
             width: 90vw;
             white-space: nowrap;
             overflow:auto;
@@ -126,6 +127,7 @@ ul {
 	padding: 0;
 	margin: 0;
 	border-radius: 0.1rem;
+    z-index: auto;
 }
 
 nav ul{min-height: 8vh;max-height:60vh; width:800px;}
@@ -138,32 +140,41 @@ nav ul{overflow:hidden; overflow-y:scroll;}
 }
 
 li {
-    
-    height: 55px;
-	padding: 0 0 0 1rem;
-    padding-top: 25px;
+    height: 40px;
+	padding-left: 1rem;
     color: black;
 
+    div{
+        height: 40px;
+        margin: 0px;
+        padding: 0px;
+
+        margin-top: -62px;
     p{
-        height: 50px;
+        margin: 0px;
+        padding: 0px;
+        height: 40px;
+        justify-content: left;
+        align-items: left;
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis;
-        margin-left: 35px;
-        margin-top: -33px;
-        padding-top: 15px;
+        text-overflow:clip;
+        padding-left: 25px;
         font-size: 35px;
-        width: 65vw;
+        width: 70vw;
+
+
     }
 
     i{
+        height: 40px;
         cursor: pointer;
         display: flex;
         justify-content: right;
         align-items: right;
-        margin-top: -65px;
         margin-right: 12px;
     }
+}
 }
 
 @media only screen and (min-width: 1000px) {
