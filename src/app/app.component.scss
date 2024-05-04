@@ -14,7 +14,7 @@
         display: inline-block;
         display: flex;
         justify-content: space-between;
-        margin-bottom: -65px;
+        margin-bottom: -70px;
     }
   }
 
@@ -38,8 +38,12 @@ span{
     justify-content: center;
     align-items: center;
     margin-top: 40px;
-    margin-bottom: -10px;
-    padding-top: 12px;
+    margin-bottom: -5px;
+
+    div{
+        margin: 0;
+        padding: 0;
+    }
     font-family: 'Luminari';
     font-size: 40px;
     h1{
@@ -104,7 +108,7 @@ header {
 
     height: 55px;
 
-    padding-top: 12px;
+    margin-bottom: 14px;
     background-color: whitesmoke;
     div{
 
@@ -119,7 +123,7 @@ header {
     i{
         display: flex;
         justify-content: end;
-        margin-top: -57px;
+        margin-top: -70px;
         margin-right: 15px;
         font-size: 50px;
 
