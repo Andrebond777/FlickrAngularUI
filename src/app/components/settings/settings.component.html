@@ -8,7 +8,7 @@
     <ul>
         @for (str of searchStrings; track str; let idx = $index) 
         {
-            <li><span><p>{{str}}</p></span>  <i class="fa fa-trash-o" (click)="deleteStr(idx)"></i></li>
+            <li><p>{{str}}</p>  <i class="fa fa-trash-o" (click)="deleteStr(idx)"></i></li>
         }
     </ul>
     
