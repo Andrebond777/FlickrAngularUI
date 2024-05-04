@@ -2,8 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 const defaultSearchStrings = [
   "street view", "grocery store", "historic moment", "city", 
-  "World War II", "HippieCulture", "DiscoEra", "parade", 
-  "CivilRightsMovement", "harbor"
+  "World War II", "Hippie", "parade", 
+  "Civil Rights Movement", "harbor"
 ];
 
 @Component({

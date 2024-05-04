@@ -10,8 +10,8 @@ import confetti from 'canvas-confetti';
 
 const defaultSearchStrings = [
   "street view", "grocery store", "historic moment", "city", 
-  "World War II", "HippieCulture", "DiscoEra", "parade", 
-  "CivilRightsMovement", "harbor"
+  "World War II", "Hippie", "parade", 
+  "Civil Rights Movement", "harbor"
 ];
 
 @Component({
