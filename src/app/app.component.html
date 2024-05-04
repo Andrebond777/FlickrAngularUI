@@ -74,7 +74,7 @@
           <h1  class="guess">Your guess {{answers[i]}}</h1>
         </div>
       </div>
-        <app-slider *ngIf="!displayAllRounds" [disableButton]="ph.year == -1" (sliderEvent)="slider($event)"></app-slider>
+        <app-slider *ngIf="!displayAllRounds"  [disableButton]="ph.year == -1" (sliderEvent)="slider($event)"></app-slider>
         <div *ngIf="!displayAllRounds">
           <button class="button-54" *ngIf="isShow && i < maxRoundNumber-1" type="button" (click)="next()">Next</button>
           <button class="button-54" *ngIf="isShow && i >= maxRoundNumber-1" type="button" (click)="endGame()">End game</button>
