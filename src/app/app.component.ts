@@ -4,9 +4,8 @@ import { FlickrUiService } from './services/flickr-ui.service';
 import confetti from 'canvas-confetti';
 
 const defaultSearchStrings = [
-  "Street view", "New York street view", "Tokyo street view", "Ukraine Street View", "City",
-  "Grocery store", 
-  "Historic moment", "World War II", "Hippie", "Parade", "Civil Rights Movement"
+  "Street view", "New York street view", "Tokyo street view", "Ukraine street View", "City",
+  "Grocery store", "Historic moment", "World War II", "Parade"
 ];
 
 @Component({
