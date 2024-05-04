@@ -142,6 +142,7 @@ nav ul{overflow:hidden; overflow-y:scroll;}
 
 li {
 
+
 	padding-left: 1rem;
     color: black;
     font-size: 35px;
@@ -153,6 +154,7 @@ li {
         margin: -3px;
         margin-left: 0px;
     p{
+
         display:inline-block;
         margin: 0px;
         padding: 0px;
@@ -165,7 +167,7 @@ li {
         text-overflow:clip;
         font-size: 35px;
         width: 680px;
-
+        overflow-x:scroll;
     }
 
     i{
