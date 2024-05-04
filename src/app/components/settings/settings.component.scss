@@ -14,13 +14,17 @@ body {
 
 @media only screen and (max-width: 1000px) {
 .mainBody{
-    height: 83vh;
-    
+    height: 85vh;
+    margin-left: 5vw;
+
 }
 }
 
+@media only screen and (min-width: 1000px) {
 .mainBody{
-    top: initial;
+
+
+}
 }
 
 .inputBlock{
@@ -28,13 +32,13 @@ body {
 display: flex;
 margin-bottom: 20px;
 height: 66px;
-margin-top: 130px;
+margin-top: 60px;
 
 input{
-    border-radius: 2px;
-    border: 1px;
+    border-radius: 4px;
+    border: 2px;
     border-style: solid;
-    border-color: lightblue;
+    border-color: rgb(171, 171, 171);
     width: 550px;
 }
 
@@ -73,21 +77,30 @@ input{
         }
 }
 
+button{
+    padding-top: 15px;
+}
 
-
+@media only screen and (min-width: 1000px) {
 .bottomButtons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     button{
-        display: block;
-        margin: auto;
-        height: 70px;
-        margin-top: 30px;
-        width: 500px;
-
+        margin-left: 30px;
+        margin-right: 30px;
+        display: flex;
+        height: 50px;
+        margin-top: 20px;
     }
 }
+}
+
 @media only screen and (max-width: 1000px) {
     .bottomButtons{
         button{
+            margin: 0px;
+            margin-top: 15px;
             width: 90vw;
             white-space: nowrap;
             overflow:auto;
@@ -101,10 +114,10 @@ input{
 
 ul {
     
-    border-radius: 2px;
-    border: 1px;
+    border-radius: 4px;
+    border: 2px;
     border-style: solid;
-    border-color: lightblue;
+    border-color: rgb(171, 171, 171);
 	list-style-position: inside;
 	width: 600px;
 	max-width: 100%;

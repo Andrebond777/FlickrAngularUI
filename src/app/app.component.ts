@@ -98,6 +98,8 @@ export class AppComponent  extends CommonFunctionalityComponent {
 
   async fetchPhotos(quantity : number)
   {
+    if(this.searchStrings.length > 0)
+    {
       await this.flickrUiService
       .getPhotos(quantity, this.searchStrings)
       .subscribe((result: Array<Photo>) => {   
@@ -107,6 +109,7 @@ export class AppComponent  extends CommonFunctionalityComponent {
             this.fetchYears(this.photos.length - i);
           }
       });
+    }
   }
 
   async fetchYears(index : number)
