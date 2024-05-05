@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Photo } from './models/Photo';
 import { FlickrUiService } from './services/flickr-ui.service';
 import confetti from 'canvas-confetti';
+import { HttpResponse } from '@angular/common/http';
 
 const defaultSearchStrings = [
   "Street view", "New York street view", "Tokyo street view", "Ukraine street View", "City",
@@ -96,8 +97,8 @@ export class AppComponent {
     {
       await this.flickrUiService
       .getPhotos(quantity, this.searchStrings)
-      .subscribe((result: Array<Photo>) => {   
-          this.photos = this.photos.concat(result);
+      .subscribe((result: HttpResponse<Photo[]>) => {   
+          this.photos = this.photos.concat(result.body!);
           for(let i = 1; i <= quantity; i++)
           {
             this.fetchYears(this.photos.length - i);

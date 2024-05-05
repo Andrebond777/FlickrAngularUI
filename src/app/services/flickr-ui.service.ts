@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from '../../environments/environment';
@@ -9,19 +9,34 @@ import { Photo } from '../models/Photo';
 })
 export class FlickrUiService {
 
-  private url = 'Flickr';
+  private url = '';
 
   constructor(private http: HttpClient) {}
 
-  public getPhotos(quantity : number, searchStrings : string[]): Observable<Photo[]> {
+  public sga(quantity : number, searchStrings : string[]): Observable<Photo[]> {
     let queryStr = "";
     for(let i = 0; i < searchStrings.length; i++)
       queryStr += "&searchStrings=" + searchStrings[i];
-    return this.http.get<Photo[]>(`${environment.apiUrl}/${this.url}/GetImages?quantity=${quantity}` + queryStr + `&randomValueToAvoidCachingInSafari=` + Math.random());
+
+      var headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
+      let json = JSON.stringify(searchStrings);
+    return this.http.request<Photo[]>("GET",`${environment.apiUrl}/GetImages/quantity=${quantity}`, {body : {json}});
   }
 
-  public getYear(webUrl : String): Observable<number> {
-    return this.http.get<number>(`${environment.apiUrl}/${this.url}/GetYears?webUrl=${webUrl}&randomValueToAvoidCachingInSafari=`+Math.random());
+  getPhotos(quantity : number, searchStrings : string[]): Observable<HttpResponse<Photo[]>> {
+    let body = JSON.stringify(searchStrings);
+    let response =  this.http.post<Photo[]>(`${environment.apiUrl}/GetImages/${quantity}`, body,
+            {
+                headers : new HttpHeaders({"Content-Type": "application/json"}),
+                observe: 'response',
+                responseType:'json'
+            });
+    return response;
+  }
+
+  public getYear(webUrl : string): Observable<number> {
+    webUrl = encodeURIComponent(webUrl);
+    return this.http.get<number>(`${environment.apiUrl}/GetYear/${webUrl}`);
   }
   
 }
