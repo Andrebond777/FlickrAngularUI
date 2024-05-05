@@ -111,8 +111,8 @@ export class AppComponent {
   {
       await this.flickrUiService
       .getYear(this.photos[index].webUrl)
-      .subscribe((result: number) => {
-        this.photos[index].year = result;
+      .subscribe((result: HttpResponse<number>) => {
+        this.photos[index].year = Number(result.body);
       });
   }
 

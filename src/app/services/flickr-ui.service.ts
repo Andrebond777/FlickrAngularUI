@@ -34,9 +34,16 @@ export class FlickrUiService {
     return response;
   }
 
-  public getYear(webUrl : string): Observable<number> {
+  public sgfsf(webUrl : string): Observable<number> {
     webUrl = encodeURIComponent(webUrl);
     return this.http.get<number>(`${environment.apiUrl}/GetYear/${webUrl}`);
+  }
+
+  public getYear(webUrl : string): Observable<HttpResponse<number>> {
+    return this.http.post<number>(`${environment.apiUrl}/GetYear`, webUrl,
+    {
+        observe: 'response'
+    });
   }
   
 }
