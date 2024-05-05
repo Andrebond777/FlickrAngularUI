@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    apiUrl: "https://photoyearguesserfunction.azurewebsites.net/api"
+    apiUrl: "https://photoguesserf.azurewebsites.net/api"
   };
