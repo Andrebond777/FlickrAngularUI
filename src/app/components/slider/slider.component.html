@@ -1,12 +1,15 @@
 
+
 <div class="yearComponent">
   <p>{{slider.value}}</p>
 </div>
 
-<div [hidden]="disabled">
+<div [hidden]="disabled" class="sliderWrapper">
 <input [disabled]="disabled"  type="range" min="{{min}}" max="{{max}}"  class="slider" [(ngModel)]="sliderVal" #slider>
 <button class="button-54"  type="button" (click)="onSubmit()">
   <span >Submit</span>
 </button>
 </div>
 
+
+ 

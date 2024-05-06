@@ -1,3 +1,4 @@
+
 .example-h2 {
     margin-left: 10px;
     margin-right: 10px;
@@ -97,6 +98,9 @@
     text-decoration-thickness: 50px;
   }
 
+  .sliderWrapper{
+
+  }
 
     
   .slider {
@@ -122,7 +126,7 @@
   .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 30px;
+    width: 35px;
     height: 60px;
     background: rgb(82, 82, 82);
     cursor: pointer;
@@ -132,7 +136,7 @@
   
   /* for firefox */
   .slider::-moz-range-thumb {
-    width: 20px;
+    width: 35px;
     height: 60px;
     background: rgb(82, 82, 82);
     cursor: pointer;
@@ -140,6 +144,9 @@
     border-radius: 4px;
   }
 
+  .slider:hover{
+    box-shadow: 5px;
+  }
+
 
   
-

@@ -12,6 +12,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 
 import { FormsModule } from '@angular/forms';
 
+import {NgToastModule} from 'ng-angular-popup'
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     SliderComponent,
     PinchZoomModule,
-    FormsModule
+    FormsModule,
+    NgToastModule
 
   ],
   providers: [

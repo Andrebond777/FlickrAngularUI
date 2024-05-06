@@ -133,8 +133,11 @@ header {
 
     }
     .fa.fa-gear {
-        text-shadow: 0px 2px 5px black;
+        text-shadow: 0px 1px 4px black;
         color: rgb(171, 171, 171);
+      }
+      .fa.fa-gear:hover{
+        text-shadow: 1px 3px 5px black;
       }
 }
 
@@ -272,4 +275,8 @@ pinch-zoom{
     .button-54{
         color: whitesmoke;
     }
+}
+
+.newGame{
+    
 }

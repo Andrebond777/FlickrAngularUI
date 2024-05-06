@@ -55,6 +55,10 @@ background-color: rgb(82,82,82);
     top: 5px;
     left: 5px;
   }
+
+  .button-54:hover {
+    box-shadow: 2px 2px 1px 1px, 3px 3px 1px 1px, 4px 4px 1px 1px, 5px 5px 1px 1px, 6px 6px 1px 1px;
+  }
   
   @media (min-width: 768px) {
     .button-54 {

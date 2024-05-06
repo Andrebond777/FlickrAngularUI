@@ -1,19 +1,22 @@
 
-
+<ng-toast></ng-toast>
 <div  *ngIf="displaySettings">
   <header>
+    <!-- <div clas="newGame">
+      <button class="button-54" type="button" (click)="reloadPage()">New Game</button>
+    </div> -->
     <div>
       <h1>Settings</h1>
     </div>
     <span *ngIf="searchStrings.length == 0">
-    <i  style="color:red" class="fa fa-gear"(click)="toggleSettings()"></i>
+    <i  style="color:#fb345c" class="fa fa-gear"(click)="toggleSettings()"></i>
     </span>
     <span *ngIf="searchStrings.length > 0">
       <i  class="fa fa-gear"(click)="toggleSettings()"></i>
     </span>
   </header>
   <div class="mainContainer">
-    <app-settings [searchStrings]="searchStrings" (saveEvent)="updateSearchStrings($event)"></app-settings>
+    <app-settings [searchStrings]="searchStrings"></app-settings>
   </div>
 </div>
 
@@ -23,7 +26,7 @@
   </h1>
   
   <h1 class="totalScoreClass" *ngIf="displayAllRounds">
-    <button class="button-54" type="button" (click)="reloadPage()">Start Over</button>
+    <button class="button-54" type="button" (click)="reloadPage()">New Game</button>
   </h1>
     
     <h1 class="totalScoreClass" *ngIf="displayAllRounds">
@@ -36,7 +39,7 @@
         <h1>...</h1>
       </div>
       <span *ngIf="searchStrings.length == 0">
-        <i  style="color:red" class="fa fa-gear"(click)="toggleSettings()"></i>
+        <i  style="color:#fb345c" class="fa fa-gear"(click)="toggleSettings()"></i>
       </span>
       <span *ngIf="searchStrings.length > 0">
         <i  class="fa fa-gear"(click)="toggleSettings()"></i>
@@ -53,7 +56,7 @@
         <h1>Round {{i+1}} of {{maxRoundNumber}}</h1>
       </div>
       <span *ngIf="searchStrings.length == 0">
-        <i  style="color:red" class="fa fa-gear"(click)="toggleSettings()"></i>
+        <i  style="color:#fb345c" class="fa fa-gear"(click)="toggleSettings()"></i>
       </span>
       <span *ngIf="searchStrings.length > 0">
         <i  class="fa fa-gear"(click)="toggleSettings()"></i>
@@ -98,6 +101,6 @@
   </div>
   
   <h1 class="totalScoreClass" *ngIf="displayAllRounds">
-    <button class="button-54" type="button" (click)="reloadPage()">Start Over</button>
+    <button class="button-54" type="button" (click)="reloadPage()">New Game</button>
   </h1>
 </div>

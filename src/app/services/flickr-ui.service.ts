@@ -14,7 +14,7 @@ export class FlickrUiService {
   constructor(private http: HttpClient) {}
   getPhotos(quantity : number, searchStrings : string[]): Observable<HttpResponse<Photo[]>> {
     let body = JSON.stringify(searchStrings);
-    let response =  this.http.post<Photo[]>(`${environment.apiUrl}/GetImages/${quantity}?`+Math.random(), body,
+    let response =  this.http.post<Photo[]>(`${environment.apiUrl}/GetImages/${quantity}`, body,
             {
                 headers : new HttpHeaders({"Content-Type": "application/json"}),
                 observe: 'response',

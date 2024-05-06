@@ -1,8 +1,6 @@
 
 import {Component, Output, EventEmitter, Input, OnInit} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-
-
 /**
  * @title Configurable slider
  */
@@ -18,18 +16,34 @@ import {FormsModule} from '@angular/forms';
 export class SliderComponent implements OnInit  {
 
   constructor() {
+    this.min = Number(localStorage.getItem("minSliderVal"));
+    this.max = Number(localStorage.getItem("maxSliderVal"));
+    if(this.min == 0)
+    {
+      this.min = 1875;
+      localStorage.setItem("minSliderVal", this.min.toString());
+    }
+    if(this.max == 0)
+    {
+      this.max = 2024;
+      localStorage.setItem("maxSliderVal", this.max.toString());
+    }
+    this.sliderVal = (this.min+this.max)/2;
   }
 
    ngOnInit(): void {
+
   }
 
+  
+  @Input()
+  min : number;
+  @Input()
+  max : number;
+  @Input() 
+  disabled = false;
 
-  min = 1875;
-  max = 2024;
-
-  step = 1;
-  @Input() disabled = false;
-  sliderVal = 1950;
+  sliderVal : number;
 
   @Output() sliderEvent = new EventEmitter<number>();
 

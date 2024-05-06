@@ -1,9 +1,18 @@
 <div class="mainBody">
+    <div *ngIf="displayRefreshPage" class="refreshPage">
+        <button class="button-54"  type="button" (click)="reloadPage()">Start New Game</button>
+    </div>
+    <label for="name">Year range:</label>
+    <div class="inputBlock sliderInput">
+        <input class="minMaxSliderVal left" type="number" [(ngModel)]="minSliderVal" placeholder="Min" required>
+        <input class="minMaxSliderVal" type="number" [(ngModel)]="maxSliderVal" placeholder="Max" required>
+        <button class="button-54"  type="button" (click)="updateSliderVals()">Update</button>
+    </div>
+    <label for="name">Add search query:</label>
     <div class="inputBlock">
         <input type="text" [(ngModel)]="str" placeholder="Enter query" required>
         <button [disabled]="str == ''" class="button-54"  type="button" (click)="addStr()">Add</button>
     </div>
-    
     <nav>
     <ul>
         @for (str of searchStrings; track str; let idx = $index) 
@@ -18,7 +27,7 @@
         {
             <li>
                 <div>
-                    <p style="color: red;">Queries list is empty</p>
+                    <p style="color: #fb345c;">Queries list is empty</p>
                 </div>
             </li>
         }
@@ -26,11 +35,8 @@
     
     </nav>
     <div class="bottomButtons">
-        <button style="color: green;" class="button-54"  type="button" (click)="onSubmit()">Save</button>
-        <button style="color: rgb(208, 0, 0);" class="button-54"  type="button" (click)="deleteAllStrs()">Delete all</button>
+        <button style="color: #fb345c;" class="button-54"  type="button" (click)="deleteAllStrs()">Delete all</button>
 
-    </div>
-    <div class="bottomButtons">
         <button class="button-54"  type="button" (click)="resetToDefault()">Reset to default</button>
     </div>
 </div>

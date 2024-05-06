@@ -2,37 +2,55 @@
 	box-sizing: border-box;
 }
 
-body {
-	font-family: 'Gloria Hallelujah', cursive;
-	font-size: 1.4rem;
-	background: whitesmoke;
-	margin: 0;
-	padding: 1rem;
-	display: grid;
-	place-items: center;
+.mainBody{
+    label{
+        display: flex;
+        margin-top: 20px;
+    }
+    .refreshPage{
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+        .button-54{
+            height: 60px;
+            background-color: #e5faf3;
+            color: #44d364;
+            white-space: nowrap;
+            overflow:auto;
+            text-overflow:clip;
+        }
+    }
 }
+
+
 
 @media only screen and (max-width: 1000px) {
 .mainBody{
     height: 85vh;
     margin-left: 5vw;
+    .refreshPage{
+        width: 90vw;
+    }
 }
 }
 
 
 @media only screen and (min-width: 1000px) {
 .mainBody{
-
+    .refreshPage{
+        margin-top: 40px;
+    }
 
 }
 }
+
 
 .inputBlock{
 
 display: flex;
 margin-bottom: 20px;
 height: 66px;
-margin-top: 60px;
+margin-top: 10px;
 
 input{
     border-radius: 4px;
@@ -40,8 +58,14 @@ input{
     border-style: solid;
     border-color: rgb(171, 171, 171);
     width: 550px;
-}
 
+}
+.minMaxSliderVal{
+    width: 250px;
+}
+.left{
+    margin-right:50px;
+}
     .button-54{
         height: 60px;
         background-color: rgb(98, 98, 98);
@@ -54,19 +78,27 @@ input{
 @media only screen and (max-width: 1000px) {
     
     .inputBlock{
-        margin-top: 5px;
-
-
-        
+        margin-top: 5px;        
         margin-bottom: 20px;
         height: 66px;
         width: 90vw;
+
+        .minMaxSliderVal{
+            font-size: 35px;
+            width: 26vw;
+        }
+        .left{
+            margin-right: 3vw;
+        }
 
         input{
             width: 55vw;
         }
         
             .button-54{
+                white-space: nowrap;
+                overflow:auto;
+                text-overflow:clip;
                 height: 60px;
                 background-color: rgb(98, 98, 98);
                 color: whitesmoke;
@@ -76,6 +108,7 @@ input{
             }
         }
 }
+
 
 button{
 
@@ -131,6 +164,7 @@ ul {
       
 }
 
+.inputBlock{width:800px;}
 nav ul{min-height: 40px;max-height:60vh; width:800px;}
 nav ul{overflow:hidden; overflow-y:scroll;}
 
@@ -138,6 +172,7 @@ nav ul{overflow:hidden; overflow-y:scroll;}
 
     nav ul{max-height:50vh;width:90vw;}
     ul{width: 90vw;     }
+    .inputBlock{width: 90vw;}
 }
 
 li {

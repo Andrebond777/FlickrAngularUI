@@ -3,6 +3,7 @@ import { Photo } from './models/Photo';
 import { FlickrUiService } from './services/flickr-ui.service';
 import confetti from 'canvas-confetti';
 import { HttpResponse } from '@angular/common/http';
+import {NgToastModule} from 'ng-angular-popup'
 
 const defaultSearchStrings = [
   "Street view", "New York street view", "Tokyo street view", "Ukraine street View", "City",
@@ -73,8 +74,6 @@ export class AppComponent {
 
   async slider(sliderVal : number)
   {
-    if(this.roundNumber < 1)
-      this.fetchPhotos(2);
     this.score = Math.round(1000 - (Math.abs(sliderVal - this.photos[this.roundNumber].year))*40);
     if(this.score < 0)
       this.score = 1;
@@ -144,21 +143,6 @@ export class AppComponent {
       return 1
   }
 
-  restoreDefaultSearchStrings()
-  {
-    this.updateSearchStrings(defaultSearchStrings);
-  }
-
-  updateSearchStrings(searchStrs : string[])
-  {
-    const stringifiedSearchStrs = JSON.stringify(searchStrs); 
-    localStorage.setItem(
-      this.storageKeySearchStrings,
-      stringifiedSearchStrs
-    );
-    this.reloadPage();
-  }
-
   constructor(private flickrUiService: FlickrUiService) {
     const searchStringsFromStorage = localStorage.getItem(this.storageKeySearchStrings);
     if(searchStringsFromStorage != null)
@@ -169,7 +153,7 @@ export class AppComponent {
     else
       this.searchStrings = defaultSearchStrings;
 
-    for(let i = 0; i < 3; i++)
+    for(let i = 0; i < this.maxRoundNumber; i++)
       this.fetchPhotos(1);
     this.roundNumber++;
   }
