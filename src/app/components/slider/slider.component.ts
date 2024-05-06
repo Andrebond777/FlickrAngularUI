@@ -28,7 +28,7 @@ export class SliderComponent implements OnInit  {
       this.max = 2024;
       localStorage.setItem("maxSliderVal", this.max.toString());
     }
-    this.sliderVal = (this.min+this.max)/2;
+    this.sliderVal = Math.round((this.min+this.max)/2);
   }
 
    ngOnInit(): void {

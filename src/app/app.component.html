@@ -86,11 +86,8 @@
               </div>
             </h1>
             </div> 
-
-        <div *ngIf="displayAllRounds">
-          <h1  class="guess">Your guess {{answers[i]}}</h1>
-        </div>
       </div>
+      <h1 *ngIf="isShow && displayAllRounds"  class="guess">Your guess {{answers[i]}}</h1>
         <app-slider *ngIf="!displayAllRounds" [disabled]="isShow" (sliderEvent)="slider($event)"></app-slider>
         <div *ngIf="!displayAllRounds" class="nextRoundEndGameButtons">
           <button class="button-54" *ngIf="isShow && i < maxRoundNumber-1" type="button" (click)="next()">Next</button>

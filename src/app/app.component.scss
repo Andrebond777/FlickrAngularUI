@@ -137,7 +137,7 @@ header {
 
 .guess{
     font-family: 'Luminari';
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     margin-top: 130px;
@@ -211,8 +211,7 @@ margin-top: -10px;
         border-style: double;
         border-width: 10px;
         border-color: whitesmoke;
-        min-height: 40vh;
-        max-height: 75vh;
+        height: 75vh;
     }
 
     button{
