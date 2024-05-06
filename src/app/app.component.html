@@ -26,7 +26,8 @@
   </h1>
   
   <h1 class="totalScoreClass" *ngIf="displayAllRounds">
-    <button class="button-54" type="button" (click)="reloadPage()">New Game</button>
+    <button class="button-54" type="button" (click)="reloadPage()"
+    [ngStyle]="getColor(totalScore / maxRoundNumber)">New Game</button>
   </h1>
     
     <h1 class="totalScoreClass" *ngIf="displayAllRounds">
@@ -67,11 +68,13 @@
       <div class="mainImage">
         <div *ngIf="isShow" class="imgSrcAndTitle">
           <div><a  href="{{ ph.webUrl }}" target=”_blank” class="imgSrc"><button class="button-54" type="button">Image source</button></a></div>
-          <div>          <h2 >{{ph.title}}</h2></div>
         </div>
           <pinch-zoom  backgroundColor="rgba(0,0,0,0.85)">
             <img src="{{ ph.imageUrl }}" medPinchZoom=" autoZoomOut: true "/>
         </pinch-zoom>
+        <div *ngIf="isShow" class="imgSrcAndTitle">
+          <div>          <h2 >{{ph.title}}</h2></div>
+        </div>
       </div>
 
  
@@ -90,14 +93,17 @@
       <h1 *ngIf="isShow && displayAllRounds"  class="guess">Your guess {{answers[i]}}</h1>
         <app-slider *ngIf="!displayAllRounds" [disabled]="isShow" (sliderEvent)="slider($event)"></app-slider>
         <div *ngIf="!displayAllRounds" class="nextRoundEndGameButtons">
-          <button class="button-54" *ngIf="isShow && i < maxRoundNumber-1" type="button" (click)="next()">Next</button>
-          <button class="button-54" *ngIf="isShow && i >= maxRoundNumber-1" type="button" (click)="endGame()">End game</button>
+          <button class="button-54" *ngIf="isShow && i < maxRoundNumber-1" type="button" (click)="next()"
+          [ngStyle]="getColor(scores[i])">Next</button>
+          <button class="button-54" *ngIf="isShow && i >= maxRoundNumber-1" type="button" (click)="endGame()"
+            [ngStyle]="getColor(scores[i])">End game</button>
         </div>
       </div>
     </div>
   </div>
   
   <h1 class="totalScoreClass" *ngIf="displayAllRounds">
-    <button class="button-54" type="button" (click)="reloadPage()">New Game</button>
+    <button class="button-54" type="button" (click)="reloadPage()"
+    [ngStyle]="getColor(totalScore / maxRoundNumber)">New Game</button>
   </h1>
 </div>

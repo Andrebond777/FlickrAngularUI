@@ -163,8 +163,7 @@ header {
     color: whitesmoke;
     background-color: rgb(82, 82, 82);
     .button-54{
-        background-color: #e5faf3;
-        color: #44d364;
+        background-color: rgb(82, 82, 82);
     }
     label{  
 
@@ -195,20 +194,21 @@ header {
             .button-54{
                 color: black;
                 background-color: whitesmoke;
+                margin-bottom: 25px;
+                margin-top: 0px;
             }
-margin-top: -10px;
             div{
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                margin-bottom: 5px;
                 text-align: center;
+                h2{
+                    margin-bottom: 3px;
+                }
                 @media only screen and (max-width: 1200px) {
                 h2{
                     width: 90vw;
                 }
-
-        
             }
             }
 
@@ -221,6 +221,7 @@ margin-top: -10px;
         border-width: 10px;
         border-color: whitesmoke;
         height: 75vh;
+        margin-bottom: 10px;
     }
 
     button{
