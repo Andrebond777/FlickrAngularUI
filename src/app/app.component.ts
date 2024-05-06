@@ -75,7 +75,9 @@ export class AppComponent {
 
   async slider(sliderVal : number)
   {
-    this.score = Math.round(1000*(1 - ((Math.abs(sliderVal - this.photos[this.roundNumber].year)) + 1) * (5 / (this.maxYear - this.minYear))));
+
+      this.score = Math.round(1000*(1 - ((Math.abs(sliderVal - this.photos[this.roundNumber].year)) + 1) * (5 / (this.maxYear - this.minYear))));
+
     if(this.score < 0)
       this.score = 1;
     if(this.score > 900)
@@ -119,7 +121,7 @@ export class AppComponent {
         this.celebrateLeft();
         this.celebrateRight();
         this.celebrateCenter();
-        this.toast.info({detail:"You have beaten your previous best score!", duration: 10000, position:'topCenter'});
+        this.toast.success({detail:"You have beaten your previous best score!", duration: 10000, position:'topCenter'});
       }
     }
     else

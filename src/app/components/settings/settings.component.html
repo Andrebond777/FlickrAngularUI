@@ -5,10 +5,11 @@
     <label for="name">Year range:</label>
     <div class="inputBlock sliderInput">
         <select  id="minYearSelect" [(ngModel)]="minYear">
-                <option *ngFor="let y of yearsSelection;" [value]="y">{{y}}</option>
+            <option *ngFor="let y of yearsSelection;" [hidden]="y >= maxYear" [value]="y">{{y}}</option>
         </select>
         <select id="maxYearSelect" [(ngModel)]="maxYear">
-            <option *ngFor="let y of yearsSelection;" [value]="y">{{y}}</option>
+            <option *ngFor="let y of yearsSelection;" [hidden]="y <= minYear" [value]="y">{{y}}</option>
+            <option [value]="2020">2020</option>
             <option [value]="2024">2024</option>
         </select>
         <button class="button-54"  type="button" (click)="updateYearRange()">Update</button>

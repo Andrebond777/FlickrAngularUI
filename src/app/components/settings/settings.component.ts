@@ -29,7 +29,7 @@ const defaultSearchStrings = [
 export class SettingsComponent implements OnInit {
 
   constructor(private toast : NgToastService){
-
+    this.yearsSelection = this.getYearsSelection();
   }
 
       //show Toast on top center position
@@ -40,6 +40,7 @@ export class SettingsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  yearsSelection : Array<number> = [];
   @Input()
   searchStrings: string[] = [];
   @Input()
@@ -50,7 +51,13 @@ export class SettingsComponent implements OnInit {
   minYear = Number(localStorage.getItem("minYear"));
   maxYear = Number(localStorage.getItem("maxYear"));
 
-  yearsSelection: Array<number> = [1830, 1840, 1850, 1860, 1870, 1880, 1890, 1900, 1910, 1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020];
+  getYearsSelection() : Array<number>
+  {
+    let result: Array<number> = [];
+    for(let i = 1830; i <= 2010; i+=10)
+      result.push(i);
+    return result;
+  }
 
   updateYearRange(){
     if(this.minYear < 1830 || this.minYear > 2024 || this.maxYear < 1830 || this.maxYear > 2024)
