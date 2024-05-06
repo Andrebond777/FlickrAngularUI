@@ -75,8 +75,14 @@ export class AppComponent {
 
   async slider(sliderVal : number)
   {
-
+    if(this.maxYear - this.minYear < 15 )
+      this.score = Math.round(1000 - Math.abs(sliderVal - this.photos[this.roundNumber].year));
+    else if(this.maxYear - this.minYear < 20)
+      this.score = Math.round(1000*(1 - ((Math.abs(sliderVal - this.photos[this.roundNumber].year)) + 1) * (4 / (this.maxYear - this.minYear))));
+    else if(this.maxYear - this.minYear < 30)
       this.score = Math.round(1000*(1 - ((Math.abs(sliderVal - this.photos[this.roundNumber].year)) + 1) * (5 / (this.maxYear - this.minYear))));
+    else(this.maxYear - this.minYear < 30)
+      this.score = Math.round(1000*(1 - ((Math.abs(sliderVal - this.photos[this.roundNumber].year)) + 1) * (6 / (this.maxYear - this.minYear))));
 
     if(this.score < 0)
       this.score = 1;
