@@ -3,6 +3,9 @@
 }
 
 .mainBody{
+    .button-54{
+        background-color:  whitesmoke;
+    }
     label{
         display: flex;
         margin-top: 20px;
@@ -66,11 +69,11 @@ input{
     border-style: solid;
     border-color: rgb(171, 171, 171);
     width: 550px;
-    background-color: whitesmoke;
+    background-color: wheat;
 
 }
 select{
-    background-color: whitesmoke;
+    background-color: wheat;
     width: 250px;
 
 }
@@ -80,7 +83,7 @@ select{
     .button-54{
         height: 60px;
         background-color: rgb(98, 98, 98);
-        color: #44d364;
+        color: whitesmoke;
         margin-left: 40px;
         width: 200px;
     }
@@ -164,7 +167,7 @@ ul {
 	list-style-position: inside;
 	width: 600px;
 	max-width: 100%;
-	background: whitesmoke;
+	background: wheat;
 	box-shadow: 0.25rem 0.25rem 0.75rem rgb(0 0 0 / 0.15);
 	padding: 0;
 	margin: 0;
@@ -256,7 +259,7 @@ li{
 }
 
 li {
-	border-bottom: 1px solid #44d364;
+	border-bottom: 1px solid rgb(98, 98, 98);
     height: 52px;
 }
 li:first-child {
