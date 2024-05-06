@@ -6,6 +6,7 @@
     label{
         display: flex;
         margin-top: 20px;
+        color: whitesmoke;
     }
     .refreshPage{
         display: flex;
@@ -65,9 +66,11 @@ input{
     border-style: solid;
     border-color: rgb(171, 171, 171);
     width: 550px;
+    background-color: whitesmoke;
 
 }
 select{
+    background-color: whitesmoke;
     width: 250px;
 
 }
@@ -77,7 +80,7 @@ select{
     .button-54{
         height: 60px;
         background-color: rgb(98, 98, 98);
-        color: lightblue;
+        color: #44d364;
         margin-left: 40px;
         width: 200px;
     }
@@ -212,6 +215,11 @@ li {
     }
 
     i{
+            text-shadow: 0px 1px 1px black;
+            color: rgb(171, 171, 171);
+          
+
+        color: #fb345c;
         display:inline-block;
         cursor: pointer;
 
@@ -222,6 +230,9 @@ li {
 
         width: 50px;
     }
+    i:hover{
+        text-shadow: 1px 3px 5px black;
+      }
 }
 }
 
@@ -245,7 +256,7 @@ li{
 }
 
 li {
-	border-bottom: 1px solid lightblue;
+	border-bottom: 1px solid #44d364;
     height: 52px;
 }
 li:first-child {
