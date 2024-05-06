@@ -162,7 +162,10 @@ header {
     font-size: 40px;
     color: whitesmoke;
     background-color: rgb(82, 82, 82);
-
+    .button-54{
+        background-color: #e5faf3;
+        color: #44d364;
+    }
     label{  
 
         margin-left: 10px;
@@ -189,6 +192,10 @@ header {
     .mainImage{
 
         .imgSrcAndTitle{
+            .button-54{
+                color: black;
+                background-color: whitesmoke;
+            }
 margin-top: -10px;
             div{
                 display: flex;
@@ -200,6 +207,8 @@ margin-top: -10px;
                 h2{
                     width: 90vw;
                 }
+
+        
             }
             }
 
@@ -251,6 +260,10 @@ progress{
     }
     .nextRoundEndGameButtons{
         margin-top: -20px;
+        .button-54{
+            background-color: rgb(82, 82, 82);
+            color: whitesmoke;
+        }
     }
 }
 
