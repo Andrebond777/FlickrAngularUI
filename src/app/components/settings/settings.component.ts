@@ -99,7 +99,6 @@ export class SettingsComponent implements OnInit {
     this.searchStrings = [];
     this.updateSearchStrings(this.searchStrings);
     this.toast.success({detail:"Successfully deleted all search queries!",summary:'Changes will take place starting from the next game.', position:'botomCenter'});
-    this.displayRefreshPage = true;
   }
 
   resetToDefault(){
