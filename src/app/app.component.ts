@@ -120,7 +120,7 @@ export class AppComponent {
         this.celebrateLeft();
         this.celebrateRight();
         this.celebrateCenter();
-        this.toast.success({detail:"You have beaten your previous best score!", duration: 10000, position:'topCenter'});
+        this.toast.success({detail:"You have beaten your previous best score!", duration: 10000, position:'botomCenter'});
       }
     }
     else
