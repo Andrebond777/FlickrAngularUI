@@ -16,18 +16,8 @@ import {FormsModule} from '@angular/forms';
 export class SliderComponent implements OnInit  {
 
   constructor() {
-    this.min = Number(localStorage.getItem("minSliderVal"));
-    this.max = Number(localStorage.getItem("maxSliderVal"));
-    if(this.min == 0)
-    {
-      this.min = 1875;
-      localStorage.setItem("minSliderVal", this.min.toString());
-    }
-    if(this.max == 0)
-    {
-      this.max = 2024;
-      localStorage.setItem("maxSliderVal", this.max.toString());
-    }
+    this.min = Number(localStorage.getItem("minYear"));
+    this.max = Number(localStorage.getItem("maxYear"));
     this.sliderVal = Math.round((this.min+this.max)/2);
   }
 

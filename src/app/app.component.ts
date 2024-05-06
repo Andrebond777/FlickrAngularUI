@@ -3,11 +3,10 @@ import { Photo } from './models/Photo';
 import { FlickrUiService } from './services/flickr-ui.service';
 import confetti from 'canvas-confetti';
 import { HttpResponse } from '@angular/common/http';
-import {NgToastModule} from 'ng-angular-popup'
+import { NgToastService } from 'ng-angular-popup';
 
 const defaultSearchStrings = [
-  "Street view", "New York street view", "Tokyo street view", "Ukraine street View", "City",
-  "Grocery store", "Historic moment", "World War II", "Parade"
+  "Street view", "New York street view",  "City", "Grocery store"
 ];
 
 @Component({
@@ -62,6 +61,8 @@ export class AppComponent {
   displaySettings = false;
   storageKeyBestResult = "bestResult";
   storageKeySearchStrings = "searchStrings";
+  minYear = 0;
+  maxYear = 0;
 
   toggleSettings()
   {
@@ -74,7 +75,7 @@ export class AppComponent {
 
   async slider(sliderVal : number)
   {
-    this.score = Math.round(1000 - (Math.abs(sliderVal - this.photos[this.roundNumber].year))*40);
+    this.score = Math.round(1000*(1 - ((Math.abs(sliderVal - this.photos[this.roundNumber].year)) + 1) * (5 / (this.maxYear - this.minYear))));
     if(this.score < 0)
       this.score = 1;
     if(this.score > 900)
@@ -114,18 +115,15 @@ export class AppComponent {
     {      
       if(Number(currentBestResult) < Number(this.totalScore))
       {
+        localStorage.setItem(this.storageKeyBestResult, this.totalScore.toString());
         this.celebrateLeft();
         this.celebrateRight();
         this.celebrateCenter();
-        localStorage.setItem(this.storageKeyBestResult, this.totalScore.toString());
-        console.log("set notNull");
+        this.toast.info({detail:"You have beaten your previous best score!", duration: 10000, position:'topCenter'});
       }
     }
     else
-    {
-      console.log("set null");
       localStorage.setItem(this.storageKeyBestResult, this.totalScore.toString());
-    }
 
     window.scroll({ 
       top: 0, 
@@ -143,7 +141,7 @@ export class AppComponent {
       return 1
   }
 
-  constructor(private flickrUiService: FlickrUiService) {
+  constructor(private flickrUiService: FlickrUiService, private toast : NgToastService) {
     const searchStringsFromStorage = localStorage.getItem(this.storageKeySearchStrings);
     if(searchStringsFromStorage != null)
     {
@@ -152,6 +150,19 @@ export class AppComponent {
     }
     else
       this.searchStrings = defaultSearchStrings;
+
+    this.minYear = Number(localStorage.getItem("minYear"));
+    this.maxYear = Number(localStorage.getItem("maxYear"));
+    if(this.minYear == 0)
+    {
+      this.minYear = 1900;
+      localStorage.setItem("minYear", this.minYear.toString());
+    }
+    if(this.maxYear == 0)
+    {
+      this.maxYear = 2024;
+      localStorage.setItem("maxYear", this.maxYear.toString());
+    }
 
     for(let i = 0; i < this.maxRoundNumber; i++)
       this.fetchPhotos(1);

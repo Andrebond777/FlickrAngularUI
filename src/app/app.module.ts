@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 
 import {NgToastModule} from 'ng-angular-popup'
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,8 @@ import {NgToastModule} from 'ng-angular-popup'
     SliderComponent,
     PinchZoomModule,
     FormsModule,
-    NgToastModule
+    NgToastModule,
+    BrowserAnimationsModule
 
   ],
   providers: [

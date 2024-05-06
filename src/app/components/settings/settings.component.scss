@@ -47,6 +47,13 @@
 
 .inputBlock{
 
+
+    option{
+        font-size: 30px;
+        font-family: 'Luminari';
+
+    }
+
 display: flex;
 margin-bottom: 20px;
 height: 66px;
@@ -60,16 +67,17 @@ input{
     width: 550px;
 
 }
-.minMaxSliderVal{
+select{
     width: 250px;
+
 }
-.left{
-    margin-right:50px;
+#maxYearSelect{
+    margin-left:50px;
 }
     .button-54{
         height: 60px;
         background-color: rgb(98, 98, 98);
-        color: whitesmoke;
+        color: #44d364;
         margin-left: 40px;
         width: 200px;
     }
@@ -83,12 +91,12 @@ input{
         height: 66px;
         width: 90vw;
 
-        .minMaxSliderVal{
-            font-size: 30px;
+        select{
             width: 26vw;
+            font-size: 26px;
         }
-        .left{
-            margin-right: 3vw;
+        #maxYearSelect{
+            margin-left: 3vw;
         }
 
         input{

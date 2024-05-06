@@ -1,12 +1,17 @@
 <div class="mainBody">
     <div *ngIf="displayRefreshPage" class="refreshPage">
-        <button class="button-54"  type="button" (click)="reloadPage()">Start New Game</button>
+        <button @fade class="button-54"  type="button" (click)="reloadPage()">Start New Game</button>
     </div>
     <label for="name">Year range:</label>
     <div class="inputBlock sliderInput">
-        <input class="minMaxSliderVal left" type="number" [(ngModel)]="minSliderVal" placeholder="Min" required>
-        <input class="minMaxSliderVal" type="number" [(ngModel)]="maxSliderVal" placeholder="Max" required>
-        <button class="button-54"  type="button" (click)="updateSliderVals()">Update</button>
+        <select  id="minYearSelect" [(ngModel)]="minYear">
+                <option *ngFor="let y of yearsSelection;" [value]="y">{{y}}</option>
+        </select>
+        <select id="maxYearSelect" [(ngModel)]="maxYear">
+            <option *ngFor="let y of yearsSelection;" [value]="y">{{y}}</option>
+            <option [value]="2024">2024</option>
+        </select>
+        <button class="button-54"  type="button" (click)="updateYearRange()">Update</button>
     </div>
     <label for="name">Add search query:</label>
     <div class="inputBlock">
