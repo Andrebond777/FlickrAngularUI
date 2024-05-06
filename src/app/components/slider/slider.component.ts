@@ -30,7 +30,6 @@ export class SliderComponent implements OnInit  {
   step = 1;
   @Input() disabled = false;
   sliderVal = 1950;
-  @Input() disableButton: boolean = false;
 
   @Output() sliderEvent = new EventEmitter<number>();
 

@@ -61,13 +61,18 @@
     </header>
   
     <div class="mainContainer">
-      <a *ngIf="isShow" href="{{ ph.webUrl }}" target=”_blank” class="imgSrc"><button class="button-54" type="button">Image source</button></a>
-  
-        <pinch-zoom class="mainImage" backgroundColor="rgba(0,0,0,0.85)">
-          <img src="{{ ph.imageUrl }}" medPinchZoom=" autoZoomOut: true "/>
-      </pinch-zoom>
-        <div *ngIf="isShow" >    
-          <div class="resultsClass">
+      <div class="mainImage">
+        <div *ngIf="isShow" class="imgSrcAndTitle">
+          <div><a  href="{{ ph.webUrl }}" target=”_blank” class="imgSrc"><button class="button-54" type="button">Image source</button></a></div>
+          <div>          <h2 >{{ph.title}}</h2></div>
+        </div>
+          <pinch-zoom  backgroundColor="rgba(0,0,0,0.85)">
+            <img src="{{ ph.imageUrl }}" medPinchZoom=" autoZoomOut: true "/>
+        </pinch-zoom>
+      </div>
+
+ 
+          <div *ngIf="isShow" class="resultsClass">
             <div class="yearTakenClass">
               <h1  >Taken in {{ph.year}}</h1>
             </div> 
@@ -78,13 +83,13 @@
               </div>
             </h1>
             </div> 
-        </div> 
+
         <div *ngIf="displayAllRounds">
           <h1  class="guess">Your guess {{answers[i]}}</h1>
         </div>
       </div>
-        <app-slider *ngIf="!displayAllRounds" [disabled]="isShow" [disableButton]="ph.year == -1" (sliderEvent)="slider($event)"></app-slider>
-        <div *ngIf="!displayAllRounds">
+        <app-slider *ngIf="!displayAllRounds" [disabled]="isShow" (sliderEvent)="slider($event)"></app-slider>
+        <div *ngIf="!displayAllRounds" class="nextRoundEndGameButtons">
           <button class="button-54" *ngIf="isShow && i < maxRoundNumber-1" type="button" (click)="next()">Next</button>
           <button class="button-54" *ngIf="isShow && i >= maxRoundNumber-1" type="button" (click)="endGame()">End game</button>
         </div>

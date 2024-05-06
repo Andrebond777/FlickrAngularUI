@@ -7,7 +7,7 @@
     font-style: normal;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1201px) {
 
     .resultsClass{
         width: 1200px;
@@ -23,7 +23,7 @@
         margin-left: 20px;
         margin-right: 20px;
         margin-bottom: 20px;
-        
+        margin-top: 20px;
       }
 }
 
@@ -165,7 +165,7 @@ header {
     font-size: 40px;
     color: whitesmoke;
     background-color: rgb(82, 82, 82);
-    margin-bottom: -10px;
+
     label{  
 
         margin-left: 10px;
@@ -180,7 +180,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: rgb(82, 82, 82);
     flex-direction: column;
     padding-bottom: 50px;
@@ -190,11 +190,32 @@ header {
     // }
 
     .mainImage{
+
+        .imgSrcAndTitle{
+margin-top: -10px;
+            div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 5px;
+                text-align: center;
+                @media only screen and (max-width: 1200px) {
+                h2{
+                    width: 90vw;
+                }
+            }
+            }
+
+        }
+        margin-bottom: -15px;
+    }
+
+    pinch-zoom{
         border-style: double;
         border-width: 10px;
         border-color: whitesmoke;
-        height: 70vh;
-
+        min-height: 40vh;
+        max-height: 75vh;
     }
 
     button{
@@ -209,26 +230,31 @@ header {
         }
         .mainImage{
             margin-top: 15px;
-            height: 50vh;
             flex: 0 0 auto;
         }
+
     }
+
 }
 
 progress{
     width: 488px;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1200px) {
     progress{
         width: 88vw;
     }
 }
 
 @media only screen and (min-width: 1000px) {
-    pinch-zoom{
+    .mainImage{
+
         margin-top: 20px;
         width: 1024px;
+    }
+    .nextRoundEndGameButtons{
+        margin-top: -20px;
     }
 }
 
@@ -238,9 +264,6 @@ pinch-zoom{
 
 
 .imgSrc{
-    @media only screen and (max-width: 1200px) {
-    visibility: hidden;
-    }
     button{
         background-color: rgb(82, 82, 82);
         margin-top: 20px;

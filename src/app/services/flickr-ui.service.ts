@@ -12,20 +12,9 @@ export class FlickrUiService {
   private url = '';
 
   constructor(private http: HttpClient) {}
-
-  public sga(quantity : number, searchStrings : string[]): Observable<Photo[]> {
-    let queryStr = "";
-    for(let i = 0; i < searchStrings.length; i++)
-      queryStr += "&searchStrings=" + searchStrings[i];
-
-      var headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
-      let json = JSON.stringify(searchStrings);
-    return this.http.request<Photo[]>("GET",`${environment.apiUrl}/GetImages/quantity=${quantity}`, {body : {json}});
-  }
-
   getPhotos(quantity : number, searchStrings : string[]): Observable<HttpResponse<Photo[]>> {
     let body = JSON.stringify(searchStrings);
-    let response =  this.http.post<Photo[]>(`${environment.apiUrl}/GetImages/${quantity}`, body,
+    let response =  this.http.post<Photo[]>(`${environment.apiUrl}/GetImages/${quantity}?`+Math.random(), body,
             {
                 headers : new HttpHeaders({"Content-Type": "application/json"}),
                 observe: 'response',
@@ -33,17 +22,4 @@ export class FlickrUiService {
             });
     return response;
   }
-
-  public sgfsf(webUrl : string): Observable<number> {
-    webUrl = encodeURIComponent(webUrl);
-    return this.http.get<number>(`${environment.apiUrl}/GetYear/${webUrl}`);
-  }
-
-  public getYear(webUrl : string): Observable<HttpResponse<number>> {
-    return this.http.post<number>(`${environment.apiUrl}/GetYear`, webUrl,
-    {
-        observe: 'response'
-    });
-  }
-  
 }

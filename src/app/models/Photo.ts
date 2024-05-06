@@ -3,4 +3,5 @@ export class Photo {
     webUrl = "";
     imageUrl = "";
     year = 0;
+    title="";
 }
