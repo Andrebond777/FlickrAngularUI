@@ -2,44 +2,55 @@
     <div *ngIf="displayRefreshPage" class="refreshPage">
         <button @fade class="button-54"  type="button" (click)="reloadPage()">Start New Game</button>
     </div>
-    <label for="name">Year range:</label>
-    <div class="inputBlock sliderInput">
-        <select  id="minYearSelect" [(ngModel)]="minYear">
-            <option *ngFor="let y of yearsSelection;" [disabled]="y >= maxYear" [value]="y">{{y}}</option>
-        </select>
-        <select id="maxYearSelect" [(ngModel)]="maxYear">
-            <option *ngFor="let y of yearsSelection;" [disabled]="y <= minYear" [value]="y">{{y}}</option>
-            <option [value]="2020">2020</option>
-            <option [value]="2024">2024</option>
-        </select>
-        <button class="button-54"  type="button" (click)="updateYearRange()">Update</button>
+        <label for="year">Year range:</label>
+        <div class="inputBlock sliderInput">
+            <div>
+                <select  id="minYearSelect" [(ngModel)]="minYear">
+                    <option *ngFor="let y of yearsSelection;" [disabled]="y >= maxYear" [value]="y">{{y}}</option>
+                </select>
+                <select id="maxYearSelect" [(ngModel)]="maxYear">
+                    <option *ngFor="let y of yearsSelection;" [disabled]="y <= minYear" [value]="y">{{y}}</option>
+                    <option [value]="2020">2020</option>
+                    <option [value]="2024">2024</option>
+                </select>
+            </div>
+            <div>
+                <button class="button-54"  type="button" (click)="updateYearRange()">Update</button>
+            </div>
+        </div>
+        <label for="query">Add search query:</label>
+        <div class="inputBlock">
+            <div>
+                <input type="text" [(ngModel)]="str" placeholder="Enter query" required>
+            </div>
+        <div>
+            <button [disabled]="str == ''" class="button-54"  type="button" (click)="addStr()">Add</button>
+        </div>
+        </div>
+    <div class="component">
+        <nav>
+            <ul>
+                @for (str of searchStrings; track str; let idx = $index) 
+                {
+                    <li>
+                        <div>
+                            <p>{{str}}</p>  <i class="fa fa-trash-o" (click)="deleteStr(idx)"></i>
+                        </div>
+                    </li>
+                }
+                @if(searchStrings.length == 0)
+                {
+                    <li>
+                        <div>
+                            <p style="color: #fb345c;">Queries list is empty</p>
+                        </div>
+                    </li>
+                }
+            </ul>
+            
+            </nav>
     </div>
-    <label for="name">Add search query:</label>
-    <div class="inputBlock">
-        <input type="text" [(ngModel)]="str" placeholder="Enter query" required>
-        <button [disabled]="str == ''" class="button-54"  type="button" (click)="addStr()">Add</button>
-    </div>
-    <nav>
-    <ul>
-        @for (str of searchStrings; track str; let idx = $index) 
-        {
-            <li>
-                <div>
-                    <p>{{str}}</p>  <i class="fa fa-trash-o" (click)="deleteStr(idx)"></i>
-                </div>
-            </li>
-        }
-        @if(searchStrings.length == 0)
-        {
-            <li>
-                <div>
-                    <p style="color: #fb345c;">Queries list is empty</p>
-                </div>
-            </li>
-        }
-    </ul>
-    
-    </nav>
+
     <div class="bottomButtons">
         <button class="button-54"  type="button" (click)="resetToDefault()">Reset to default</button>
         <button style="color: #fb345c;" class="button-54"  type="button" (click)="deleteAllStrs()">Delete all</button>

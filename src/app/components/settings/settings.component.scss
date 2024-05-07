@@ -9,7 +9,9 @@
     label{
         display: flex;
         margin-top: 20px;
+        margin-bottom: -7px;
         color: whitesmoke;
+        font-size: 33px;
     }
     .refreshPage{
         display: flex;
@@ -69,11 +71,11 @@ input{
     border-style: solid;
     border-color: rgb(171, 171, 171);
     width: 550px;
-    background-color: wheat;
+    background-color: whitesmoke;
 
 }
 select{
-    background-color: wheat;
+    background-color: whitesmoke;
     width: 250px;
 
 }
@@ -92,32 +94,43 @@ select{
 @media only screen and (max-width: 1000px) {
     
     .inputBlock{
-        margin-top: 5px;        
-        margin-bottom: 20px;
-        height: 66px;
-        width: 90vw;
+        height: 150px;
+        display: block;
+        justify-content: center;
+        justify-items: center;
+        div{
+            justify-content: center;
+            justify-items: center;
+            width: 90 vw;
+            select{
+                width: 40vw;
 
-        select{
-            width: 26vw;
-            font-size: 26px;
-        }
-        #maxYearSelect{
-            margin-left: 3vw;
-        }
-
-        input{
-            width: 55vw;
-        }
-        
-            .button-54{
+            }
+            #maxYearSelect{
+                margin-left:10vw;
+            }
+            button{
+                display: flex;
+                margin: 0;
+                margin-top: 15px;
+                margin-bottom: 20px;
+                display: flex;
+                justify-content: center;
+                justify-items: center;
+                width: 84vw;
+                margin-left: 3vw;
+                margin-right: 3vw;
                 white-space: nowrap;
                 overflow:auto;
                 text-overflow:clip;
-                height: 60px;
-                margin-right: 10px;
-                margin-left: 20px;
-                width: 28vw;
             }
+        }
+
+
+        input{
+            width: 90vw;
+        }
+        
         }
 }
 
@@ -143,11 +156,15 @@ button{
 
 @media only screen and (max-width: 1000px) {
     .bottomButtons{
+        display: block;
         button{
             margin: 0px;
             margin-top: 25px;
-
-            width: 90vw;
+            justify-content: center;
+            align-items: center;
+            justify-items: center;
+            width: 84vw;
+            margin-left: 3vw;
             white-space: nowrap;
             overflow:auto;
             text-overflow:clip;
@@ -167,13 +184,17 @@ ul {
 	list-style-position: inside;
 	width: 600px;
 	max-width: 100%;
-	background: wheat;
+	background: whitesmoke;
 	box-shadow: 0.25rem 0.25rem 0.75rem rgb(0 0 0 / 0.15);
 	padding: 0;
 	margin: 0;
 	border-radius: 0.1rem;
     font-size: 40px;
       
+}
+
+nav{
+    margin-top: 30px;
 }
 
 .inputBlock{width:800px;}

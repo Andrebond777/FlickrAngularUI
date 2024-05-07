@@ -142,6 +142,8 @@ export class AppComponent {
       return 1
   }
 
+  
+
   constructor(private flickrUiService: FlickrUiService, private toast : NgToastService) {
     const searchStringsFromStorage = localStorage.getItem(this.storageKeySearchStrings);
     if(searchStringsFromStorage != null)
