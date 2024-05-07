@@ -14,7 +14,7 @@ const defaultSearchStrings = [
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss',
   animations: [
-    trigger('fade', [
+    trigger('animation', [
       transition(':enter', [
         style({ opacity: 0,  transform: 'translateY(-300px)' }),
         animate(350, style({ opacity: 1,  transform: 'translateY(0px)' }))
@@ -90,6 +90,7 @@ export class SettingsComponent implements OnInit {
 
   deleteStr(index : number){
       this.searchStrings.splice(index, 1);
+      this.updateSearchStrings(this.searchStrings);
       this.toast.success({detail:"Successfully deleted the search query!",summary:'Changes will take place starting from the next game.', position:'botomCenter'});
       this.displayRefreshPage = true;
   }

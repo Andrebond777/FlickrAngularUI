@@ -192,7 +192,8 @@ header {
     // }
 
     .mainImage{
-
+        margin: auto;
+        margin-top: 20px;
         .imgSrcAndTitle{
             .button-54{
                 color: black;
@@ -230,8 +231,10 @@ header {
         i{
             margin-bottom: 15px;
             margin-right: 15px;
-            border-radius: 3px;
-            border-width: 5px;
+            border-radius: 4px;
+            padding-left: 3px;
+            padding-right: 3px;
+            border-width: 7px;
             border-style: solid;
             border-color: black;
             background-color: black;
@@ -247,7 +250,7 @@ header {
             position:absolute;
             bottom:0px;
             right:0px;
-            font-size: 50px;
+            font-size: 40px;
           }
     }
 

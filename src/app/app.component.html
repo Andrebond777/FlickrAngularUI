@@ -70,7 +70,7 @@
           <div><a  href="{{ ph.webUrl }}" target=”_blank” class="imgSrc"><button class="button-54" type="button">Image source</button></a></div>
         </div>
         <div  #target></div>
-          <pinch-zoom  backgroundColor="rgba(0,0,0,0.85)" [style]="resizePinchZoom()">
+          <pinch-zoom backgroundColor="rgba(0,0,0,0.85)" [style]="resizePinchZoom()">
             <img [style]="resizeImage()" src="{{ ph.imageUrl }}" medPinchZoom=" autoZoomOut: true "/>
             <i  [class]="getExpandOrCompressIconClass()" (click)="isImgFullScreen = !isImgFullScreen; scroll(target);"></i>
         </pinch-zoom>

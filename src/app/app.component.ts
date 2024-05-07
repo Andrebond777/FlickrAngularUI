@@ -4,6 +4,7 @@ import { FlickrUiService } from './services/flickr-ui.service';
 import confetti from 'canvas-confetti';
 import { HttpResponse } from '@angular/common/http';
 import { NgToastService } from 'ng-angular-popup';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 const defaultSearchStrings = [
   "Street view", "New York street view",  "City", "Grocery store"
@@ -12,7 +13,19 @@ const defaultSearchStrings = [
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  animations: [
+    trigger('animation', [
+      transition(':enter', [
+        style({width:'fit-content'}),
+        animate(10000, style({width:'100vw'}))
+      ]),
+      transition(':leave', [
+        style({ opacity: 1 }),
+        animate(10000, style({ opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class AppComponent {
 
@@ -49,14 +62,14 @@ export class AppComponent {
     if(this.isImgFullScreen)
       return 'width : auto; height: 100vh;';
     else
-      return '';
+      return 'max-height: 85vh;';
   }
 
   resizePinchZoom(){
     if(this.isImgFullScreen)
       return 'width : 100vw; height: 100vh;';
     else
-      return '';
+      return ' max-height: 85vh;';
   }
 
   getExpandOrCompressIconClass(){
@@ -137,6 +150,7 @@ export class AppComponent {
   endGame()
   {
     this.displayAllRounds = true;
+    this.isImgFullScreen = false;
     let currentBestResult = localStorage.getItem(this.storageKeyBestResult);
     console.log("currentBestResult: "+currentBestResult);
     if(currentBestResult != null)
