@@ -9,7 +9,7 @@
     label{
         display: flex;
         margin-top: 20px;
-        margin-bottom: -7px;
+        margin-bottom: -5px;
         color: whitesmoke;
         font-size: 33px;
     }
@@ -99,6 +99,7 @@ select{
         justify-content: center;
         justify-items: center;
         div{
+            height: 60px;
             justify-content: center;
             justify-items: center;
             width: 90 vw;
@@ -112,7 +113,7 @@ select{
             button{
                 display: flex;
                 margin: 0;
-                margin-top: 15px;
+                margin-top: 20px;
                 margin-bottom: 20px;
                 display: flex;
                 justify-content: center;
