@@ -50,7 +50,7 @@
   </div>
   
   
-  <div *ngFor="let ph of photos; index as i" [hidden]="!displayAllRounds && i!=roundNumber">
+  <div *ngFor="let ph of photos; index as i">
   <div *ngIf="displayAllRounds || i == roundNumber">
     <header>
       <div>
@@ -69,8 +69,10 @@
         <div *ngIf="isShow" class="imgSrcAndTitle">
           <div><a  href="{{ ph.webUrl }}" target=”_blank” class="imgSrc"><button class="button-54" type="button">Image source</button></a></div>
         </div>
-          <pinch-zoom  backgroundColor="rgba(0,0,0,0.85)">
-            <img src="{{ ph.imageUrl }}" medPinchZoom=" autoZoomOut: true "/>
+        <div  #target></div>
+          <pinch-zoom  backgroundColor="rgba(0,0,0,0.85)" [style]="resizePinchZoom()">
+            <img [style]="resizeImage()" src="{{ ph.imageUrl }}" medPinchZoom=" autoZoomOut: true "/>
+            <i  [class]="getExpandOrCompressIconClass()" (click)="isImgFullScreen = !isImgFullScreen; scroll(target);"></i>
         </pinch-zoom>
         <div *ngIf="isShow" class="imgSrcAndTitle">
           <div>          <h2 >{{ph.title}}</h2></div>

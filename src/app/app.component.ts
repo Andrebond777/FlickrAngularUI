@@ -45,6 +45,32 @@ export class AppComponent {
       return {'accent-color': this.calculateColor(score)};
   }
 
+  resizeImage(){
+    if(this.isImgFullScreen)
+      return 'width : auto; height: 100vh;';
+    else
+      return '';
+  }
+
+  resizePinchZoom(){
+    if(this.isImgFullScreen)
+      return 'width : 100vw; height: 100vh;';
+    else
+      return '';
+  }
+
+  getExpandOrCompressIconClass(){
+    if(this.isImgFullScreen)
+      return 'fa fa-compress';
+    else
+      return 'fa fa-expand';
+  }
+
+  scroll(el: HTMLElement) {
+    el.scrollIntoView({behavior: 'smooth'});
+  }
+
+  isImgFullScreen = false;
   title = 'Flickr';
   // @Input()
   // photo = new Photo();
@@ -103,6 +129,7 @@ export class AppComponent {
 
   async next()
   {
+    this.isImgFullScreen = false;
     this.isShow = false;
     this.roundNumber++;
   }
@@ -133,6 +160,7 @@ export class AppComponent {
     });
   }
 
+
   getBestScore() : number
   {
     let bestScore = localStorage.getItem(this.storageKeyBestResult);
@@ -142,7 +170,7 @@ export class AppComponent {
       return 1
   }
 
-  
+
 
   constructor(private flickrUiService: FlickrUiService, private toast : NgToastService) {
     const searchStringsFromStorage = localStorage.getItem(this.storageKeySearchStrings);
