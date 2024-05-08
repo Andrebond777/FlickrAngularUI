@@ -51,14 +51,14 @@ export class AppComponent {
     if(this.isImgFullScreen)
       return 'width : auto; height: 100vh;';
     else
-      return 'max-height: 80vh;';
+      return 'max-height: 70vh;';
   }
 
   resizePinchZoom(){
     if(this.isImgFullScreen)
-      return 'width : 100vw; height: 100vh;';
+      return 'width : 100vw; height: 100vh; position: fixed;   bottom: 0; right: 0; z-index: 7; margin: auto; padding:auto; border-width:0px; background-color: black;';
     else
-      return ' max-height: 80vh;';
+      return 'max-height: 70vh;';
   }
 
   getExpandOrCompressIconClass(){
@@ -113,6 +113,8 @@ export class AppComponent {
     this.answers.push(sliderVal);
     this.totalScore += this.score;
     this.isShow = true;
+    window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
+    
   }
 
   async fetchPhotos(quantity : number)
@@ -204,7 +206,7 @@ export class AppComponent {
     }
     if(this.maxYear == 0)
     {
-      this.maxYear = 2024;
+      this.maxYear = 2020;
       localStorage.setItem("maxYear", this.maxYear.toString());
     }
 

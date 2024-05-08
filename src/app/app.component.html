@@ -1,3 +1,11 @@
+<mgl-map
+[style]="'mapbox://styles/mapbox/streets-v9'"
+[zoom]="[9]"
+[center]="[-74.5, 40]"
+>
+</mgl-map>
+
+
 
 <ng-toast></ng-toast>
 <div  *ngIf="displaySettings">
@@ -72,7 +80,7 @@
         <div  #target></div>
           <pinch-zoom backgroundColor="rgba(0,0,0,0.85)" [style]="resizePinchZoom()">
             <img [style]="resizeImage()" src="{{ ph.imageUrl }}" medPinchZoom=" autoZoomOut: true "/>
-            <i  [class]="getExpandOrCompressIconClass()" (click)="isImgFullScreen = !isImgFullScreen; scroll(target);"></i>
+            <i  [class]="getExpandOrCompressIconClass()" (click)="isImgFullScreen = !isImgFullScreen;"></i>
         </pinch-zoom>
         <div *ngIf="isShow" class="imgSrcAndTitle">
           <div>          <h2 >{{ph.title}}</h2></div>
@@ -93,9 +101,10 @@
             </div> 
       </div>
       <h1 *ngIf="isShow && displayAllRounds"  class="guess">Your guess {{answers[i]}}</h1>
+
         <app-slider *ngIf="!displayAllRounds" [disabled]="isShow" (sliderEvent)="slider($event)"></app-slider>
         <div *ngIf="!displayAllRounds" class="nextRoundEndGameButtons">
-          <button class="button-54" *ngIf="isShow && i < maxRoundNumber-1" type="button" (click)="next()"
+          <button class="button-54" *ngIf="isShow && i < maxRoundNumber-1" type="button" (click)="next(); scroll(target);"
           [ngStyle]="getColor(scores[i])">Next</button>
           <button class="button-54" *ngIf="isShow && i >= maxRoundNumber-1" type="button" (click)="endGame()"
             [ngStyle]="getColor(scores[i])">End game</button>
@@ -103,7 +112,6 @@
       </div>
     </div>
   </div>
-  
   <h1 class="totalScoreClass" *ngIf="displayAllRounds">
     <button class="button-54" type="button" (click)="reloadPage()"
     [ngStyle]="getColor(totalScore / maxRoundNumber)">New Game</button>

@@ -104,7 +104,7 @@ export class SettingsComponent implements OnInit {
 
   resetToDefault(){
     this.minYear = 1900;
-    this.maxYear = 2024;
+    this.maxYear = 2020;
     this.updateYearRange();
 
     this.searchStrings = defaultSearchStrings;

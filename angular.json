@@ -104,7 +104,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "mapbox-gl/dist/mapbox-gl.css"
             ],
             "scripts": [
               "src/app/components/slider/slider.js"

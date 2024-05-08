@@ -16,6 +16,8 @@ import {NgToastModule} from 'ng-angular-popup'
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,8 +31,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PinchZoomModule,
     FormsModule,
     NgToastModule,
-    BrowserAnimationsModule
-
+    BrowserAnimationsModule,
+    NgxMapboxGLModule.withConfig({
+      accessToken: 'pk.eyJ1IjoiYW5kcmVib25kNzc3IiwiYSI6ImNsdnlhdm00YjB2czgycW9nMzdxcndoa3UifQ.PfldMh8UJM0ZrfwlAFoUOQ', // Optional, can also be set per map (accessToken input of mgl-map)
+    })
   ],
   providers: [
     provideAnimationsAsync()
