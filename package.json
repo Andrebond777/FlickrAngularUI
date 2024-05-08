@@ -48,6 +48,7 @@
     "ngx13-pinch-zoom": "^3.0.1",
     "npm": "^10.5.2",
     "rxjs": "~7.8.0",
+    "toppop-cities": "^1.0.1",
     "tslib": "^2.3.0",
     "viewerjs": "^1.11.6",
     "zone.js": "~0.14.3"

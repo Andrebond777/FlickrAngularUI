@@ -207,6 +207,7 @@ header {
                 align-items: center;
                 text-align: center;
                 h2{
+                    max-width: 90vw;
                     margin-bottom: 3px;
                 }
                 @media only screen and (max-width: 1200px) {
@@ -218,6 +219,17 @@ header {
 
         }
         margin-bottom: -15px;
+    }
+
+    @media only screen and (min-width: 1200px) {
+        img{
+            min-height: 60vh;
+            min-width: auto;
+        }
+        pinch-zoom{
+            min-height: 60vh;
+            min-width: auto;
+        }
     }
 
     pinch-zoom{

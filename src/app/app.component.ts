@@ -6,6 +6,7 @@ import { HttpResponse } from '@angular/common/http';
 import { NgToastService } from 'ng-angular-popup';
 import { animate, style, transition, trigger } from '@angular/animations';
 
+import topCitiesJSON from '../json/ua.json';
 const defaultSearchStrings = [
   "Street view", "New York street view",  "City", "Grocery store"
 ];
@@ -13,19 +14,7 @@ const defaultSearchStrings = [
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
-  animations: [
-    trigger('animation', [
-      transition(':enter', [
-        style({width:'fit-content'}),
-        animate(10000, style({width:'100vw'}))
-      ]),
-      transition(':leave', [
-        style({ opacity: 1 }),
-        animate(10000, style({ opacity: 0 }))
-      ])
-    ])
-  ]
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
 
@@ -62,14 +51,14 @@ export class AppComponent {
     if(this.isImgFullScreen)
       return 'width : auto; height: 100vh;';
     else
-      return 'max-height: 85vh;';
+      return 'max-height: 80vh;';
   }
 
   resizePinchZoom(){
     if(this.isImgFullScreen)
       return 'width : 100vw; height: 100vh;';
     else
-      return ' max-height: 85vh;';
+      return ' max-height: 80vh;';
   }
 
   getExpandOrCompressIconClass(){
@@ -187,14 +176,24 @@ export class AppComponent {
 
 
   constructor(private flickrUiService: FlickrUiService, private toast : NgToastService) {
-    const searchStringsFromStorage = localStorage.getItem(this.storageKeySearchStrings);
+
+    let topCities : string[] = [];    
+    let obj  = topCitiesJSON.entries();
+    for (const iterator of obj) 
+      topCities.push(iterator[1].city);
+    topCities.push("Ukraine");
+    for (const iterator of topCities) {
+      console.log(iterator);
+    }
+`    const searchStringsFromStorage = localStorage.getItem(this.storageKeySearchStrings);
     if(searchStringsFromStorage != null)
     {
       const searchStringsFromStorageParsed = JSON.parse(searchStringsFromStorage);
       this.searchStrings = searchStringsFromStorageParsed;
     }
     else
-      this.searchStrings = defaultSearchStrings;
+      this.searchStrings = defaultSearchStrings;`
+    this.searchStrings = topCities;
 
     this.minYear = Number(localStorage.getItem("minYear"));
     this.maxYear = Number(localStorage.getItem("maxYear"));
