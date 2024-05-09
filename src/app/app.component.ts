@@ -1,13 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Photo } from './models/Photo';
 import { FlickrUiService } from './services/flickr-ui.service';
 import confetti from 'canvas-confetti';
 import { HttpResponse } from '@angular/common/http';
 import { NgToastService } from 'ng-angular-popup';
-import { animate, style, transition, trigger } from '@angular/animations';
 
-import topCitiesJSON from '../json/ua.json';
-import mapboxgl from 'mapbox-gl';
 import { LngLat } from '@maptiler/sdk';
 const defaultSearchStrings = [
   "Street view", "New York street view",  "City", "Grocery store"
@@ -198,23 +195,23 @@ export class AppComponent {
 
   constructor(private flickrUiService: FlickrUiService, private toast : NgToastService) {
 
-    let topCities : string[] = [];    
-    let obj  = topCitiesJSON.entries();
-    for (const iterator of obj) 
-      topCities.push(iterator[1].city);
-    topCities.push("Ukraine");
-    for (const iterator of topCities) {
-      console.log(iterator);
-    }
-`    const searchStringsFromStorage = localStorage.getItem(this.storageKeySearchStrings);
+    // let topCities : string[] = [];    
+    // let obj  = topCitiesJSON.entries();
+    // for (const iterator of obj) 
+    //   topCities.push(iterator[1].city);
+    // topCities.push("Ukraine");
+    // for (const iterator of topCities) {
+    //   console.log(iterator);
+    // }
+    //this.searchStrings = topCities;
+    const searchStringsFromStorage = localStorage.getItem(this.storageKeySearchStrings);
     if(searchStringsFromStorage != null)
     {
       const searchStringsFromStorageParsed = JSON.parse(searchStringsFromStorage);
       this.searchStrings = searchStringsFromStorageParsed;
     }
     else
-      this.searchStrings = defaultSearchStrings;`
-    this.searchStrings = topCities;
+      this.searchStrings = defaultSearchStrings;
 
     this.minYear = Number(localStorage.getItem("minYear"));
     this.maxYear = Number(localStorage.getItem("maxYear"));

@@ -48,7 +48,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -104,8 +104,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "mapbox-gl/dist/mapbox-gl.css"
+              "src/styles.scss"
             ],
             "scripts": [
               "src/app/components/slider/slider.js"
