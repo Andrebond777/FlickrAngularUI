@@ -48,7 +48,7 @@ ngAfterViewInit() {
     zoom: initialState.zoom
   }); 
 
-  var marker = new Marker();
+  var marker = new Marker({color: "#000000"});
 
   this.map.on('click',  (e) => {
       if(!this.isSubmitPressed)
@@ -63,14 +63,52 @@ ngAfterViewInit() {
     this.clickEvent.emit(marker.getLngLat());
     if(this.actualCoordinates.lat != 0 && this.actualCoordinates.lat != 0)
     {
-      var actualMarker = new Marker({color: "#fc030f"});
+      var actualMarker = new Marker({color: "#00de2c"});
       actualMarker.setLngLat(this.actualCoordinates).addTo(this.map!);
       this.isSubmitPressed = true;
+      console.log("sfaadf", marker._lngLat.lng, marker._lngLat.lat);
+      console.log("sfaadf", this.actualCoordinates.lng, this.actualCoordinates.lat);
+      drawLine();
     }
-   }
-   
+  }  
 
+  var drawLine = () =>{
 
+      this.map!.addSource('lines', {
+          'type': 'geojson',
+          'data': {
+              'type': 'FeatureCollection',
+              'features': [
+                  {
+                      'type': 'Feature',
+                      'properties': {
+                          'color': '#000000'
+                      },
+                      'geometry': {
+                          'type': 'LineString',
+                          'coordinates': [
+                              [marker._lngLat.lng, marker._lngLat.lat],
+                              [this.actualCoordinates.lng, this.actualCoordinates.lat]
+                          ]
+                      }
+                  },
+              ]
+          }
+      });
+      this.map!.addLayer({
+          'id': 'lines',
+          'type': 'line',
+          'source': 'lines',
+          'paint': {
+              'line-width': 3,
+              // Use a get expression (https://docs.maptiler.com/gl-style-specification/expressions/#get)
+              // to set the line-color to a feature property value.
+              'line-color': ['get', 'color']
+          }
+      });
+  }
+
+  this.map.getCanvas().style.cursor = 'crosshair';
 }
 
 

@@ -205,92 +205,9 @@ header {
         }
     }
 
-    .mainImage{
-        //margin: auto;
 
-        .imgSrcAndTitle{
-            .button-54{
-                color: black;
-                background-color: whitesmoke;
-                margin-bottom: 20px;
-                margin-top: 0px;
-            }
-            div{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                h2{
-                    max-width: 90vw;
-                    margin-bottom: 3px;
-                }
-                @media only screen and (max-width: 1200px) {
-                h2{
-                    width: 90vw;
-                }
-            }
-            }
 
-        }
-        margin-bottom: -15px;
-    }
-
-    @media only screen and (min-width: 1200px) {
-        img{
-            min-height: 60vh; 
-            min-width: auto;
-        }
-        pinch-zoom{
-            min-height: 60vh;
-            min-width: auto;
-        }
-    }
-
-    pinch-zoom{
-        cursor: crosshair;
-        margin: auto;
-        border-style: double;
-        border-width: 10px;
-        border-color: white;
-        border-radius: 10px;
-        height:fit-content;
-        width:fit-content;
-        margin-bottom: 10px;
-
-        i{
-            cursor: pointer;
-            margin-bottom: 15px;
-            margin-right: 15px;
-            border-radius: 4px;
-            padding-left: 3px;
-            padding-right: 3px;
-            border-width: 7px;
-            border-style: solid;
-            border-color: black;
-            background-color: black;
-            opacity: 0.5;
-        }
-        i:hover{
-            opacity: 0.8;
-        }
-
-        .fa {
-            text-shadow: 0px 1px 4px black;
-            color: whitesmoke;
-            position:absolute;
-            bottom:0px;
-            right:0px;
-            font-size: 40px;
-          }
-    }
-
-    @media only screen and (max-width: 1200px) {
-    pinch-zoom{
-        i{
-            visibility: hidden;
-        }
-    }
-}
+    
 
     button{
         margin-top: 50px;
@@ -302,11 +219,6 @@ header {
         button{
             margin-top: -10px;
         }
-        .mainImage{
-            margin-top: 15px;
-            flex: 0 0 auto;
-        }
-
     }
 
 }
@@ -328,10 +240,6 @@ progress{
 }
 
 @media only screen and (min-width: 1000px) {
-    .mainImage{
-
-        margin-top: 20px;
-    }
     .nextRoundEndGameButtons{
         margin-top: -20px;
         .button-54{
@@ -341,21 +249,9 @@ progress{
     }
 }
 
-pinch-zoom{
-    background-color: rgb(82, 82, 82);
-}
 
 
-.imgSrc{
-    button{
-        background-color: rgb(82, 82, 82);
-        margin-top: 20px;
-      }
 
-    .button-54{
-        color: whitesmoke;
-    }
-}
 
 .newGame{
     

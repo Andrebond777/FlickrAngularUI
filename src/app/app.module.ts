@@ -16,13 +16,15 @@ import {NgToastModule} from 'ng-angular-popup'
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MapComponent } from './components/map/map.component';
+import { ImageComponent } from './components/image/image.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SettingsComponent,
-    MapComponent
+    MapComponent,
+    ImageComponent
   ],
   imports: [
     BrowserModule,
