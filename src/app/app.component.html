@@ -86,7 +86,6 @@
         <button *ngIf="!isShow" [disabled]="isMarkerSet == false" id="submit" class="button-54"  type="button" (click)="onSubmit()" >
           <span >Submit</span>
         </button>
-        <app-map (clickEvent)="calculateGeoScore($event)" [requestValEvent]="requestGeoValues.asObservable()"></app-map>
 
         <div *ngIf="!displayAllRounds" class="nextRoundEndGameButtons">
           <button class="button-54" *ngIf="isShow && i < maxRoundNumber-1" type="button" (click)="next(); scroll(target);"
@@ -102,3 +101,5 @@
     [ngStyle]="getColor(totalScore / maxRoundNumber)">New Game</button>
   </h1>
 </div>
+
+<app-map (clickEvent)="calculateGeoScore($event)" [requestValEvent]="requestGeoValues.asObservable()"></app-map>
