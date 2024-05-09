@@ -37,7 +37,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/@maptiler/sdk/dist/maptiler-sdk.css",
+              "mapbox-gl/dist/mapbox-gl.css"
             ],
             "scripts": [
             ]
@@ -105,6 +107,7 @@
             ],
             "styles": [
               "src/styles.scss",
+              "node_modules/@maptiler/sdk/dist/maptiler-sdk.css",
               "mapbox-gl/dist/mapbox-gl.css"
             ],
             "scripts": [
