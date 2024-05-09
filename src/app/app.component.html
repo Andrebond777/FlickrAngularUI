@@ -1,12 +1,3 @@
-<mgl-map
-[style]="'mapbox://styles/mapbox/streets-v9'"
-[zoom]="[9]"
-[center]="[-74.5, 40]"
->
-</mgl-map>
-
-
-
 <ng-toast></ng-toast>
 <div  *ngIf="displaySettings">
   <header>
@@ -93,21 +84,26 @@
               <h1  >Taken in {{ph.year}}</h1>
             </div> 
             <div class="scoreClass">
-              <h1 >Score &nbsp;<h1 [ngStyle]="getColor(scores[i])">  <span> {{ scores[i] }}</span></h1>
-              <div *ngIf="scores.length > i">
-                <progress max="1000" [value]="scores[i]" [ngStyle]="getAccentColor(scores[i])"></progress>
+              <h1 >Score &nbsp;<h1 [ngStyle]="getColor(yearScores[i])">  <span> {{ yearScores[i] }}</span></h1>
+              <div *ngIf="yearScores.length > i">
+                <progress max="1000" [value]="yearScores[i]" [ngStyle]="getAccentColor(yearScores[i])"></progress>
               </div>
             </h1>
             </div> 
       </div>
       <h1 *ngIf="isShow && displayAllRounds"  class="guess">Your guess {{answers[i]}}</h1>
 
-        <app-slider *ngIf="!displayAllRounds" [disabled]="isShow" (sliderEvent)="slider($event)"></app-slider>
+        <app-slider *ngIf="!displayAllRounds" (sliderEvent)="calculateYearScore($event)" [requestValEvent]="requestYearValues.asObservable()"></app-slider>
+        <button *ngIf="!isShow" [disabled]="isMarkerSet == false" id="submit" class="button-54"  type="button" (click)="onSubmit()" >
+          <span >Submit</span>
+        </button>
+        <app-map (clickEvent)="calculateGeoScore($event)" [requestValEvent]="requestGeoValues.asObservable()"></app-map>
+
         <div *ngIf="!displayAllRounds" class="nextRoundEndGameButtons">
           <button class="button-54" *ngIf="isShow && i < maxRoundNumber-1" type="button" (click)="next(); scroll(target);"
-          [ngStyle]="getColor(scores[i])">Next</button>
+          [ngStyle]="getColor(yearScores[i])">Next</button>
           <button class="button-54" *ngIf="isShow && i >= maxRoundNumber-1" type="button" (click)="endGame()"
-            [ngStyle]="getColor(scores[i])">End game</button>
+            [ngStyle]="getColor(yearScores[i])">End game</button>
         </div>
       </div>
     </div>

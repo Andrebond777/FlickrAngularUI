@@ -188,15 +188,30 @@ header {
     //     height: 1000px;
     // }
 
+    #submit{
+        button{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            margin-top: 40px;
+            width: 180px;
+            background-color: rgb(82, 82, 82);
+            margin-bottom: 20px
+          }
+        .button-54{
+            color: whitesmoke;
+        }
+    }
+
     .mainImage{
         //margin: auto;
 
-        padding-top: 20px;
         .imgSrcAndTitle{
             .button-54{
                 color: black;
                 background-color: whitesmoke;
-                margin-bottom: 25px;
+                margin-bottom: 20px;
                 margin-top: 0px;
             }
             div{
@@ -235,6 +250,7 @@ header {
         border-style: double;
         border-width: 10px;
         border-color: white;
+        border-radius: 10px;
         height:fit-content;
         width:fit-content;
         margin-bottom: 10px;

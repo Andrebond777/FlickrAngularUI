@@ -1,6 +1,7 @@
 
 import {Component, Output, EventEmitter, Input, OnInit} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import { Observable, Subscription } from 'rxjs';
 /**
  * @title Configurable slider
  */
@@ -22,9 +23,12 @@ export class SliderComponent implements OnInit  {
   }
 
    ngOnInit(): void {
-
+    this.requestValEventSubscription = this.requestValEvent.subscribe(() => this.onSubmit());
   }
-
+  ngOnDestroy() {
+    this.requestValEventSubscription.unsubscribe();
+  }
+  
   
   @Input()
   min : number;
@@ -32,6 +36,9 @@ export class SliderComponent implements OnInit  {
   max : number;
   @Input() 
   disabled = false;
+  private requestValEventSubscription!: Subscription;
+  @Input()
+  requestValEvent!: Observable<void>;
 
   sliderVal : number;
 

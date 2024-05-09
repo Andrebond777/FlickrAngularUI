@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Photo } from './models/Photo';
 import { FlickrUiService } from './services/flickr-ui.service';
 import confetti from 'canvas-confetti';
@@ -7,6 +7,8 @@ import { NgToastService } from 'ng-angular-popup';
 import { animate, style, transition, trigger } from '@angular/animations';
 
 import topCitiesJSON from '../json/ua.json';
+import mapboxgl from 'mapbox-gl';
+import { LngLat } from '@maptiler/sdk';
 const defaultSearchStrings = [
   "Street view", "New York street view",  "City", "Grocery store"
 ];
@@ -36,6 +38,9 @@ export class AppComponent {
     let colorVal = `rgb(${r}, ${g}, 0)`;
     return colorVal;
   }
+
+
+  
 
   getColor(score : number)
   {
@@ -77,12 +82,14 @@ export class AppComponent {
   // @Input()
   // photo = new Photo();
   photos : Photo[] = [];
-  scores: number[] = [];
+  yearScores: number[] = [];
+  geoScores: number[] = [];
   answers: number[] = [];
   searchStrings: string[] = [];
   roundNumber = -1;
   maxRoundNumber = 5;
-  score = 1;
+  coordinates : LngLat = new LngLat(0, 0);
+  isMarkerSet = false;
   totalScore = 0;
   isShow = false;
   displayAllRounds = false;
@@ -91,6 +98,9 @@ export class AppComponent {
   storageKeySearchStrings = "searchStrings";
   minYear = 0;
   maxYear = 0;
+
+  @Output() requestYearValues = new EventEmitter<void>();
+  @Output() requestGeoValues = new EventEmitter<LngLat>();
 
   toggleSettings()
   {
@@ -101,20 +111,50 @@ export class AppComponent {
     return this.photos.slice(startIndex, endIndex); 
   } 
 
-  async slider(sliderVal : number)
-  {
-    this.score = Math.round(1000 - Math.abs(sliderVal - this.photos[this.roundNumber].year) * (5000 / (this.maxYear - this.minYear)));
 
-    if(this.score < 0)
-      this.score = 0;
-    if(this.score > 900)
-      this.celebrateCenter();
-    this.scores.push(this.score);
-    this.answers.push(sliderVal);
-    this.totalScore += this.score;
+  onSubmit(){
+    this.requestYearValues.emit();
+    this.requestGeoValues.emit(new LngLat(this.photos[this.roundNumber].longtitude, 
+      this.photos[this.roundNumber].latitude));
     this.isShow = true;
+    this.isMarkerSet = false;
     window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
-    
+  }
+
+  calculateGeoScore(marker : LngLat)
+  {
+    if(marker)
+    {
+      if(this.isMarkerSet == false)
+        this.isMarkerSet = true;
+      else
+      {
+        let geoScore = 1;
+        geoScore = Math.round(1000 - 20 * (Math.abs(marker.lat - this.photos[this.roundNumber].latitude) 
+                                   + Math.abs(marker.lng - this.photos[this.roundNumber].longtitude)));
+        if(geoScore < 0)
+          geoScore = 0;
+        this.geoScores.push(geoScore);
+        console.log(marker);
+        console.log(new LngLat(this.photos[this.roundNumber].longtitude, 
+          this.photos[this.roundNumber].latitude));
+        console.log(geoScore);
+      }
+    }
+  }
+
+  async calculateYearScore(sliderVal : number)
+  {
+    let yearScore = 1;
+    yearScore = Math.round(1000 - Math.abs(sliderVal - this.photos[this.roundNumber].year) * (5000 / (this.maxYear - this.minYear)));
+
+    if(yearScore < 0)
+      yearScore = 0;
+    if(yearScore > 900)
+      this.celebrateCenter();
+    this.yearScores.push(yearScore);
+    this.answers.push(sliderVal);
+    this.totalScore += yearScore;
   }
 
   async fetchPhotos(quantity : number)
@@ -122,7 +162,7 @@ export class AppComponent {
     if(this.searchStrings.length > 0)
     {
       await this.flickrUiService
-      .getPhotos(quantity, this.searchStrings)
+      .getPhotos(true, quantity, this.searchStrings)
       .subscribe((result: HttpResponse<Photo[]>) => {   
           this.photos = this.photos.concat(result.body!);
       });

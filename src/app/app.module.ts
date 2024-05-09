@@ -15,13 +15,14 @@ import { FormsModule } from '@angular/forms';
 import {NgToastModule} from 'ng-angular-popup'
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MapComponent } from './components/map/map.component';
 
-import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SettingsComponent
+    SettingsComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -31,10 +32,7 @@ import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
     PinchZoomModule,
     FormsModule,
     NgToastModule,
-    BrowserAnimationsModule,
-    NgxMapboxGLModule.withConfig({
-      accessToken: 'pk.eyJ1IjoiYW5kcmVib25kNzc3IiwiYSI6ImNsdnlhdm00YjB2czgycW9nMzdxcndoa3UifQ.PfldMh8UJM0ZrfwlAFoUOQ', // Optional, can also be set per map (accessToken input of mgl-map)
-    })
+    BrowserAnimationsModule
   ],
   providers: [
     provideAnimationsAsync()
