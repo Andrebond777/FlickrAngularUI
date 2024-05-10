@@ -1,14 +1,15 @@
 
-#map {position: absolute;bottom: 0; width: 90vw; height: 50vh; }
+
 
 
 
 .map-wrap {
 
   .map {
-
-    width: 80vw;
-    height: 50vh;
+    box-sizing: border-box;
+    max-width: 100%;
+    min-width: 30vw;
+    height: 70vh;
     border-style: double;
     border-width: 10px;
     border-color: white;

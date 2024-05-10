@@ -48,7 +48,7 @@ ngAfterViewInit() {
     zoom: initialState.zoom
   }); 
 
-  var marker = new Marker({color: "#000000"});
+  var marker = new Marker({color: "#ff0000"});
 
   this.map.on('click',  (e) => {
       if(!this.isSubmitPressed)
@@ -63,7 +63,7 @@ ngAfterViewInit() {
     this.clickEvent.emit(marker.getLngLat());
     if(this.actualCoordinates.lat != 0 && this.actualCoordinates.lat != 0)
     {
-      var actualMarker = new Marker({color: "#00de2c"});
+      var actualMarker = new Marker({color: "#00c206"});
       actualMarker.setLngLat(this.actualCoordinates).addTo(this.map!);
       this.isSubmitPressed = true;
       console.log("sfaadf", marker._lngLat.lng, marker._lngLat.lat);

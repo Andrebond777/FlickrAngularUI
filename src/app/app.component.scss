@@ -7,7 +7,7 @@
         display: inline-block;
         display: flex;
         justify-content: space-between;
-        margin-bottom: -70px;
+        margin-bottom: 0px;
     }
   }
 
@@ -205,9 +205,28 @@ header {
         }
     }
 
+    .imageMap{
+        margin-bottom: -25px;
+        width: 95vw;
+        display: inline-block;
+        display: flex;
+        justify-content: space-between;
+        app-map{
+            margin-top: 20px;
+            margin-left: 30px;
+            float: right;
+            flex-shrink: 1;
+            width: 100%;
+block-size: fit-content;
+
+        }
+        app-image{
+            top: 0;
+            flex-shrink: 0;
+        }
+    }
 
 
-    
 
     button{
         margin-top: 50px;

@@ -1,10 +1,11 @@
 
 
-<div class="yearComponent">
-  <p>{{slider.value}}</p>
-</div>
+
 
 <div [hidden]="disabled" class="sliderWrapper">
+  <div class="yearComponent">
+    <p>{{slider.value}}</p>
+  </div>
 <input [disabled]="disabled"  type="range" min="{{min}}" max="{{max}}"  class="slider" [(ngModel)]="sliderVal" #slider>
 </div>
 

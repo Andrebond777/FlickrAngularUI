@@ -66,21 +66,35 @@
     <div class="mainContainer">
 
         <div #target></div>
-        <app-image [isShow]="isShow" [isImgFullScreen]="isImgFullScreen" [photo]="ph"></app-image>
- 
-          <div *ngIf="isShow" class="resultsClass">
+        <div class="imageMap">
+          <app-image [isShow]="isShow" [isImgFullScreen]="isImgFullScreen" [photo]="ph"></app-image>
+          <app-map (clickEvent)="calculateGeoScore($event)" [requestValEvent]="requestGeoValues.asObservable()"></app-map>
+        </div>
+      <div *ngIf="isShow" class="resultsClass">
             <div class="yearTakenClass">
-              <h1  >Taken in {{ph.year}}</h1>
+              <h1  >Your guess {{answers[i]}}</h1>
             </div> 
             <div class="scoreClass">
-              <h1 >Score &nbsp;<h1 [ngStyle]="getColor(yearScores[i])">  <span> {{ yearScores[i] }}</span></h1>
+              <h1 >Year score &nbsp;<h1 [ngStyle]="getColor(yearScores[i])">  <span> {{ yearScores[i] }}</span></h1>
               <div *ngIf="yearScores.length > i">
                 <progress max="1000" [value]="yearScores[i]" [ngStyle]="getAccentColor(yearScores[i])"></progress>
               </div>
             </h1>
             </div> 
       </div>
-      <h1 *ngIf="isShow && displayAllRounds"  class="guess">Your guess {{answers[i]}}</h1>
+      <div *ngIf="isShow" class="resultsClass">
+        <div class="yearTakenClass">
+          <h1  >Taken in {{ph.year}}</h1>
+        </div> 
+        <div class="scoreClass">
+          <h1>Location score &nbsp;<h1 [ngStyle]="getColor(geoScores[i])">  <span> {{ geoScores[i] }}</span></h1>
+          <div *ngIf="yearScores.length > i">
+            <progress max="1000" [value]="geoScores[i]" [ngStyle]="getAccentColor(geoScores[i])"></progress>
+          </div>
+        </h1>
+        </div> 
+  </div>
+      <!-- <h1 *ngIf="isShow && displayAllRounds"  class="guess">Your guess {{answers[i]}}</h1> -->
 
         <app-slider *ngIf="!displayAllRounds" (sliderEvent)="calculateYearScore($event)" [requestValEvent]="requestYearValues.asObservable()"></app-slider>
         <button *ngIf="!isShow" [disabled]="isMarkerSet == false" id="submit" class="button-54"  type="button" (click)="onSubmit()" >
@@ -89,9 +103,9 @@
 
         <div *ngIf="!displayAllRounds" class="nextRoundEndGameButtons">
           <button class="button-54" *ngIf="isShow && i < maxRoundNumber-1" type="button" (click)="next(); scroll(target);"
-          [ngStyle]="getColor(yearScores[i])">Next</button>
+          [ngStyle]="getColor((yearScores[i]+geoScores[i])/2)">Next</button>
           <button class="button-54" *ngIf="isShow && i >= maxRoundNumber-1" type="button" (click)="endGame()"
-            [ngStyle]="getColor(yearScores[i])">End game</button>
+            [ngStyle]="getColor((yearScores[i]+geoScores[i])/2)">End game</button>
         </div>
       </div>
     </div>
@@ -101,5 +115,3 @@
     [ngStyle]="getColor(totalScore / maxRoundNumber)">New Game</button>
   </h1>
 </div>
-
-<app-map (clickEvent)="calculateGeoScore($event)" [requestValEvent]="requestGeoValues.asObservable()"></app-map>
