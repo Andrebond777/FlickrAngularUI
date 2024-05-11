@@ -2,8 +2,8 @@
     <!-- <div *ngIf="isShow" class="imgSrcAndTitle">
       <div><a  href="{{ photo.webUrl }}" target=”_blank” class="imgSrc"><button class="button-54" type="button">Image source</button></a></div>
     </div> -->
-      <pinch-zoom backgroundColor="rgba(0,0,0,0.85)" >
-        <img  src="{{ photo.imageUrl }}" medPinchZoom=" autoZoomOut: true "/>
+      <pinch-zoom backgroundColor="rgba(0,0,0,0.85)" [style]="resizePinchZoom(this.isImgFullScreen)">
+        <img [style]="resizeImage(this.isImgFullScreen)" src="{{ photo.imageUrl }}" medPinchZoom=" autoZoomOut: true "/>
         <i  [class]="getExpandOrCompressIconClass()" (click)="isImgFullScreen = !isImgFullScreen;"></i>
     </pinch-zoom>
     <div *ngIf="this.isImgFullScreen" [style]="resizePinchZoom(!this.isImgFullScreen)"></div>

@@ -18,14 +18,14 @@ export class ImageComponent {
     if(resize)
       return 'width : auto; height: 100vh; max-width: 100vw;  z-index: 7;';
     else
-      return 'height:fit-content;  z-index: 6; width: fit-content; max-width: 65vw;';
+      return ' z-index: 6;';
   }
 
   resizePinchZoom(resize : boolean){
     if(resize)
       return 'width : 100vw; height: 100vh; max-width: 100vw; position: fixed;   bottom: 0; right: 0; z-index: 7; margin: auto; padding:auto; border-width:0px; background-color: black;';
     else
-      return 'z-index:6;  position: relative; width: fit-content;  max-width: 65vw;';
+      return 'z-index:6;  position: relative;';
   }
 
   getExpandOrCompressIconClass(){
