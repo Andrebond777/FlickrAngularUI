@@ -25,7 +25,7 @@ export class ImageComponent {
     if(resize)
       return 'width : 100vw; height: 100vh; max-width: 100vw; position: fixed;   bottom: 0; right: 0; z-index: 7; margin: auto; padding:auto; border-width:0px; background-color: black;';
     else
-      return 'height:70vh; max-height: 70vh; z-index:6;  position: relative; width: fit-content;  max-width: 65vw;';
+      return 'z-index:6;  position: relative; width: fit-content;  max-width: 65vw;';
   }
 
   getExpandOrCompressIconClass(){

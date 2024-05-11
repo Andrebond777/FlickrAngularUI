@@ -107,7 +107,7 @@
 .inputBlock{
 
     
-height: 150px;
+
     option{
         font-size: 30px;
         font-family: 'Luminari';
@@ -159,6 +159,7 @@ select{
     
 .inputBlock{
     input{
+        height: 60px;
         width: 90vw;
     }
     #minYearSelect{
