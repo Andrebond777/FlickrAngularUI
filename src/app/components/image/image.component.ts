@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { Photo } from '../../models/Photo';
 
 @Component({
@@ -9,23 +9,23 @@ import { Photo } from '../../models/Photo';
 export class ImageComponent {
   @Input()
   isShow = false;
-  @Input()
-  isImgFullScreen
+  @Output()
+  isImgFullScreen = false
   @Input()
   photo = new Photo();
 
-  resizeImage(){
-    if(this.isImgFullScreen)
-      return 'width : auto; height: 100vh; max-width: 100vw; ';
+  resizeImage(resize : boolean){
+    if(resize)
+      return 'width : auto; height: 100vh; max-width: 100vw;  z-index: 7;';
     else
-      return 'max-height: 70vh;';
+      return 'height:auto;  max-height: 70vh;  z-index: 6; width: auto; max-width: 60vw;';
   }
 
-  resizePinchZoom(){
-    if(this.isImgFullScreen)
-      return 'width : 100vw; height: 100vh;         max-width: 100vw; position: fixed;   bottom: 0; right: 0; z-index: 7; margin: auto; padding:auto; border-width:0px; background-color: black;';
+  resizePinchZoom(resize : boolean){
+    if(resize)
+      return 'width : 100vw; height: 100vh; max-width: 100vw; position: fixed;   bottom: 0; right: 0; z-index: 7; margin: auto; padding:auto; border-width:0px; background-color: black;';
     else
-      return 'max-height: 70vh;';
+      return 'height:70vh; max-height: 70vh; z-index:6;  position: relative; width: fit-content;  max-width: 60vw;';
   }
 
   getExpandOrCompressIconClass(){

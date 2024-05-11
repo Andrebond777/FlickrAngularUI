@@ -4,6 +4,7 @@ import { LngLat, Map, MapStyle, Marker, config, coordinates } from '@maptiler/sd
 import '@maptiler/sdk/dist/maptiler-sdk.css';
 import { Observable, Subscription } from 'rxjs';
 
+import haversine from 'haversine-distance'
 
 
 @Component({
@@ -45,7 +46,8 @@ ngAfterViewInit() {
     container: this.mapContainer.nativeElement,
     style: MapStyle.STREETS,
     center: [initialState.lng, initialState.lat],
-    zoom: initialState.zoom
+    zoom: initialState.zoom,
+    fullscreenControl: true
   }); 
 
   var marker = new Marker({color: "#ff0000"});
@@ -66,9 +68,30 @@ ngAfterViewInit() {
       var actualMarker = new Marker({color: "#00c206"});
       actualMarker.setLngLat(this.actualCoordinates).addTo(this.map!);
       this.isSubmitPressed = true;
-      console.log("sfaadf", marker._lngLat.lng, marker._lngLat.lat);
-      console.log("sfaadf", this.actualCoordinates.lng, this.actualCoordinates.lat);
+
       drawLine();
+
+      var distanceContainer = document.getElementById('distance');
+      distanceContainer!.innerHTML = '';
+      var haversine_m = haversine(marker._lngLat, this.actualCoordinates); //Results in meters (default)
+      var haversine_km = Math.floor(haversine_m /1000); //Results in kilometers
+      var value = document.createElement('pre');
+      value.textContent = "You were off by: " + haversine_km + "km"
+      distanceContainer!.appendChild(value);
+      let zoom = 5;
+
+      zoom -= Math.floor(Math.abs(marker._lngLat.lng-this.actualCoordinates.lng) / 10);
+      zoom -= Math.floor(Math.abs(marker._lngLat.lat-this.actualCoordinates.lat) / 5);
+      if(zoom<0)
+      zoom = 0;
+      this.map!.setZoom(zoom);
+      // value.textContent = "lng = " + Math.floor(Math.abs(marker._lngLat.lng-this.actualCoordinates.lng) / 10)
+      // + " lat = " + Math.floor(Math.abs(marker._lngLat.lat-this.actualCoordinates.lat) / 5)
+      // + " zoom = " + zoom;
+
+      this.map!.setCenter([(marker._lngLat.lng+this.actualCoordinates.lng)/2, (marker._lngLat.lat+this.actualCoordinates.lat)/2]);
+      
+
     }
   }  
 
@@ -82,7 +105,7 @@ ngAfterViewInit() {
                   {
                       'type': 'Feature',
                       'properties': {
-                          'color': '#000000'
+                          'color': 'rgb(82, 82, 82)'
                       },
                       'geometry': {
                           'type': 'LineString',

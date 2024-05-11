@@ -116,6 +116,8 @@ export class SettingsComponent implements OnInit {
   resetToDefault(){
     this.minYear = 1900;
     this.maxYear = 2020;
+    this.enableYear = true;
+    this.enableGeo = true;
     this.updateYearRangeGuessMode();
 
     this.searchStrings = defaultSearchStrings;

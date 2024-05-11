@@ -67,13 +67,15 @@
 
         <div #target></div>
         <div class="imageMap">
-          <app-image [isShow]="isShow" [isImgFullScreen]="isImgFullScreen" [photo]="ph"></app-image>
-          <app-map *ngIf="enableGeo" (clickEvent)="calculateGeoScore($event)" [requestValEvent]="requestGeoValues.asObservable()"></app-map>
+          <app-image [isShow]="isShow" [photo]="ph"></app-image>
+            <app-map *ngIf="enableGeo" (clickEvent)="calculateGeoScore($event)" [requestValEvent]="requestGeoValues.asObservable()"></app-map>
+
+
         </div>
       <div *ngIf="isShow" class="resultsClass">
             <div class="yearTakenClass">
               
-              <a  href="{{ ph.webUrl }}" target=”_blank” class="imgSrc"><h2>{{ph.title}}</h2>2</a>
+              <a  href="{{ ph.webUrl }}" target=”_blank” class="imgSrc"><h2>{{ph.title}}</h2></a>
             </div> 
             <div class="scoreClass" *ngIf="enableYear">
               <h1 >Year score &nbsp;<h1 [ngStyle]="getColor(yearScores[i])">  <span> {{ yearScores[i] }}</span></h1>

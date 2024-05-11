@@ -65,7 +65,7 @@ export class AppComponent {
   }
 
   scroll(el: HTMLElement) {
-    el.scrollIntoView({behavior: 'smooth'});
+    el.scrollIntoView({behavior: 'instant'});
   }
 
   isImgFullScreen = false;
@@ -124,7 +124,7 @@ export class AppComponent {
     if(this.enableYear)
       this.requestYearValues.emit();
     this.isShow = true;
-    window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
+    //window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
   }
 
   calculateGeoScore(marker : LngLat)
@@ -153,8 +153,6 @@ export class AppComponent {
 
     if(yearScore < 0)
       yearScore = 0;
-    if(yearScore > 900)
-      this.celebrateCenter();
     this.yearScores.push(yearScore);
     this.answers.push(sliderVal);
     this.totalScore += yearScore / (this.enableGeo && this.enableYear ? 2 : 1);

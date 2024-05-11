@@ -1,4 +1,7 @@
 <div class="map-wrap">
-    <div class="map" #map></div>
-    <pre id="coordinates" class="coordinates"></pre>
+    <div class="map" #map>
+        <div [hidden]="!isSubmitPressed">
+            <div  id="distance" class="distance-container"></div>
+        </div>
+    </div>
 </div>
