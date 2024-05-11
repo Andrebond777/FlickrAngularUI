@@ -76,9 +76,11 @@ export class AppComponent {
   yearScores: number[] = [];
   geoScores: number[] = [];
   answers: number[] = [];
+  answerMarkers: LngLat[] = [];
+  actualMarkers: LngLat[] = [];
   searchStrings: string[] = [];
   roundNumber = -1;
-  maxRoundNumber = 5;
+  maxRoundNumber = 2;
   coordinates : LngLat = new LngLat(0, 0);
   isMarkerSet = false;
   totalScore = 0;
@@ -91,6 +93,7 @@ export class AppComponent {
   maxYear = 0;
   enableYear : boolean = JSON.parse(localStorage.getItem("enableYear")!);
   enableGeo : boolean = JSON.parse(localStorage.getItem("enableGeo")!);
+
 
   @Output() requestYearValues = new EventEmitter<void>();
   @Output() requestGeoValues = new EventEmitter<LngLat>();
@@ -111,8 +114,9 @@ export class AppComponent {
     {
       if(this.isMarkerSet)
       {
-        this.requestGeoValues.emit(new LngLat(this.photos[this.roundNumber].longtitude, 
-                                              this.photos[this.roundNumber].latitude));
+        let actualMarker = new LngLat(this.photos[this.roundNumber].longtitude, this.photos[this.roundNumber].latitude);
+        this.requestGeoValues.emit(actualMarker);
+        this.actualMarkers.push(actualMarker);
         this.isMarkerSet = false;
       }
       else
@@ -142,6 +146,7 @@ export class AppComponent {
           geoScore = 0;
         this.geoScores.push(geoScore);
         this.totalScore += geoScore / (this.enableGeo && this.enableYear ? 2 : 1);
+        this.answerMarkers.push(marker);
       }
     }
   }

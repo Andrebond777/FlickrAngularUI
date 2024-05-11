@@ -68,7 +68,8 @@
         <div #target></div>
         <div class="imageMap">
           <app-image [isShow]="isShow" [photo]="ph"></app-image>
-            <app-map *ngIf="enableGeo" (clickEvent)="calculateGeoScore($event)" [requestValEvent]="requestGeoValues.asObservable()"></app-map>
+            <app-map *ngIf="enableGeo" (clickEvent)="calculateGeoScore($event)" [requestValEvent]="requestGeoValues.asObservable()"
+            [actualCoordinates]="actualMarkers[i]" [inputCoordinates]="answerMarkers[i]"></app-map>
 
 
         </div>

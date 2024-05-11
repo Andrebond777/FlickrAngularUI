@@ -79,7 +79,7 @@ span{
         padding-top: 20px;
         width: 440px;
         display: inline-block;
-        font-size: 25px;
+        font-size: 30px;
         font-family: 'Luminari';
         color: rgb(82, 82, 82);
         text-align: justify;  /* For Edge */
@@ -207,12 +207,12 @@ header {
 
 
 
-            margin-top: 30px;
+            margin-top: 37px;
             background-color: rgb(82, 82, 82);
             color: whitesmoke;
     
     }
-
+    @media only screen and (min-width: 1000px) {
     .imageMap{
         width: 95vw;
         display: inline-block;
@@ -232,24 +232,34 @@ header {
         }
         app-image{
             flex-shrink: 0;
+            
             margin-bottom: 20px;
             block-size: fit-content;
         }
     }
+}
 
-
+@media only screen and (max-width: 1000px) {
+    .imageMap{
+        app-map{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        app-image{
+            height: 5vh;
+        }
+    }
+}
 
     button{
         margin-top: 50px;
       }
 
 
-    @media only screen and (max-width: 1200px) {
 
         button{
             margin-top: -10px;
         }
-    }
 
 }
 

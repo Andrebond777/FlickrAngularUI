@@ -27,15 +27,26 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('map')
 private mapContainer!: ElementRef<HTMLElement>;
 
+@Input()
 actualCoordinates : LngLat = new LngLat(0,0);
+
+@Input()
+inputCoordinates : LngLat = new LngLat(0,0);
+
+onSubmit!: Function;
+display!: Function;
 
 ngOnInit(): void {
   config.apiKey = 'VNEKnHOTnKmNJzR56tAq';
-  this.requestValEventSubscription = this.requestValEvent.subscribe((data) => {this.actualCoordinates = data; this.onSubmit()});
+
+  if(this.inputCoordinates != null)
+    this.display();
+  else
+    this.requestValEventSubscription = this.requestValEvent.subscribe((data) => {this.actualCoordinates = data; this.onSubmit()});
 }
 
 
-  onSubmit!: Function;
+
 
 ngAfterViewInit() {
 
@@ -51,6 +62,8 @@ ngAfterViewInit() {
   }); 
 
   var marker = new Marker({color: "#ff0000"});
+  if(this.inputCoordinates  != null)
+    marker.setLngLat(this.inputCoordinates);
 
   this.map.on('click',  (e) => {
       if(!this.isSubmitPressed)
@@ -61,9 +74,8 @@ ngAfterViewInit() {
       }
   });
 
-  this.onSubmit = function() {
-    this.clickEvent.emit(marker.getLngLat());
-    if(this.actualCoordinates.lat != 0 && this.actualCoordinates.lat != 0)
+  this.display = function() {
+    if(this.actualCoordinates.lat != 0 && this.actualCoordinates.lng != 0)
     {
       var actualMarker = new Marker({color: "#00c206"});
       actualMarker.setLngLat(this.actualCoordinates).addTo(this.map!);
@@ -90,10 +102,15 @@ ngAfterViewInit() {
       // + " zoom = " + zoom;
 
       this.map!.setCenter([(marker._lngLat.lng+this.actualCoordinates.lng)/2, (marker._lngLat.lat+this.actualCoordinates.lat)/2]);
-      
 
     }
+  }
+
+  this.onSubmit = function() {
+    this.clickEvent.emit(marker.getLngLat());
+    this.display();
   }  
+
 
   var drawLine = () =>{
 
