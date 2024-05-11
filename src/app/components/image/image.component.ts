@@ -23,9 +23,9 @@ export class ImageComponent {
 
   resizePinchZoom(resize : boolean){
     if(resize)
-      return '@media only screen and (min-width: 1000px) { width : 100vw; height: 100vh; max-width: 100vw; position: fixed;   bottom: 0; right: 0; z-index: 7; margin: auto; padding:auto; border-width:0px; background-color: black;}';
+      return 'width : 100vw; height: 100vh; max-width: 100vw; position: fixed;   bottom: 0; right: 0; z-index: 7; margin: auto; padding:auto; border-width:0px; background-color: black;';
     else
-      return '@media only screen and (min-width: 1000px) { height:70vh; max-height: 70vh; z-index:6;  position: relative; width: fit-content;  max-width: 65vw;}';
+      return 'height:70vh; max-height: 70vh; z-index:6;  position: relative; width: fit-content;  max-width: 65vw;';
   }
 
   getExpandOrCompressIconClass(){
