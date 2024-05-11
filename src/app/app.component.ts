@@ -44,6 +44,21 @@ export class AppComponent {
     return {'color': this.calculateColor(score)};
   }
 
+  getSumColor()
+  {
+    console.log(this.roundNumber);
+    console.log(this.yearScores[this.roundNumber]);
+    console.log(this.geoScores[this.roundNumber]);
+    let score = 0;
+    if(this.enableYear)
+      score += this.yearScores[this.roundNumber];
+    if(this.enableGeo)
+      score += this.geoScores[this.roundNumber];
+    if(this.enableYear && this.enableGeo)
+      score /= 2;
+    return this.getColor(score);
+  }
+
   getAccentColor(score : number)
   {
       return {'accent-color': this.calculateColor(score)};
@@ -74,6 +89,8 @@ export class AppComponent {
   storageKeySearchStrings = "searchStrings";
   minYear = 0;
   maxYear = 0;
+  enableYear : boolean = JSON.parse(localStorage.getItem("enableYear")!);
+  enableGeo : boolean = JSON.parse(localStorage.getItem("enableGeo")!);
 
   @Output() requestYearValues = new EventEmitter<void>();
   @Output() requestGeoValues = new EventEmitter<LngLat>();
@@ -89,11 +106,24 @@ export class AppComponent {
 
 
   onSubmit(){
-    this.requestYearValues.emit();
-    this.requestGeoValues.emit(new LngLat(this.photos[this.roundNumber].longtitude, 
-      this.photos[this.roundNumber].latitude));
+    
+    if(this.enableGeo)
+    {
+      if(this.isMarkerSet)
+      {
+        this.requestGeoValues.emit(new LngLat(this.photos[this.roundNumber].longtitude, 
+                                              this.photos[this.roundNumber].latitude));
+        this.isMarkerSet = false;
+      }
+      else
+      {
+        this.toast.error({detail:"Please, select location!", duration: 1000, position:'botomCenter'});
+        return;
+      }
+    }
+    if(this.enableYear)
+      this.requestYearValues.emit();
     this.isShow = true;
-    this.isMarkerSet = false;
     window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
   }
 
@@ -111,10 +141,7 @@ export class AppComponent {
         if(geoScore < 0)
           geoScore = 0;
         this.geoScores.push(geoScore);
-        console.log(marker);
-        console.log(new LngLat(this.photos[this.roundNumber].longtitude, 
-          this.photos[this.roundNumber].latitude));
-        console.log(geoScore);
+        this.totalScore += geoScore / (this.enableGeo && this.enableYear ? 2 : 1);
       }
     }
   }
@@ -130,7 +157,7 @@ export class AppComponent {
       this.celebrateCenter();
     this.yearScores.push(yearScore);
     this.answers.push(sliderVal);
-    this.totalScore += yearScore;
+    this.totalScore += yearScore / (this.enableGeo && this.enableYear ? 2 : 1);
   }
 
   async fetchPhotos(quantity : number)
@@ -159,7 +186,6 @@ export class AppComponent {
     this.displayAllRounds = true;
     this.isImgFullScreen = false;
     let currentBestResult = localStorage.getItem(this.storageKeyBestResult);
-    console.log("currentBestResult: "+currentBestResult);
     if(currentBestResult != null)
     {      
       if(Number(currentBestResult) < Number(this.totalScore))
@@ -225,6 +251,10 @@ export class AppComponent {
       this.maxYear = 2020;
       localStorage.setItem("maxYear", this.maxYear.toString());
     }
+    if(this.enableYear == null)
+      localStorage.setItem("enableYear", "true");
+    if(this.enableGeo == null)
+      localStorage.setItem("enableGeo", "true");
 
     for(let i = 0; i < this.maxRoundNumber; i++)
       this.fetchPhotos(1);

@@ -75,6 +75,15 @@ span{
         margin: auto;
         
     }
+    h2{
+        display: inline-block;
+        font-size: 25px;
+        font-family: 'Luminari';
+        color: rgb(82, 82, 82);
+        text-align: justify;  /* For Edge */
+        text-align-last: center;
+        margin: auto;
+    }
     height: 60px;
     border-width: 3px;
     border-radius: 10px;
@@ -173,7 +182,7 @@ header {
 
 
 .mainContainer{
-
+    padding-bottom: 40px;
     font-family: 'Luminari';
     font-size: 40px;
     color: whitesmoke;
@@ -190,27 +199,21 @@ header {
     // }
 
     #submit{
-        button{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: auto;
-            margin-top: 40px;
-            width: 180px;
+
+
+
+        
             background-color: rgb(82, 82, 82);
-            margin-bottom: 20px
-          }
-        .button-54{
             color: whitesmoke;
-        }
+    
     }
 
     .imageMap{
-        margin-bottom: -25px;
         width: 95vw;
         display: inline-block;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+        
         app-map{
             margin-top: 20px;
             margin-left: 30px;
@@ -218,11 +221,11 @@ header {
             flex-shrink: 1;
             width: 100%;
 block-size: fit-content;
-
+margin-bottom: -20px;
         }
         app-image{
-            top: 0;
             flex-shrink: 0;
+            margin-bottom: 20px;
         }
     }
 
@@ -260,8 +263,8 @@ progress{
 
 @media only screen and (min-width: 1000px) {
     .nextRoundEndGameButtons{
-        margin-top: -20px;
         .button-54{
+            margin-top: 0px;
             background-color: rgb(82, 82, 82);
             color: whitesmoke;
         }

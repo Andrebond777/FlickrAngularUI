@@ -16,14 +16,14 @@ export class ImageComponent {
 
   resizeImage(){
     if(this.isImgFullScreen)
-      return 'width : auto; height: 100vh;';
+      return 'width : auto; height: 100vh; max-width: 100vw; ';
     else
       return 'max-height: 70vh;';
   }
 
   resizePinchZoom(){
     if(this.isImgFullScreen)
-      return 'width : 100vw; height: 100vh; position: fixed;   bottom: 0; right: 0; z-index: 7; margin: auto; padding:auto; border-width:0px; background-color: black;';
+      return 'width : 100vw; height: 100vh;         max-width: 100vw; position: fixed;   bottom: 0; right: 0; z-index: 7; margin: auto; padding:auto; border-width:0px; background-color: black;';
     else
       return 'max-height: 70vh;';
   }

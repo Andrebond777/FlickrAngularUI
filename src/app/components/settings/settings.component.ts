@@ -46,6 +46,9 @@ export class SettingsComponent implements OnInit {
   @Input()
   str : string = "";
 
+  enableYear : boolean = JSON.parse(localStorage.getItem("enableYear")!);
+  enableGeo : boolean = JSON.parse(localStorage.getItem("enableGeo")!);
+
   displayRefreshPage = false;
 
   minYear = Number(localStorage.getItem("minYear"));
@@ -59,7 +62,7 @@ export class SettingsComponent implements OnInit {
     return result;
   }
 
-  updateYearRange(){
+  updateYearRangeGuessMode(){
     if(this.minYear < 1830 || this.minYear > 2024 || this.maxYear < 1830 || this.maxYear > 2024)
       this.displayErrorToast('Year should be in the range from 1830 to 2024.');
     else if(this.minYear >= this.maxYear)
@@ -70,6 +73,14 @@ export class SettingsComponent implements OnInit {
       localStorage.setItem("maxYear", this.maxYear.toString());
       this.toast.success({detail:"Successfully updated year range!",summary:'Changes will take place starting from the next game.', position:'botomCenter'});
       this.displayRefreshPage = true;
+    }
+
+    if(!this.enableYear && !this.enableGeo)
+      this.displayErrorToast('Select at least one guess mode!');
+    else
+    {
+      localStorage.setItem("enableYear", this.enableYear.toString());
+      localStorage.setItem("enableGeo", this.enableGeo.toString());
     }
   }
 
@@ -105,7 +116,7 @@ export class SettingsComponent implements OnInit {
   resetToDefault(){
     this.minYear = 1900;
     this.maxYear = 2020;
-    this.updateYearRange();
+    this.updateYearRangeGuessMode();
 
     this.searchStrings = defaultSearchStrings;
     this.updateSearchStrings(defaultSearchStrings)

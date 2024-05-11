@@ -2,6 +2,7 @@
     <div *ngIf="displayRefreshPage" class="refreshPage">
         <button @animation class="button-54"  type="button" (click)="reloadPage()">Start New Game</button>
     </div>
+
         <label for="year">Year range:</label>
         <div class="inputBlock sliderInput">
             <div>
@@ -14,11 +15,29 @@
                     <option [value]="2024">2024</option>
                 </select>
             </div>
-            <div>
-                <button class="button-54"  type="button" (click)="updateYearRange()">Update</button>
+            <div id="checkBoxes">
+                <div>
+                    <label id="guessMode" for="guessing">Guess mode: </label>
+                    <div class="boxes">
+                        <label id="year" for="year">Year: <input type="checkbox" name="year" [disabled]="!enableGeo" [(ngModel)]="enableYear"></label>
+    
+                    </div>
+    
+                    <div class="boxes">
+                        <label  id="geo" for="geo">Geo: <input id="geoBox" type="checkbox" name="geo" [disabled]="!enableYear" [(ngModel)]="enableGeo"></label>
+                        <p>(Disable Geo to get<br>wider photos selection)</p>
+                    </div>
+                </div>
             </div>
+            
+            <div id="updButton">
+                <button class="button-54"  type="button" (click)="updateYearRangeGuessMode()">Update</button>
+            </div>
+            
         </div>
-        <label for="query">Add search query:</label>
+
+
+        <label id="query" for="query">Add search query:</label>
         <div class="inputBlock">
             <div>
                 <input type="text" [(ngModel)]="str" placeholder="Enter query" required>

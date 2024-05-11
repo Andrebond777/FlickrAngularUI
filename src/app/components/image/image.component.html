@@ -7,7 +7,7 @@
         <img [style]="resizeImage()" src="{{ photo.imageUrl }}" medPinchZoom=" autoZoomOut: true "/>
         <i  [class]="getExpandOrCompressIconClass()" (click)="isImgFullScreen = !isImgFullScreen;"></i>
     </pinch-zoom>
-    <div *ngIf="isShow" class="imgSrcAndTitle">
+    <!-- <div *ngIf="isShow" class="imgSrcAndTitle">
       <div>          <h3>{{photo.title}}</h3></div>
-    </div>
+    </div> -->
   </div>

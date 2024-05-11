@@ -50,11 +50,13 @@
         min-height: 70vh; 
         min-width: auto;
         width: fit-content;
+        max-width: 65vw;
     }
     pinch-zoom{
         min-height: 70vh;
         min-width: auto;
         width: fit-content;
+        max-width: 65vw;
     }
 }
 
@@ -69,8 +71,10 @@ pinch-zoom{
     height:fit-content;
     width:fit-content;
     margin-bottom: 10px;
+    
 
     i{
+        position: absolute;
         cursor: pointer;
         margin-bottom: 15px;
         margin-right: 15px;
@@ -84,7 +88,7 @@ pinch-zoom{
         opacity: 0.5;
     }
     i:hover{
-        opacity: 0.8;
+        opacity: 0.6;
     }
 
     .fa {
