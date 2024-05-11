@@ -18,7 +18,7 @@ export class ImageComponent {
     if(resize)
       return 'width : auto; height: 100vh; max-width: 100vw;  z-index: 7;';
     else
-      return 'height:fit-content;  z-index: 6; width: fit-content; max-width: 65vw; max-height: 70vh; ';
+      return 'height:fit-content;  z-index: 6; width: fit-content; max-width: 65vw;';
   }
 
   resizePinchZoom(resize : boolean){
