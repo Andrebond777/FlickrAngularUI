@@ -157,46 +157,85 @@ select{
 
 @media only screen and (max-width: 1000px) {
     
-    .inputBlock{
-        height: 150px;
-        display: block;
-        justify-content: center;
-        justify-items: center;
-        div{
-            height: 60px;
-            justify-content: center;
-            justify-items: center;
-            width: 90 vw;
-            select{
-                height: 60px;
-                width: 40vw;
-                font-size: 33px;
-            }
-            #maxYearSelect{
-                margin-left:10vw;
-            }
-            button{
-                height: 56px;
-                display: flex;
-                margin: 0;
-                margin-top: 18px;
-                margin-bottom: 20px;
-                display: flex;
-                justify-content: center;
-                justify-items: center;
-                width: 84vw;
-                margin-left: 3vw;
-                margin-right: 3vw;
-            }
-        }
+.inputBlock{
+    input{
+        width: 90vw;
+    }
+    #minYearSelect{
+        margin-right: 10vw;
+    }
+    select{
+        display: inline;
+        width: 40vw;
 
+    }
+    display: block;
+    #checkBoxes{
 
-        input{
-            height: 60px;
+        p{
             width: 90vw;
+            font-size: 16px;
         }
-        
+        input{
+            margin: 0;
+            margin-top: 5px;
+            margin-left: 10px;
         }
+        height: 270px;
+        .boxes{
+            display: flex;
+            width: 100vw;
+        }
+
+        margin-top: 30px;
+        margin-left: 0px;
+        margin-bottom: 100px;
+        z-index: 10;
+width: 90px;
+        #year{
+            margin: 0px;
+        }
+        #geo{
+            margin: 0px;
+            margin-left: 40px;
+            input{
+                margin-top: 5px;
+                margin-left: 10px;
+            }
+        }
+        #geoBox{
+            margin: 0px;
+        }
+        #guessMode{
+            margin: 0px;
+            margin-bottom: -5px;
+            margin-top: -20px;
+            width: 90vw;
+            height: 50px;
+        }
+
+
+    }
+    .button-54{
+        width: 90vw;
+        margin: 0;
+    }
+    .button-54#addQuery{
+        margin-top: 17px;
+    }
+    #updButton{
+        margin-top: -270px;
+
+    }
+
+}
+.mainBody
+{
+    #query{
+        margin-top: 210px;
+    }
+}
+
 }
 
 
@@ -221,14 +260,16 @@ button{
 @media only screen and (max-width: 1000px) {
     .bottomButtons{
         display: block;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+
         button{
-            margin: 0px;
+            margin: 0;
             margin-top: 25px;
-            justify-content: center;
-            align-items: center;
-            justify-items: center;
-            width: 84vw;
-            margin-left: 3vw;
+
+            width: 90vw;
+
             white-space: nowrap;
             overflow:auto;
             text-overflow:clip;
@@ -266,7 +307,9 @@ nav ul{min-height: 40px;max-height:60vh; width:800px;}
 nav ul{overflow:hidden; overflow-y:scroll;}
 
 @media only screen and (max-width: 1000px) {
-
+    nav{
+        margin-top: 100px;
+    }
     nav ul{max-height:50vh;width:90vw;}
     ul{width: 90vw;     }
     .inputBlock{width: 90vw;}

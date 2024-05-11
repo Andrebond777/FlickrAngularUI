@@ -21,12 +21,11 @@
                     <div class="boxes">
                         <label id="year" for="year">Year: <input type="checkbox" name="year" [disabled]="!enableGeo" [(ngModel)]="enableYear"></label>
     
-                    </div>
-    
-                    <div class="boxes">
+
                         <label  id="geo" for="geo">Geo: <input id="geoBox" type="checkbox" name="geo" [disabled]="!enableYear" [(ngModel)]="enableGeo"></label>
-                        <p>(Disable Geo to get<br>wider photos selection)</p>
+
                     </div>
+                    <p>(Disable Geo to get wider photos selection)</p>
                 </div>
             </div>
             
@@ -42,8 +41,8 @@
             <div>
                 <input type="text" [(ngModel)]="str" placeholder="Enter query" required>
             </div>
-        <div>
-            <button [disabled]="str == ''" class="button-54"  type="button" (click)="addStr()">Add</button>
+        <div >
+            <button id="addQuery" [disabled]="str == ''" class="button-54"  type="button" (click)="addStr()">Add</button>
         </div>
         </div>
     <div class="component">
