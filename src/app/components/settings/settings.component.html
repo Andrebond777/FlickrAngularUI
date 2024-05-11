@@ -20,10 +20,7 @@
                     <label id="guessMode" for="guessing">Guess mode: </label>
                     <div class="boxes">
                         <label id="year" for="year">Year: <input type="checkbox" name="year" [disabled]="!enableGeo" [(ngModel)]="enableYear"></label>
-    
-
                         <label  id="geo" for="geo">Geo: <input id="geoBox" type="checkbox" name="geo" [disabled]="!enableYear" [(ngModel)]="enableGeo"></label>
-
                     </div>
                     <p>(Disable Geo to get wider photos selection)</p>
                 </div>

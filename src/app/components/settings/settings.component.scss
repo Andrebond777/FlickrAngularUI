@@ -179,11 +179,13 @@ select{
         }
         input{
             margin: 0;
-            margin-top: 5px;
             margin-left: 10px;
         }
         height: 270px;
         .boxes{
+            label{
+                font-size: 27px;
+            }
             display: flex;
             width: 100vw;
         }
@@ -195,12 +197,12 @@ select{
 width: 90px;
         #year{
             margin: 0px;
+            margin-left: 40px;
         }
         #geo{
             margin: 0px;
             margin-left: 40px;
             input{
-                margin-top: 5px;
                 margin-left: 10px;
             }
         }
