@@ -5,6 +5,8 @@ import confetti from 'canvas-confetti';
 import { HttpResponse } from '@angular/common/http';
 import { NgToastService } from 'ng-angular-popup';
 
+import inputCountries from '../data/countries.json'
+
 import { LngLat } from '@maptiler/sdk';
 const defaultSearchStrings = [
   "Street view", "New York street view",  "City", "Grocery store"
@@ -80,7 +82,7 @@ export class AppComponent {
   actualMarkers: LngLat[] = [];
   searchStrings: string[] = [];
   roundNumber = -1;
-  maxRoundNumber = 2;
+  maxRoundNumber = 5;
   coordinates : LngLat = new LngLat(0, 0);
   isMarkerSet = false;
   totalScore = 0;
@@ -224,23 +226,22 @@ export class AppComponent {
 
   constructor(private flickrUiService: FlickrUiService, private toast : NgToastService) {
 
-    // let topCities : string[] = [];    
-    // let obj  = topCitiesJSON.entries();
-    // for (const iterator of obj) 
-    //   topCities.push(iterator[1].city);
-    // topCities.push("Ukraine");
-    // for (const iterator of topCities) {
-    //   console.log(iterator);
-    // }
-    //this.searchStrings = topCities;
-    const searchStringsFromStorage = localStorage.getItem(this.storageKeySearchStrings);
-    if(searchStringsFromStorage != null)
-    {
-      const searchStringsFromStorageParsed = JSON.parse(searchStringsFromStorage);
-      this.searchStrings = searchStringsFromStorageParsed;
+    let countries : string[] = [];    
+    let obj  = inputCountries.entries();
+    for (const iterator of obj) 
+      countries.push(iterator[1].country);
+    for (const iterator of countries) {
+      console.log(iterator);
     }
-    else
-      this.searchStrings = defaultSearchStrings;
+    this.searchStrings = countries;
+// `    const searchStringsFromStorage = localStorage.getItem(this.storageKeySearchStrings);
+//     if(searchStringsFromStorage != null)
+//     {
+//       const searchStringsFromStorageParsed = JSON.parse(searchStringsFromStorage);
+//       this.searchStrings = searchStringsFromStorageParsed;
+//     }
+//     else
+//       this.searchStrings = defaultSearchStrings;`
 
     this.minYear = Number(localStorage.getItem("minYear"));
     this.maxYear = Number(localStorage.getItem("maxYear"));

@@ -91,11 +91,20 @@ ngAfterViewInit() {
       value.textContent = "You were off by: " + haversine_km + "km"
       distanceContainer!.appendChild(value);
       let zoom = 5;
-
-      zoom -= Math.floor(Math.abs(marker._lngLat.lng-this.actualCoordinates.lng) / 10);
-      zoom -= Math.floor(Math.abs(marker._lngLat.lat-this.actualCoordinates.lat) / 5);
+      if(haversine_km < 5000)
+      {
+        zoom -= Math.floor(Math.abs(marker._lngLat.lng-this.actualCoordinates.lng) / 10);
+        zoom -= Math.floor(Math.abs(marker._lngLat.lat-this.actualCoordinates.lat) / 20);
+      }
+      else if(haversine_km < 10000)
+        zoom = 3;
+      else if(haversine_km < 20000)
+        zoom = 2;
+      else if(haversine_km >= 20000)
+        zoom = 1;
       if(zoom<0)
-      zoom = 0;
+        zoom = 1;
+
       this.map!.setZoom(zoom);
       // value.textContent = "lng = " + Math.floor(Math.abs(marker._lngLat.lng-this.actualCoordinates.lng) / 10)
       // + " lat = " + Math.floor(Math.abs(marker._lngLat.lat-this.actualCoordinates.lat) / 5)
