@@ -196,8 +196,6 @@ export class AppComponent {
       if(Number(currentBestResult) < Number(this.totalScore))
       {
         localStorage.setItem(this.storageKeyBestResult, this.totalScore.toString());
-        this.celebrateLeft();
-        this.celebrateRight();
         this.celebrateCenter();
         this.toast.success({detail:"You have beaten your previous best score!", duration: 10000, position:'botomCenter'});
       }
@@ -256,9 +254,16 @@ export class AppComponent {
       localStorage.setItem("maxYear", this.maxYear.toString());
     }
     if(this.enableYear == null)
-      localStorage.setItem("enableYear", "true");
+      {
+        localStorage.setItem("enableYear", "true");
+        this.enableYear = true;
+      }
     if(this.enableGeo == null)
+    {
       localStorage.setItem("enableGeo", "true");
+      this.enableGeo = true;
+    }
+
 
     for(let i = 0; i < this.maxRoundNumber; i++)
       this.fetchPhotos(1);
@@ -267,32 +272,6 @@ export class AppComponent {
 
   
    ngOnInit(): void {
-  }
-
-  celebrateRight() {
-    const duration = 5000; // in milliseconds
-  
-    confetti({
-      particleCount: 200,
-      spread: 400,
-      origin: { y: 0.4, x: 0.8 },
-    });
-    
-    // Clear confetti after a certain duration
-    setTimeout(() => confetti.reset(), duration);
-  }
-
-  celebrateLeft() {
-    const duration = 5000; // in milliseconds
-  
-    confetti({
-      particleCount: 200,
-      spread: 400,
-      origin: { y: 0.4, x: 0.1 },
-    });
-    
-    // Clear confetti after a certain duration
-    setTimeout(() => confetti.reset(), duration);
   }
 
   celebrateCenter() {

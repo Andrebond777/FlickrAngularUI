@@ -215,6 +215,7 @@ header {
     @media only screen and (min-width: 1000px) {
     .imageMap{
         width: 95vw;
+        max-width: 95vw;
         display: inline-block;
         display: flex;
         justify-content: center;
