@@ -7,6 +7,7 @@ import { NgToastService } from 'ng-angular-popup';
 
 import inputCountries from '../data/countries.json'
 
+
 import { LngLat } from '@maptiler/sdk';
 const defaultSearchStrings = [
   "Street view", "New York street view",  "City", "Grocery store"
@@ -18,6 +19,28 @@ const defaultSearchStrings = [
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+
+
+
+//This will print
+/*
+[
+  {
+      id: 3,
+      city: 'dhk',
+      name: 'Redmi 3S Prime',
+      cat: 2,
+      price: 12000
+  },
+  {
+      id: 4,
+      city: 'bsl',
+      name: 'macbook air',
+      cat: 2,
+      price: 110000
+  }
+]
+*/
 
   calculateColor(score : number)
   {

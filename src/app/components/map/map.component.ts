@@ -5,6 +5,7 @@ import '@maptiler/sdk/dist/maptiler-sdk.css';
 import { Observable, Subscription } from 'rxjs';
 
 import haversine from 'haversine-distance'
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -37,7 +38,7 @@ onSubmit!: Function;
 display!: Function;
 
 ngOnInit(): void {
-  config.apiKey = 'VNEKnHOTnKmNJzR56tAq';
+  config.apiKey = environment.apiKey;
 
   if(this.inputCoordinates != null)
     this.display();

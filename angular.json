@@ -111,7 +111,6 @@
               "mapbox-gl/dist/mapbox-gl.css"
             ],
             "scripts": [
-              "src/app/components/slider/slider.js"
             ]
           }
         }

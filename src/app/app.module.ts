@@ -19,6 +19,7 @@ import { MapComponent } from './components/map/map.component';
 import { ImageComponent } from './components/image/image.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
