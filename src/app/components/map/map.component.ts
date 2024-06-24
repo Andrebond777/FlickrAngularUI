@@ -38,7 +38,7 @@ onSubmit!: Function;
 display!: Function;
 
 ngOnInit(): void {
-  config.apiKey = environment.apiKey;
+  config.apiKey = environment.mapApiKey;
 
   if(this.inputCoordinates != null)
     this.display();
